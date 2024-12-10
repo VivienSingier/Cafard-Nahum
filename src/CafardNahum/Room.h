@@ -8,6 +8,7 @@ class Room : sf::Drawable
 	std::vector <StaticObject*> objects;
 
 public:
+	Room();
 	void Init(std::vector <Entity*>* LevelEntities);
 	void Draw();
 };

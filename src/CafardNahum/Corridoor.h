@@ -8,6 +8,7 @@ class Corridoor : sf::Drawable
 	std::vector <StaticObject*> objects;
 
 public:
+	Corridoor();
 	void Init(std::vector <Entity*>* LevelEntities);
 	void Draw();
 };
