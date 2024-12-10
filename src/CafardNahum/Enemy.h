@@ -2,9 +2,10 @@
 #include "Movable.h"
 #include "Entity.h"
 #include "Alive.h"
+#include "ColliderSphere.h"
 #include <vector>
 
-class Enemy : public Entity, public Alive, public Movable
+class Enemy : public Entity, public Alive, public Movable, public ColliderSphere
 {
 	int damage;
 

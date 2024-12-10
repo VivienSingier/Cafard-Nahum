@@ -4,9 +4,10 @@
 #include "Movable.h"
 #include "Weapon.h"
 #include "Bullet.h"
+#include "ColliderSphere.h"
 #include <vector>
 
-class Player : public Entity, public Movable, public Alive
+class Player : public Entity, public Movable, public Alive, public ColliderSphere
 {
 	Weapon* holdWeapon;
 	Weapon* secondaryWeapon;
