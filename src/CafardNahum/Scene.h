@@ -2,12 +2,13 @@
 #include "Entity.h"
 #include <vector>
 
-class Scene
+class Scene : sf::Drawable
 {
 	std::vector <Entity*> entities;
 
 public:
-
-	Scene();
+	void Init();
+	void UpdateEntities();
+	void Draw();
 };
 
