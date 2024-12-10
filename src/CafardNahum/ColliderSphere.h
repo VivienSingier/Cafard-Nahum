@@ -1,7 +1,12 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include <vector>
-#include "ColliderRect.h"
+
+class ColliderRect
+{
+
+};
+
 
 class ColliderSphere
 {
