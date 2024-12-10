@@ -2,11 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include <vector>
 
-class ColliderRect
-{
-
-};
-
+class ColliderRect;
 
 class ColliderSphere
 {
