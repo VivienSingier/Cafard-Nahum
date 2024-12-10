@@ -7,6 +7,6 @@ class Movable
 
 public:
 	Movable(sf::Vector2f cSpeed);
-	virtual void Move(float deltatime);
+	virtual void Move(float deltatime) {}
 };
 

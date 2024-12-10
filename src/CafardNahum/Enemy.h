@@ -12,10 +12,8 @@ class Enemy : public Entity, public Alive, public Movable, public ColliderSphere
 public:
 	Enemy(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, sf::Vector2f speed, int cHealth);
 
-	void Move(float deltatime) override;
-
 	void GetShotAngle();
-	virtual void Shoot();
+	virtual void Shoot() {}
 
 };
 

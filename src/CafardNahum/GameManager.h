@@ -8,7 +8,7 @@
 
 class GameManager
 {
-	SceneManager* CurrentScene;
+	SceneManager* sceneManager;
 	sf::RenderWindow window;
 	std::string gameState;
 	Player* player;

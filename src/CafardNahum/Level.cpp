@@ -3,7 +3,8 @@
 
 Level::Level() : Scene()
 {
-
+	Room* newRoom = new Room(&entities);
+	rooms.push_back(newRoom);
 }
 
 void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const

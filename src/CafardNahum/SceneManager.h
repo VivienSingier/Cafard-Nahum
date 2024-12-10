@@ -10,8 +10,8 @@ class SceneManager
 
 public :
 	SceneManager();
-	void GetCurrentScene();
-	void SetCurrentScene();
+	Scene* GetCurrentScene();
+	void SetCurrentScene(Scene* scene);
 
 };
 

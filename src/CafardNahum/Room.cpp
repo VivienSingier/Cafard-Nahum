@@ -1,8 +1,10 @@
 #include "pch.h"
 #include "Room.h"
+#include <iostream>
 
 Room::Room(std::vector <Entity*>* LevelEntities)
 {
+	std::cout << "init" << std::endl;
 	Init(LevelEntities);
 }
 
