@@ -9,6 +9,7 @@ class ColliderRect
 	std::vector <sf::FloatRect*> rects;
 
 public:
+	ColliderRect();
 	bool GetCollisionWithRect(ColliderRect* object);
 	bool GetCollisionWithSphere(ColliderSphere* object);
 };
