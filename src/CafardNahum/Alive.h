@@ -6,6 +6,7 @@ class Alive
 	int health;
 
 public:
+	Alive(int cHealth);
 	void TakeDamage(int damage);
 };
 
