@@ -1,0 +1,10 @@
+namespace CafardNahum
+{
+    [bindable]
+    [default_interface]
+    runtimeclass PoisonRoach 
+    {
+        PoisonRoach();
+        Int32 MyProperty;
+    }
+}
