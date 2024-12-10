@@ -12,6 +12,8 @@ class Player : public Entity, public Movable, public Alive
 	Weapon* secondaryWeapon;
 
 public:
+	void Move(float deltatime) override;
+
 	void HandleInput();
 	void GetShotAngle();
 	void Shoot(std::vector <Bullet*> PlayerProjectiles);

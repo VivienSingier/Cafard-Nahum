@@ -9,7 +9,7 @@ class Enemy : public Entity, public Alive, public Movable
 	int damage;
 
 public:
-	void Move() override;
+	void Move(float deltatime) override;
 
 	void GetShotAngle();
 	virtual void Shoot();

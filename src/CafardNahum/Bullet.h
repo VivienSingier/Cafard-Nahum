@@ -6,5 +6,7 @@ class Bullet : public Entity, public Movable
 {
 	int damage;
 
+public:
+	void Move(float deltatime) override;
 };
 
