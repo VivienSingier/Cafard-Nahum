@@ -6,6 +6,7 @@ class ColliderSphere;
 
 class ColliderRect
 {
+protected:
 	std::vector <sf::FloatRect*> rects;
 
 public:
