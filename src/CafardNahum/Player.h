@@ -13,6 +13,7 @@ class Player : public Entity, public Movable, public Alive, public ColliderSpher
 	Weapon* secondaryWeapon;
 
 public:
+	Player(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed);
 	void Move(float deltatime) override;
 
 	void HandleInput();
