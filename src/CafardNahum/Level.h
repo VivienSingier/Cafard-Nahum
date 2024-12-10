@@ -11,6 +11,7 @@ class Level : public Scene
 	std::vector <Corridoor*> corridoors;
 
 public:
+	Level();
 	void AddPlayer(Player* player);
 };
 
