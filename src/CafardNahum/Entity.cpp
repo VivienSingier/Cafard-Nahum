@@ -1,13 +1,13 @@
 #include "pch.h"
 #include "Entity.h"
 
-Entity::Entity(float PosX, float PosY, float SheetX, float SheetY, float height, float width, std::string path, float ScaleX, float ScaleY)
+Entity::Entity(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale)
 {
-    if (!texture.loadFromFile(path, sf::IntRect(SheetX, SheetY, width, height)))
+    if (!texture.loadFromFile(path, textureRect))
     {
         return;
     }
     sprite.setTexture(texture);
-    sprite.setPosition(PosX, PosY);
-    sprite.setScale(sf::Vector2f(ScaleX, ScaleY));
+    sprite.setPosition(position);
+    sprite.setScale(scale);
 }
