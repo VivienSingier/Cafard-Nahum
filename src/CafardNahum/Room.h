@@ -1,15 +1,22 @@
 #pragma once
 #include "Entity.h"
 #include "StaticObject.h"
-#include <vector>
+#include "Wall.h"
+#include "Floor.h"
 
-class Room : sf::Drawable
+#include <vector>
+#include <fstream>
+#include <string>
+
+class Room : public sf::Drawable
 {
 	std::vector <StaticObject*> objects;
 
 public:
-	Room();
+	Room(std::vector <Entity*>* LevelEntities);
+	void AddWall(float x, float y);
+	void AddFloor(float x, float y);
 	void Init(std::vector <Entity*>* LevelEntities);
-	void Draw();
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 

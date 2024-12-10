@@ -2,7 +2,7 @@
 #include "Entity.h"
 #include <vector>
 
-class Scene : sf::Drawable
+class Scene : public sf::Drawable
 {
 	std::vector <Entity*> entities;
 
