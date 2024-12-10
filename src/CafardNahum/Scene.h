@@ -7,5 +7,7 @@ class Scene
 	std::vector <Entity*> entities;
 
 public:
+
+	Scene()
 };
 
