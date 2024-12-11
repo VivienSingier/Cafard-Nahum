@@ -2,20 +2,21 @@
 #include "Room.h"
 
 
-Room::Room(std::vector <Entity*>* LevelEntities)
+Room::Room(std::vector <Entity*>* LevelEntities, float x, float y)
 {
+	pos = sf::Vector2f(x, y);
 	Init(LevelEntities);
 }
 
 void Room::AddWall(float x, float y)
 {
 	Wall* newWall = new Wall("../../../res/imgStatic/floorTiles.png",
-		sf::IntRect(96, 32, 16, 16), sf::Vector2f(100.f + 32.f * x, 84.f + 32.f * y),
+		sf::IntRect(96, 32, 16, 16), sf::Vector2f(pos.x + 32.f * x, (pos.y - 16) + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 	forwardObjects.push_back(newWall);
 
 	HalfWall* newHalfWall = new HalfWall("../../../res/imgStatic/floorTiles.png",
-		sf::IntRect(96, 48, 16, 16), sf::Vector2f(100.f + 32.f * x, 116.f + 32.f * y),
+		sf::IntRect(96, 48, 16, 16), sf::Vector2f(pos.x + 32.f * x, (pos.y + 16) + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 	forwardObjects.push_back(newHalfWall);
 }
@@ -23,7 +24,7 @@ void Room::AddWall(float x, float y)
 void Room::AddFloor(float x, float y)
 {
 	Floor* newFloor = new Floor("../../../res/imgStatic/floorTiles.png",
-		sf::IntRect(0, 112, 16, 16), sf::Vector2f(100.f + 32.f * x, 100.f + 32.f * y),
+		sf::IntRect(0, 112, 16, 16), sf::Vector2f(pos.x + 32.f * x, pos.y + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 	objects.push_back(newFloor);
 }

@@ -5,9 +5,8 @@
 
 int main()
 {
-    GameManager game;
-    game.Init();
-    game.Run();
+    GameManager* game = GameManager::getInstance();
+    game->Run();
 
     return 0;
 }

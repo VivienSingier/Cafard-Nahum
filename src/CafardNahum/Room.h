@@ -14,8 +14,10 @@ class Room : public sf::Drawable
 	std::vector <StaticObject*> forwardObjects;
 	std::vector <StaticObject*> objects;
 
+	sf::Vector2f pos;
+
 public:
-	Room(std::vector <Entity*>* LevelEntities);
+	Room(std::vector <Entity*>* LevelEntities, float x, float y);
 	void AddWall(float x, float y);
 	void AddFloor(float x, float y);
 	void Init(std::vector <Entity*>* LevelEntities);

@@ -1,7 +1,8 @@
 #pragma once
 #include "Scene.h"
 #include "Room.h"
-#include "Corridoor.h"
+#include "VerticalCorridoor.h"
+#include "HorizontalCorridoor.h"
 #include "Player.h"
 
 
