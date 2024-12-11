@@ -45,5 +45,5 @@ void Player::GetShotAngle()
 
 void Player::Shoot(std::vector <Bullet*> PlayerProjectiles)
 {
-
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){}
 }
