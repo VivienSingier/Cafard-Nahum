@@ -3,6 +3,7 @@
 #include "StaticObject.h"
 #include "Wall.h"
 #include "Floor.h"
+#include "HalfWall.h"
 
 #include <vector>
 #include <fstream>
@@ -10,6 +11,7 @@
 
 class Room : public sf::Drawable
 {
+	std::vector <StaticObject*> forwardObjects;
 	std::vector <StaticObject*> objects;
 
 public:
