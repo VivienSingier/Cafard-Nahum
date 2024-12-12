@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "GameManager.h"
+#include "Player.h"
+#include "SceneManager.h"
 
 GameManager* GameManager::instance = nullptr;
 
@@ -15,6 +17,11 @@ GameManager* GameManager::getInstance()
         instance = new GameManager();
     }
     return instance;
+}
+
+Player* GameManager::GetPlayer()
+{
+	return player;
 }
 
 void GameManager::Init()

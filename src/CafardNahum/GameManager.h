@@ -2,9 +2,9 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "Player.h"
-#include "SceneManager.h"
 
+class Player;
+class SceneManager;
 
 class GameManager
 {
@@ -18,6 +18,7 @@ public:
 
 	GameManager();
 	static GameManager* getInstance();
+	Player* GetPlayer();
 	void Init();
 	void Run();
 
