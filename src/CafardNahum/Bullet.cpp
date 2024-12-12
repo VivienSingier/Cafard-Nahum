@@ -8,3 +8,4 @@ Bullet::Bullet(std::string path, sf::IntRect textureRect, sf::Vector2f position,
 {
 
 }
+

@@ -7,6 +7,11 @@ StaticObject::StaticObject(std::string path, sf::IntRect textureRect, sf::Vector
 	isWalkable = cIsWalkable;
 }
 
+void StaticObject::SetIsWalkable(bool IsWalkable)
+{
+	isWalkable = IsWalkable;
+}
+
 bool StaticObject::GetIsWalkable()
 {
 	return isWalkable;

@@ -8,5 +8,6 @@ class StaticObject : public Entity, public ColliderRect
 public:
 	StaticObject(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, bool cIsWalkable);
 	bool GetIsWalkable();
+	void SetIsWalkable(bool IsWalkable);
 };
 

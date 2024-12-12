@@ -3,14 +3,8 @@
 
 Level::Level() : Scene()
 {
-	Room* newRoom = new Room(&entities, 50, 0);
+	Room* newRoom = new Room(&entities, 100, 100);
 	rooms.push_back(newRoom);
-
-	VerticalCorridoor* newCorridoor = new VerticalCorridoor(700, 0);
-	corridoors.push_back(newCorridoor);
-
-	HorizontalCorridoor* newCorridoor2 = new HorizontalCorridoor(50, 550);
-	corridoors.push_back(newCorridoor2);
 
 }
 
