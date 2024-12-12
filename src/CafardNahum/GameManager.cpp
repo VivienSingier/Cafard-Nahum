@@ -30,6 +30,7 @@ void GameManager::Init()
     window.create(sf::VideoMode(1080, 720), "Cafard Nahum");
     sceneManager = new SceneManager();
 	sceneManager->GetCurrentScene()->AddPlayer(player);
+
 }
 
 void GameManager::Run()

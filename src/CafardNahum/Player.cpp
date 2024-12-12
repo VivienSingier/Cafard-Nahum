@@ -22,7 +22,7 @@ void Player::Move(float deltatime)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
     {
-        move(- speed.x * deltatime, -speed.y);
+        move(-speed.x * deltatime, -speed.y);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
     {
@@ -66,6 +66,7 @@ void Player::WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon)
 //{
 //    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 //    {
-//        PlayerProjectiles.move(UnitVector.x, UnitVector.y);
+//        Bullet* newBullet = new Bullet()
+//            
 //    }
 //}

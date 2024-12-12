@@ -8,3 +8,9 @@ Bullet::Bullet(std::string path, sf::IntRect textureRect, sf::Vector2f position,
 {
 
 }
+
+void Bullet::Update(float deltatime)
+{
+	Move(deltatime);
+}
+
