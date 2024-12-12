@@ -3,12 +3,14 @@
 #include "Wall.h"
 #include "Floor.h"
 #include "Door.h"
+#include <random>
 
 
-Room::Room(std::vector <Entity*>* LevelEntities, float x, float y)
+Room::Room(float x, float y, int cIndex)
 {
+	index = cIndex;
 	pos = sf::Vector2f(x, y);
-	Init(LevelEntities);
+	Init();
 }
 
 void Room::AddWall(float x, float y)
@@ -47,9 +49,22 @@ void Room::AddDoor(float x, float y)
 	objects.push_back(newDoor);
 }
 
-void Room::Init(std::vector <Entity*>* LevelEntities)
+void Room::Init()
 {
-	std::ifstream file("../../../res/Maps/Floor1/1.txt");
+	std::string path;
+	switch (index)
+	{
+	case 1:
+		path = "../../../res/Maps/Floor1/1.txt";
+		break;
+	case 2:
+		path = "../../../res/Maps/Floor1/2.txt";
+		break;
+	case 3:
+		path = "../../../res/Maps/Floor1/3.txt";
+		break;
+	}
+	std::ifstream file(path);
 	std::string str;
 	int i = 0;
 	while (std::getline(file, str))

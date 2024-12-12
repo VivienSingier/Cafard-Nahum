@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GameManager.h"
+#include <random>
 
 GameManager* GameManager::instance = nullptr;
 
@@ -21,6 +22,10 @@ void GameManager::Init()
 {
     window.create(sf::VideoMode(1080, 720), "Cafard Nahum");
     sceneManager = new SceneManager();
+
+	srand(time(NULL));
+	/*MapPath::Init();*/
+	//StaticSpriteRect::Init();
 }
 
 void GameManager::Run()

@@ -1,10 +1,16 @@
 #include "pch.h"
 #include "Level.h"
+#include "Room.h"
+#include "VerticalCorridoor.h"
+#include "HorizontalCorridoor.h"
 
 Level::Level() : Scene()
 {
-	Room* newRoom = new Room(&entities, 100, 100);
-	rooms.push_back(newRoom);
+	Room* Room1 = new Room(150, 200, 1);
+	rooms.push_back(Room1);
+
+	HorizontalCorridoor* Corr1 = new HorizontalCorridoor(544 + 150, 260 + 100);
+	corridoors.push_back(Corr1);
 
 }
 

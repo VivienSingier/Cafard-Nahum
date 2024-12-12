@@ -15,13 +15,14 @@ class Room : public sf::Drawable
 	std::vector <StaticObject*> backgroundObjects;
 
 	sf::Vector2f pos;
+	int index;
 
 public:
-	Room(std::vector <Entity*>* LevelEntities, float x, float y);
+	Room(float x, float y, int index);
 	void AddWall(float x, float y);
 	void AddFloor(float x, float y);
 	void AddDoor(float x, float y);
-	void Init(std::vector <Entity*>* LevelEntities);
+	void Init();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 
