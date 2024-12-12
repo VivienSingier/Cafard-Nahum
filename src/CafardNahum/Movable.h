@@ -3,6 +3,7 @@
 
 class Movable
 {
+protected:
 	sf::Vector2f speed;
 
 public:

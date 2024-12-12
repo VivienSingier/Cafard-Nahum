@@ -8,6 +8,7 @@ GameManager* GameManager::instance = nullptr;
 GameManager::GameManager()
 {
 	Init();
+	player = new Player("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21), sf::Vector2f(50.f, 50.f), sf::Vector2f(2.f, 2.f), 10, sf::Vector2f(0.20f, 0.20f));
 }
 
 GameManager* GameManager::getInstance()
@@ -28,6 +29,7 @@ void GameManager::Init()
 {
     window.create(sf::VideoMode(1080, 720), "Cafard Nahum");
     sceneManager = new SceneManager();
+	sceneManager->GetCurrentScene()->AddPlayer(player);
 }
 
 void GameManager::Run()
@@ -35,7 +37,7 @@ void GameManager::Run()
 	sf::Clock c;
 	while (window.isOpen())
 	{
-		float deltaTime = c.restart().asSeconds();
+		sf::Time elapsed = c.restart();
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -43,6 +45,7 @@ void GameManager::Run()
 				window.close();
 		}
 		Scene* currentScene = sceneManager->GetCurrentScene();
+		sceneManager->Update(elapsed.asSeconds());
 
 		window.clear(sf::Color::Black);
 		window.draw(*currentScene);

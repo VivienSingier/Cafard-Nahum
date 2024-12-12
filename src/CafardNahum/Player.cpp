@@ -12,23 +12,29 @@ Player::Player(std::string path, sf::IntRect textureRect, sf::Vector2f position,
 {
 }
 
+void Player::Update(float deltatime)
+{
+    Move(deltatime);
+}
+
+
 void Player::Move(float deltatime)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
     {
-        move(0, -20.f * deltatime);
+        move(- speed.x * deltatime, -speed.y);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
     {
-        move(-20.f * deltatime, 0);
+        move(-speed.x, speed.y * deltatime);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
-        move(0, 20.f * deltatime);
+        move(speed.x * deltatime, speed.y);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        move(20.f * deltatime, 0);
+        move(speed.x, speed.y * deltatime);
     }
 }
 
