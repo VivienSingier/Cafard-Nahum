@@ -22,3 +22,11 @@ void SceneManager::SetCurrentScene(Scene* scene)
 		}
 	}
 }
+
+void SceneManager::Update(float deltatime)
+{
+	for (int i = 0; i < scenes.size(); i++)
+	{
+		scenes[i]->Update(deltatime);
+	}
+}

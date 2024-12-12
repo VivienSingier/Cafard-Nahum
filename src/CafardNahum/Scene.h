@@ -2,6 +2,8 @@
 #include "Entity.h"
 #include <vector>
 
+class Player;
+
 class Scene : public sf::Drawable
 {
 protected:
@@ -10,7 +12,8 @@ protected:
 public:
 	Scene();
 	void Init();
-	void UpdateEntities();
+	void AddPlayer(Player* player);
+	void Update(float deltatime);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 
