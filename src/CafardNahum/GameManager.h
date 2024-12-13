@@ -9,14 +9,16 @@
 class GameManager
 {
 	SceneManager* sceneManager;
-	sf::RenderWindow window;
 	std::string gameState;
 	static GameManager* instance;
 
 public:
+	sf::RenderWindow window;
 	Player* player;
+
 	GameManager();
 	static GameManager* getInstance();
+	Player* GetPlayer();
 	void Init();
 	void Run();
 

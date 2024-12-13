@@ -11,6 +11,7 @@ class SceneManager
 public :
 	SceneManager();
 	Scene* GetCurrentScene();
+	void Update(float deltatime);
 	void SetCurrentScene(Scene* scene);
 
 };
