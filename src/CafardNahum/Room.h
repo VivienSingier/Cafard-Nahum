@@ -10,19 +10,21 @@ class StaticObject;
 
 class Room : public sf::Drawable
 {
-	std::vector <StaticObject*> forwardObjects;
-	std::vector <StaticObject*> objects;
-	std::vector <StaticObject*> backgroundObjects;
 
 	sf::Vector2f pos;
 	int index;
 
 public:
+	std::vector <StaticObject*> backgroundObjects;
+	std::vector <StaticObject*> objects;
+	std::vector <StaticObject*> forwardObjects;
+
 	Room(float x, float y, int index);
 	void AddWall(float x, float y);
 	void AddFloor(float x, float y);
 	void AddDoor(float x, float y);
 	void Init();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	void drawForeground(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 

@@ -4,14 +4,14 @@
 
 class ColliderRect;
 
-class ColliderSphere
+class ColliderSphere 
 {
-protected:
-	std::vector <sf::CircleShape*> spheres;
-
 public:
-	ColliderSphere();
+	sf::CircleShape sphere;
+
+	ColliderSphere(float radius, float x, float y);
 	bool GetCollisionWithRect(ColliderRect* object);
 	bool GetCollisionWithSphere(ColliderSphere* object);
+	void Move(float x, float y);
 };
 

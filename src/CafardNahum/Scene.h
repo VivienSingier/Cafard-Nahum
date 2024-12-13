@@ -3,11 +3,15 @@
 #include <vector>
 
 class Player;
+class Room;
+class Corridoor;
 
 class Scene : public sf::Drawable
 {
-protected:
+public:
 	std::vector <Entity*> entities;
+	std::vector <Room*> rooms;
+	std::vector <Corridoor*> corridoors;
 
 public:
 	Scene();

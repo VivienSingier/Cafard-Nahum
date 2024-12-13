@@ -55,3 +55,4 @@ void GameManager::Run()
 		window.display();
 	}
 }
+

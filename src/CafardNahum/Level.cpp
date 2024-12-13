@@ -25,4 +25,12 @@ void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		target.draw(*(corridoors[i]));
 	}
 	Scene::draw(target, states);
+	for (int i = 0; i < rooms.size(); i++)
+	{
+		rooms[i]->drawForeground(target, states);
+	}
+	for (int i = 0; i < corridoors.size(); i++)
+	{
+		corridoors[i]->drawForeground(target, states);
+	}
 }

@@ -6,11 +6,10 @@ class ColliderSphere;
 
 class ColliderRect
 {
-protected:
-	std::vector <sf::FloatRect*> rects;
-
 public:
-	ColliderRect();
+	sf::FloatRect rect;
+
+	ColliderRect(float x, float y, float width, float height);
 	bool GetCollisionWithRect(ColliderRect* object);
 	bool GetCollisionWithSphere(ColliderSphere* object);
 };

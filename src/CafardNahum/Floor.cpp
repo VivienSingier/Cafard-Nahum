@@ -5,6 +5,6 @@ Floor::Floor(std::string path, sf::IntRect textureRect, sf::Vector2f position, s
 	StaticObject(path, textureRect, position, scale, true)
 {
 	sf::FloatRect* newRect = new sf::Rect <float>(position, sf::Vector2f(textureRect.width, textureRect.height));
-	rects.push_back(newRect);
+	//rects.push_back(newRect);
 	sprite.setOrigin(sf::Vector2f(0.f, sprite.getGlobalBounds().height));
 }

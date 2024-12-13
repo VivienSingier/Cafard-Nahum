@@ -1,10 +1,21 @@
 #include "pch.h"
 #include "SceneManager.h"
 
+SceneManager* SceneManager::instance = nullptr;
+
 SceneManager::SceneManager()
 {
 	currentScene = new Level();
 	scenes.push_back(currentScene);
+}
+
+SceneManager* SceneManager::GetInstance()
+{
+	if (instance == nullptr)
+	{
+		instance = new SceneManager();
+	}
+	return instance;
 }
 
 Scene* SceneManager::GetCurrentScene()

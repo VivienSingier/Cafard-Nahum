@@ -2,14 +2,20 @@
 #include "Player.h"
 #include "Weapon.h"
 #include "Bullet.h"
+#include "SceneManager.h"
+#include "ColliderSphere.h"
+#include "ColliderRect.h"
 #include "GameManager.h"
+#include "Room.h"
+#include "Wall.h"
 
 Player::Player(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed) :
     Entity::Entity(path, textureRect, position, scale),
     Movable::Movable(cSpeed),
-    Alive::Alive(cHealth),
-    ColliderSphere::ColliderSphere()
+    Alive::Alive(cHealth)
 {
+    c1 = new ColliderSphere(15, sprite.getPosition().x + sprite.getGlobalBounds().width / 2, sprite.getPosition().y + sprite.getGlobalBounds().height / 2);
+    cO = new ColliderSphere(1, sprite.getPosition().x + sprite.getGlobalBounds().width / 2 - 15.f, sprite.getPosition().y + sprite.getGlobalBounds().height / 2);
 }
 
 void Player::Update(float deltatime)
@@ -20,22 +26,49 @@ void Player::Update(float deltatime)
 
 void Player::Move(float deltatime)
 {
+    std::vector <StaticObject*> StObj = SceneManager::GetInstance()->GetCurrentScene()->rooms[0]->forwardObjects;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
     {
         move(-speed.x * deltatime, -speed.y);
+        c1->Move(-speed.x * deltatime, -speed.y);
+        cO->Move(-speed.x * deltatime, -speed.y);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
     {
-        move(-speed.x, speed.y * deltatime);
+        if (!CheckCollisionWall(StObj, cO))
+        {
+            move(-speed.x, speed.y * deltatime);
+            c1->Move(-speed.x, speed.y * deltatime);
+            cO->Move(-speed.x, speed.y * deltatime);
+        }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
         move(speed.x * deltatime, speed.y);
+        c1->ColliderSphere::Move(speed.x * deltatime, speed.y);
+        cO->ColliderSphere::Move(speed.x * deltatime, speed.y);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
         move(speed.x, speed.y * deltatime);
+        c1->Move(speed.x, speed.y * deltatime);
+        cO->Move(speed.x, speed.y * deltatime);
     }
+}
+
+bool Player::CheckCollisionWall(std::vector <StaticObject*> stObjVect, ColliderSphere* sphere)
+{
+    for (int i = 0; i < stObjVect.size(); i++)
+    {
+        if (!stObjVect[i]->GetIsWalkable())
+        {
+            if (sphere->GetCollisionWithRect(stObjVect[i]->collisionRect))
+            {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 void Player::GetShotAngle()
@@ -70,3 +103,9 @@ void Player::WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon)
 //            
 //    }
 //}
+
+void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+    Entity::draw(target, states);
+
+}

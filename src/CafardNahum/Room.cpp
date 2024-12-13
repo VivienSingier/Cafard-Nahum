@@ -98,6 +98,10 @@ void Room::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(*(objects[i]));
 	}
+}
+
+void Room::drawForeground(sf::RenderTarget& target, sf::RenderStates states) const
+{
 	for (int i = 0; i < forwardObjects.size(); i++)
 	{
 		target.draw(*(forwardObjects[i]));

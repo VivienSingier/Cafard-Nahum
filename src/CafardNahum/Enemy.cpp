@@ -5,7 +5,7 @@ Enemy::Enemy(std::string path, sf::IntRect textureRect, sf::Vector2f position, s
 	Entity::Entity(path, textureRect, position, scale),
 	Movable::Movable(speed),
 	Alive::Alive(cHealth),
-	ColliderSphere::ColliderSphere()
+	ColliderSphere::ColliderSphere(0,0,0)
 {
 
 }

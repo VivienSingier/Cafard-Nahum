@@ -8,8 +8,9 @@
 
 class Corridoor : public sf::Drawable
 {
-	std::vector <StaticObject*> forwardObjects;
+	std::vector <StaticObject*> backgroundObjects;
 	std::vector <StaticObject*> objects;
+	std::vector <StaticObject*> forwardObjects;
 
 	sf::Vector2f pos;
 
@@ -19,5 +20,6 @@ public:
 	void AddWall(float x, float y);
 	void AddFloor(float x, float y);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	void drawForeground(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 

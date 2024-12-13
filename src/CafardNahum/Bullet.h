@@ -3,7 +3,7 @@
 #include "Entity.h"
 #include "ColliderSphere.h"
 
-class Bullet : public Entity, public Movable, public ColliderSphere
+class Bullet : public Entity, public Movable
 {
 	int damage;
 
