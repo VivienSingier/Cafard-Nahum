@@ -7,8 +7,9 @@ GameManager* GameManager::instance = nullptr;
 
 GameManager::GameManager()
 {
-	Init();
 	player = new Player("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21), sf::Vector2f(50.f, 50.f), sf::Vector2f(2.f, 2.f), 10, sf::Vector2f(0.20f, 0.20f));
+
+	Init();
 }
 
 GameManager* GameManager::getInstance()

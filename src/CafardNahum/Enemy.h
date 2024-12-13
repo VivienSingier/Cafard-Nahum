@@ -3,8 +3,9 @@
 #include "Entity.h"
 #include "Alive.h"
 #include "ColliderSphere.h"
-#include "GameManager.h"
 #include <vector>
+
+class GameManager;
 
 class Enemy : public Entity, public Alive, public Movable, public ColliderSphere
 {

@@ -31,4 +31,3 @@ void SceneManager::Update(float deltatime)
 	}
 }
 
-// creer les updates
