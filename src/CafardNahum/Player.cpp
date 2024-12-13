@@ -3,6 +3,8 @@
 #include "Weapon.h"
 #include "Bullet.h"
 #include "GameManager.h"
+#include "RedLaser.h"
+#include <iostream>
 
 Player::Player(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed) :
     Entity::Entity(path, textureRect, position, scale),
@@ -10,11 +12,15 @@ Player::Player(std::string path, sf::IntRect textureRect, sf::Vector2f position,
     Alive::Alive(cHealth),
     ColliderSphere::ColliderSphere()
 {
+    changeWeapon = false;
+    isShooting = false;
 }
 
 void Player::Update(float deltatime)
 {
     Move(deltatime);
+    WeaponChange(holdWeapon, secondaryWeapon);
+    Shoot(SceneManager::getInstance()->GetCurrentScene()->PlayerProjectiles);
 }
 
 
@@ -54,19 +60,32 @@ void Player::GetShotAngle()
 
 void Player::WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) && changeWeapon == false)
     {
         Weapon* weaponChange = holdWeapon;
         holdWeapon = secondaryWeapon;
         secondaryWeapon = weaponChange;
+        std::cout << "Arme Change";
+
+        changeWeapon = true;
+    }
+    else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
+        changeWeapon = false;
     }
 }
+// Ne plus changer l'arme après avoir relacher la touche
 
-//void Player::Shoot(std::vector <Bullet*> PlayerProjectiles)
-//{
-//    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-//    {
-//        Bullet* newBullet = new Bullet()
-//            
-//    }
-//}
+void Player::Shoot(std::vector <Bullet*> PlayerProjectiles)
+{
+    if ((sf::Mouse::isButtonPressed(sf::Mouse::Left)) && isShooting == false)
+    {
+        RedLaser* newBullet = new RedLaser("../../../res/Bullet/RedLaser.png", sf::IntRect(1,1,17,10), sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y), sf::Vector2f(1,1), sf::Vector2f(UnitVector));
+        std::cout << "Damage : " << newBullet->damage<< std::endl;
+
+        isShooting = true;
+    }
+    else if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+        isShooting = false;
+    }
+}

@@ -13,6 +13,9 @@ class Player : public Entity, public Movable, public Alive, public ColliderSpher
 	Weapon* holdWeapon;
 	Weapon* secondaryWeapon;
 	sf::Vector2f UnitVector;
+	sf::Clock clock;
+	bool changeWeapon;
+	bool isShooting;
 
 public:
 	Player(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed);

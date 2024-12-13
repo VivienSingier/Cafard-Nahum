@@ -12,7 +12,6 @@ class Level : public Scene
 
 public:
 	Level();
-	void AddPlayer(Player* player);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 
