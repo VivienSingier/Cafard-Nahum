@@ -23,6 +23,7 @@ public:
 	void AddWall(float x, float y);
 	void AddFloor(float x, float y);
 	void AddDoor(float x, float y);
+	std::vector <StaticObject*> GetStatics();
 	void Init();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void drawForeground(sf::RenderTarget& target, sf::RenderStates states) const;

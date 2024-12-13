@@ -49,6 +49,14 @@ void Room::AddDoor(float x, float y)
 	objects.push_back(newDoor);
 }
 
+std::vector <StaticObject*> Room::GetStatics()
+{
+	std::vector <StaticObject*> total = backgroundObjects;
+	total.insert(total.end(), objects.begin(), objects.end());
+	total.insert(total.end(), forwardObjects.begin(), forwardObjects.end());
+	return total;
+}
+
 void Room::Init()
 {
 	std::string path;
