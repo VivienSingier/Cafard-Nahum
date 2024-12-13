@@ -16,6 +16,9 @@ Player::Player(std::string path, sf::IntRect textureRect, sf::Vector2f position,
 {
     c1 = new ColliderSphere(15, sprite.getPosition().x + sprite.getGlobalBounds().width / 2, sprite.getPosition().y + sprite.getGlobalBounds().height / 2);
     cO = new ColliderSphere(1, sprite.getPosition().x + sprite.getGlobalBounds().width / 2 - 15.f, sprite.getPosition().y + sprite.getGlobalBounds().height / 2);
+    cE = new ColliderSphere(1, sprite.getPosition().x + sprite.getGlobalBounds().width / 2 + 15.f, sprite.getPosition().y + sprite.getGlobalBounds().height / 2);
+    cN = new ColliderSphere(1, sprite.getPosition().x + sprite.getGlobalBounds().width / 2 , sprite.getPosition().y + sprite.getGlobalBounds().height / 2 - 7.f);
+    cS = new ColliderSphere(1, sprite.getPosition().x + sprite.getGlobalBounds().width / 2, sprite.getPosition().y + sprite.getGlobalBounds().height / 2 + 7.f);
 }
 
 void Player::Update(float deltatime)
@@ -29,9 +32,15 @@ void Player::Move(float deltatime)
     std::vector <StaticObject*> StObj = SceneManager::GetInstance()->GetCurrentScene()->rooms[0]->forwardObjects;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
     {
-        move(-speed.x * deltatime, -speed.y);
-        c1->Move(-speed.x * deltatime, -speed.y);
-        cO->Move(-speed.x * deltatime, -speed.y);
+        if (!CheckCollisionWall(StObj, cN))
+        {
+            move(-speed.x * deltatime, -speed.y);
+            c1->Move(-speed.x * deltatime, -speed.y);
+            cO->Move(-speed.x * deltatime, -speed.y);
+            cE->Move(-speed.x * deltatime, -speed.y);
+            cN->Move(-speed.x * deltatime, -speed.y);
+            cS->Move(-speed.x * deltatime, -speed.y); 
+        }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
     {
@@ -40,19 +49,34 @@ void Player::Move(float deltatime)
             move(-speed.x, speed.y * deltatime);
             c1->Move(-speed.x, speed.y * deltatime);
             cO->Move(-speed.x, speed.y * deltatime);
+            cE->Move(-speed.x, speed.y * deltatime);
+            cN->Move(-speed.x, speed.y * deltatime);
+            cS->Move(-speed.x, speed.y * deltatime);
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
-        move(speed.x * deltatime, speed.y);
-        c1->ColliderSphere::Move(speed.x * deltatime, speed.y);
-        cO->ColliderSphere::Move(speed.x * deltatime, speed.y);
+        if (!CheckCollisionWall(StObj, cS))
+        {
+            move(speed.x * deltatime, speed.y);
+            c1->Move(speed.x * deltatime, speed.y);
+            cO->Move(speed.x * deltatime, speed.y);
+            cE->Move(speed.x * deltatime, speed.y);
+            cN->Move(speed.x * deltatime, speed.y);
+            cS->Move(speed.x * deltatime, speed.y);
+        }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-    {
-        move(speed.x, speed.y * deltatime);
-        c1->Move(speed.x, speed.y * deltatime);
-        cO->Move(speed.x, speed.y * deltatime);
+    {   
+        if (!CheckCollisionWall(StObj, cE))
+        {
+            move(speed.x, speed.y * deltatime);
+            c1->Move(speed.x, speed.y * deltatime);
+            cO->Move(speed.x, speed.y * deltatime);
+            cE->Move(speed.x, speed.y * deltatime);
+            cN->Move(speed.x, speed.y * deltatime);
+            cS->Move(speed.x, speed.y * deltatime);
+        }
     }
 }
 

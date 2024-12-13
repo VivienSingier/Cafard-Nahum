@@ -5,7 +5,6 @@ StaticObject::StaticObject(std::string path, sf::IntRect textureRect, sf::Vector
 	Entity(path, textureRect, position, scale)
 {
 	isWalkable = cIsWalkable;
-	collisionRect = nullptr;
 }
 
 void StaticObject::SetIsWalkable(bool IsWalkable)

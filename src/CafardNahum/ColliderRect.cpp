@@ -3,5 +3,5 @@
 
 ColliderRect::ColliderRect(float x, float y, float width, float height)
 {
-	rect = sf::FloatRect(x, y, width, height);
+	rect = sf::FloatRect(x, y-64, width, height);
 }

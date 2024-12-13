@@ -15,8 +15,8 @@ bool ColliderSphere::GetCollisionWithRect(ColliderRect* colliderRect)
 		float sphereX = sphere.getPosition().x;
 		float sphereY = sphere.getPosition().y;
 
-		float rectX = colliderRect->rect.getPosition().x + (colliderRect->rect.getSize().x / 2);
-		float rectY = colliderRect->rect.getPosition().y + (colliderRect->rect.getSize().y / 2);
+		float rectX = colliderRect->rect.getPosition().x + (colliderRect->rect.width / 2);
+		float rectY = colliderRect->rect.getPosition().y + (colliderRect->rect.height / 2);
 
 		float xDistance = abs(sphereX - rectX);
 		float yDistance = abs(sphereY - rectY);
