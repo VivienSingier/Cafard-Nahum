@@ -2,6 +2,8 @@
 #include "Room.h"
 #include "Wall.h"
 #include "Floor.h"
+#include "HalfWall.h"
+#include "ColliderRect.h"
 #include "Door.h"
 #include <random>
 
@@ -10,6 +12,8 @@ Room::Room(float x, float y, int cIndex)
 {
 	index = cIndex;
 	pos = sf::Vector2f(x, y);
+	roomCollider = new ColliderRect(pos.x + 32, pos.y + 32, 32 * 15, 32 * 15);
+
 	Init();
 }
 
@@ -55,6 +59,11 @@ std::vector <StaticObject*> Room::GetStatics()
 	total.insert(total.end(), objects.begin(), objects.end());
 	total.insert(total.end(), forwardObjects.begin(), forwardObjects.end());
 	return total;
+}
+
+bool Room::GetDoorStatus()
+{
+	for ()
 }
 
 void Room::Init()

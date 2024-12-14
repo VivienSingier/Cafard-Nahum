@@ -17,6 +17,7 @@ class Corridoor : public sf::Drawable
 public:
 	Corridoor(float x, float y);
 	virtual void Init();
+	std::vector <StaticObject*> GetStatics();
 	void AddWall(float x, float y);
 	void AddFloor(float x, float y);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;

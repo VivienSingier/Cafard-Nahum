@@ -12,6 +12,14 @@ void Corridoor::Init()
 
 }
 
+std::vector <StaticObject*> Corridoor::GetStatics()
+{
+	std::vector <StaticObject*> total = backgroundObjects;
+	total.insert(total.end(), objects.begin(), objects.end());
+	total.insert(total.end(), forwardObjects.begin(), forwardObjects.end());
+	return total;
+}
+
 void Corridoor::AddWall(float x, float y)
 {
 	Wall* newWall = new Wall("../../../res/imgStatic/floorTiles.png",

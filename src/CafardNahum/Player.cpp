@@ -14,11 +14,11 @@ Player::Player(std::string path, sf::IntRect textureRect, sf::Vector2f position,
     Movable::Movable(cSpeed),
     Alive::Alive(cHealth)
 {
-    c1 = new ColliderSphere(15, sprite.getPosition().x + sprite.getGlobalBounds().width / 2, sprite.getPosition().y + sprite.getGlobalBounds().height / 2);
-    cO = new ColliderSphere(1, sprite.getPosition().x + sprite.getGlobalBounds().width / 2 - 15.f, sprite.getPosition().y + sprite.getGlobalBounds().height / 2);
-    cE = new ColliderSphere(1, sprite.getPosition().x + sprite.getGlobalBounds().width / 2 + 15.f, sprite.getPosition().y + sprite.getGlobalBounds().height / 2);
-    cN = new ColliderSphere(1, sprite.getPosition().x + sprite.getGlobalBounds().width / 2 , sprite.getPosition().y + sprite.getGlobalBounds().height / 2 - 7.f);
-    cS = new ColliderSphere(1, sprite.getPosition().x + sprite.getGlobalBounds().width / 2, sprite.getPosition().y + sprite.getGlobalBounds().height / 2 + 7.f);
+    c1 = new ColliderSphere(15, this->getPosition().x + sprite.getGlobalBounds().width / 2, this->getPosition().y + sprite.getGlobalBounds().height / 2);
+    cO = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2 - 15.f, this->getPosition().y + sprite.getGlobalBounds().height / 2);
+    cE = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2 + 15.f, this->getPosition().y + sprite.getGlobalBounds().height / 2);
+    cN = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2 , this->getPosition().y + sprite.getGlobalBounds().height / 2 - 7.f);
+    cS = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2, this->getPosition().y + sprite.getGlobalBounds().height / 2 + 7.f);
 }
 
 void Player::Update(float deltatime)
@@ -29,7 +29,7 @@ void Player::Update(float deltatime)
 
 void Player::Move(float deltatime)
 {
-    std::vector <StaticObject*> StObj = SceneManager::GetInstance()->GetCurrentScene()->rooms[0]->forwardObjects;
+    std::vector <StaticObject*> StObj = SceneManager::GetInstance()->GetCurrentScene()->GetStatics();
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
     {
         if (!CheckCollisionWall(StObj, cN))
@@ -131,5 +131,4 @@ void Player::WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon)
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     Entity::draw(target, states);
-
 }

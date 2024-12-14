@@ -7,8 +7,8 @@ Entity::Entity(std::string path, sf::IntRect textureRect, sf::Vector2f position,
     {
         return;
     }
+    this->setPosition(position);
     sprite.setTexture(texture);
-    sprite.setPosition(position);
     sprite.setScale(scale);
 }
 

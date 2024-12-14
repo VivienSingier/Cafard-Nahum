@@ -6,7 +6,6 @@ GameManager* GameManager::instance = nullptr;
 
 GameManager::GameManager()
 {
-	player = new Player("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21), sf::Vector2f(50.f, 50.f), sf::Vector2f(2.f, 2.f), 10, sf::Vector2f(0.20f, 0.20f));
 	Init();
 }
 
@@ -27,8 +26,13 @@ Player* GameManager::GetPlayer()
 void GameManager::Init()
 {
     window.create(sf::VideoMode(1080, 720), "Cafard Nahum");
+	view = sf::View(sf::FloatRect(540.f, 360.f, 1080.f, 720.f));
+
     sceneManager = new SceneManager();
+	player = new Player("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21), 
+		sf::Vector2f(300.f, 400.f), sf::Vector2f(2.f, 2.f), 10, sf::Vector2f(0.20f, 0.20f));
 	sceneManager->GetCurrentScene()->AddPlayer(player);
+	view.setCenter(player->getPosition());
 
 	srand(time(NULL));
 	/*MapPath::Init();*/
@@ -50,6 +54,9 @@ void GameManager::Run()
 		Scene* currentScene = sceneManager->GetCurrentScene();
 		sceneManager->Update(elapsed.asSeconds());
 
+		view.setCenter(player->getPosition());
+
+		window.setView(view);
 		window.clear(sf::Color::Black);
 		window.draw(*currentScene);
 		window.display();

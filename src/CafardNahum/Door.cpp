@@ -13,6 +13,8 @@ Door::Door(sf::Vector2f position) :
 	closedSprite.setScale(sf::Vector2f(2.f, 2.f));
 	closedSprite.setPosition(sprite.getPosition());
 	closedSprite.move(0, -32.f);
+
+	collisionRect = new ColliderRect(position.x, position.y, sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
 }
 
 void Door::Open()
@@ -23,6 +25,7 @@ void Door::Open()
 		sprite = closedSprite;
 		closedSprite = tempSprite;
 		isOpen = true;
+		SetIsWalkable(true);
 	}
 }
 
@@ -34,5 +37,6 @@ void Door::Close()
 		sprite = closedSprite;
 		closedSprite = tempSprite;
 		isOpen = false;
+		SetIsWalkable(false);
 	}
 }
