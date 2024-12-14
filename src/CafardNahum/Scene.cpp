@@ -37,6 +37,10 @@ void Scene::Update(float deltatime)
 	{
 		entities[i]->Update(deltatime);
 	}
+	for (int i = 0; i < rooms.size(); i++)
+	{
+		rooms[i]->Update(deltatime);
+	}
 }
 
 void Scene::draw(sf::RenderTarget& target, sf::RenderStates states) const

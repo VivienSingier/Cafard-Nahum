@@ -9,6 +9,7 @@ class Door : public StaticObject
 
 public:
 	Door(sf::Vector2f position);
+	bool GetIsOpen();
 	void Open();
 	void Close();
 };

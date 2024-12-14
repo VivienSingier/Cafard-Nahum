@@ -17,6 +17,12 @@ Door::Door(sf::Vector2f position) :
 	collisionRect = new ColliderRect(position.x, position.y, sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
 }
 
+bool Door::GetIsOpen()
+{
+	return isOpen;
+}
+
+
 void Door::Open()
 {
 	if (!isOpen)

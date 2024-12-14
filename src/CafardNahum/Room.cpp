@@ -3,8 +3,10 @@
 #include "Wall.h"
 #include "Floor.h"
 #include "HalfWall.h"
+#include "ColliderSphere.h"
 #include "ColliderRect.h"
 #include "Door.h"
+#include "GameManager.h"
 #include <random>
 
 
@@ -12,7 +14,7 @@ Room::Room(float x, float y, int cIndex)
 {
 	index = cIndex;
 	pos = sf::Vector2f(x, y);
-	roomCollider = new ColliderRect(pos.x + 32, pos.y + 32, 32 * 15, 32 * 15);
+	roomCollider = new ColliderRect(pos.x + 64, pos.y + 64, 32 * 13, 32 * 13);
 
 	Init();
 }
@@ -50,7 +52,7 @@ void Room::AddFloor(float x, float y)
 void Room::AddDoor(float x, float y)
 {
 	Door* newDoor = new Door(sf::Vector2f(pos.x + 32.f * x, pos.y + 32.f * y));
-	objects.push_back(newDoor);
+	doors.push_back(newDoor);
 }
 
 std::vector <StaticObject*> Room::GetStatics()
@@ -58,12 +60,46 @@ std::vector <StaticObject*> Room::GetStatics()
 	std::vector <StaticObject*> total = backgroundObjects;
 	total.insert(total.end(), objects.begin(), objects.end());
 	total.insert(total.end(), forwardObjects.begin(), forwardObjects.end());
+	total.insert(total.end(), doors.begin(), doors.end());
 	return total;
+}
+
+std::vector <Entity*> Room::GetEnemies()
+{
+	return Enemies;
+}
+
+std::vector <Entity*> Room::GetEnemyProjectiles()
+{
+	return EnemyProjetiles;
 }
 
 bool Room::GetDoorStatus()
 {
-	for ()
+	if (doors[0]->GetIsOpen())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void Room::OpenDoors()
+{
+	for (int i = 0; i < doors.size(); i++)
+	{
+		doors[i]->Open();
+	}
+}
+
+void Room::CloseDoors()
+{
+	for (int i = 0; i < doors.size(); i++)
+	{
+		doors[i]->Close();
+	}
 }
 
 void Room::Init()
@@ -105,6 +141,24 @@ void Room::Init()
 	}
 }
 
+void Room::Update(float deltatime)
+{
+	if (GetDoorStatus() && Enemies.size() > 0)
+	{
+		if (GameManager::getInstance()->GetPlayer()->c1->GetCollisionWithRect(roomCollider))
+		{
+			CloseDoors();
+		}
+	}
+	else if (Enemies.size() == 0)
+	{
+		if (!GameManager::getInstance()->GetPlayer()->c1->GetCollisionWithRect(roomCollider))
+		{
+			OpenDoors();
+		}
+	}
+}
+
 void Room::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	for (int i = 0; i < backgroundObjects.size(); i++)
@@ -114,6 +168,10 @@ void Room::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	for (int i = 0; i < objects.size(); i++)
 	{
 		target.draw(*(objects[i]));
+	}
+	for (int i = 0; i < doors.size(); i++)
+	{
+		target.draw(*(doors[i]));
 	}
 }
 

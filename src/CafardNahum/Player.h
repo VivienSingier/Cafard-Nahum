@@ -17,13 +17,14 @@ class Player : public Entity, public Movable, public Alive
 	Weapon* secondaryWeapon;
 	sf::Vector2f UnitVector;
 
-	ColliderSphere* c1;
 	ColliderSphere* cO;
 	ColliderSphere* cE;
 	ColliderSphere* cN;
 	ColliderSphere* cS;
 
 public:
+	ColliderSphere* c1;
+
 	Player(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed);
 
 	void Update(float deltatime) override;
