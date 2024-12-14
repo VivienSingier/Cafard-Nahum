@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "GameManager.h"
+#include "Player.h"
+#include "PoisonRoach.h"
 #include <random>
 
 GameManager* GameManager::instance = nullptr;
@@ -7,6 +9,7 @@ GameManager* GameManager::instance = nullptr;
 GameManager::GameManager()
 {
 	player = new Player("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21), sf::Vector2f(50.f, 50.f), sf::Vector2f(2.f, 2.f), 10, sf::Vector2f(0.20f, 0.20f));
+	enemy = new PoisonRoach("../../../res/Enemy/BaseCockRoach.png", sf::IntRect(11, 6, 24, 34), sf::Vector2f(100.f, 250.f), sf::Vector2f(2.f, 2.f), 10, sf::Vector2f(0.20f, 0.20f));
 	Init();
 }
 
@@ -29,6 +32,8 @@ void GameManager::Init()
     window.create(sf::VideoMode(1080, 720), "Cafard Nahum");
     sceneManager = new SceneManager();
 	sceneManager->GetCurrentScene()->AddPlayer(player);
+	sceneManager->GetCurrentScene()->AddEnemy(enemy);
+
 
 	srand(time(NULL));
 	/*MapPath::Init();*/

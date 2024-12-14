@@ -5,8 +5,8 @@
 class TwoFace : public Boss
 {
 public:
-	TwoFace(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, sf::Vector2f speed, int cHealth);
+	TwoFace(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f speed);
 
-	void Shoot(std::vector <Bullet*> EnemyBullets);
+	/*void Shoot(std::vector <Bullet*> EnemyBullets) override;*/
 };
 

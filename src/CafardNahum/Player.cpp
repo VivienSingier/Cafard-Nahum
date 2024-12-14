@@ -65,7 +65,7 @@ void Player::WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon)
         Weapon* weaponChange = holdWeapon;
         holdWeapon = secondaryWeapon;
         secondaryWeapon = weaponChange;
-        std::cout << "Arme Change";
+        std::cout << "Arme Change\n";
 
         changeWeapon = true;
     }
@@ -73,16 +73,31 @@ void Player::WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon)
         changeWeapon = false;
     }
 }
-// Ne plus changer l'arme après avoir relacher la touche
 
 void Player::Shoot(std::vector <Bullet*> PlayerProjectiles)
 {
-    if ((sf::Mouse::isButtonPressed(sf::Mouse::Left)) && isShooting == false)
-    {
-        RedLaser* newBullet = new RedLaser("../../../res/Bullet/RedLaser.png", sf::IntRect(1,1,17,10), sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y), sf::Vector2f(1,1), sf::Vector2f(UnitVector));
-        std::cout << "Damage : " << newBullet->damage<< std::endl;
 
-        isShooting = true;
+    if ((sf::Mouse::isButtonPressed(sf::Mouse::Left)) )
+    {
+        static sf::Clock shootClock;
+
+        if (shootClock.getElapsedTime().asSeconds() >= 0.5f)
+        {
+            RedLaser* newBullet = new RedLaser("../../../res/Bullet/RedLaser.png", sf::IntRect(1, 1, 17, 10), sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y), sf::Vector2f(1, 1), sf::Vector2f(UnitVector));
+
+            PlayerProjectiles.push_back(newBullet);
+            std::cout << "Damage : " << newBullet->damage << std::endl;
+
+            shootClock.restart();
+        }
+        else if (isShooting == false)
+        {
+            RedLaser* newBullet = new RedLaser("../../../res/Bullet/RedLaser.png", sf::IntRect(1, 1, 17, 10), sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y), sf::Vector2f(1, 1), sf::Vector2f(UnitVector));
+            PlayerProjectiles.push_back(newBullet);
+            std::cout << "Damage : " << newBullet->damage << std::endl;
+
+            isShooting = true;
+        }
     }
     else if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {

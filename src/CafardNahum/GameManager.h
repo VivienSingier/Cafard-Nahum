@@ -1,20 +1,24 @@
 #pragma once
 #include <vector>
+#include "SceneManager.h"
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "Player.h"
-#include "SceneManager.h"
 
+
+class Player;
+class SceneManager;
+class PoisonRoach;
 
 class GameManager
 {
 	SceneManager* sceneManager;
 	std::string gameState;
 	static GameManager* instance;
+	Player* player;
+	PoisonRoach* enemy;
 
 public:
 	sf::RenderWindow window;
-	Player* player;
 
 	GameManager();
 	static GameManager* getInstance();

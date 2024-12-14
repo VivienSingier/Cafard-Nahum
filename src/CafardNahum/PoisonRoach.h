@@ -1,15 +1,16 @@
 #pragma once
 #include "Enemy.h"
-#include "Bullet.h"
+
+class Bullet;
 
 class PoisonRoach : public Enemy
 {
-
 public:
-	PoisonRoach(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, sf::Vector2f speed, int cHealth);
+	PoisonRoach(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f speed);
 
-	void Shoot(std::vector <Bullet*> EnemyBullets);
-
+	void Update(float deltatime) override;
+	void EnemyMove(float deltatime) override;
+	void Shoot(std::vector <Bullet*> EnemyBullets) override;
 };
 
 

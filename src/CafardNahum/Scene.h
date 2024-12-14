@@ -3,6 +3,7 @@
 #include <vector>
 
 class Player;
+class Enemy;
 class Bullet;
 
 class Scene : public sf::Drawable
@@ -18,6 +19,7 @@ public:
 	Scene();
 	void Init();
 	void AddPlayer(Player* player);
+	void AddEnemy(Enemy* enemy);
 	void Update(float deltatime);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
