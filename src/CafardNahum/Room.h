@@ -23,7 +23,7 @@ public:
 
 	std::vector <Door*> doors;
 	std::vector <Entity*> Enemies;
-	std::vector <Entity*> EnemyProjetiles;
+	std::vector <Entity*> EnemyProjectiles;
 
 	Room(float x, float y, int index);
 	void AddWall(float x, float y);

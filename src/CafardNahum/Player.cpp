@@ -31,6 +31,7 @@ void Player::Update(float deltatime)
     HandleInput(deltatime);
     float angle = GetShotAngle();
     holdWeapon->Rotate(angle);
+    Shoot();
 }
 
 void Player::Move(float x, float y)
@@ -115,7 +116,6 @@ float Player::GetShotAngle()
     angle *= (180.0 / 3.141592653589793238463);
 
     return angle;
-
 }
 
 void Player::WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon)
@@ -128,14 +128,23 @@ void Player::WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon)
     }
 }
 
-//void Player::Shoot(std::vector <Bullet*> PlayerProjectiles)
-//{
-//    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-//    {
-//        Bullet* newBullet = new Bullet()
-//            
-//    }
-//}
+void Player::Shoot()
+{
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+        static sf::Clock shootClock;
+
+        if (shootClock.getElapsedTime().asSeconds() >= 1.0f)
+        {
+            float angle = GetShotAngle();
+            holdWeapon->Shoot(angle);
+
+            shootClock.restart();
+            
+        }
+        std::cout << "Shot" << std::endl;
+    }
+}
 
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {

@@ -6,6 +6,7 @@
 #include "ColliderSphere.h"
 #include "ColliderRect.h"
 #include "Door.h"
+#include "SceneManager.h"
 #include "GameManager.h"
 #include <random>
 
@@ -71,7 +72,7 @@ std::vector <Entity*> Room::GetEnemies()
 
 std::vector <Entity*> Room::GetEnemyProjectiles()
 {
-	return EnemyProjetiles;
+	return EnemyProjectiles;
 }
 
 bool Room::GetDoorStatus()
@@ -148,6 +149,7 @@ void Room::Update(float deltatime)
 		if (GameManager::getInstance()->GetPlayer()->c1->GetCollisionWithRect(roomCollider))
 		{
 			CloseDoors();
+
 		}
 	}
 	else if (Enemies.size() == 0)
@@ -156,6 +158,23 @@ void Room::Update(float deltatime)
 		{
 			OpenDoors();
 		}
+	}
+
+	if (GameManager::getInstance()->GetPlayer()->c1->GetCollisionWithRect(roomCollider))
+	{
+		if (SceneManager::GetInstance()->GetCurrentScene()->GetCurrentRoom() != this)
+		{
+			SceneManager::GetInstance()->GetCurrentScene()->SetCurrentRoom(this);
+		}
+	}
+
+	for (int i = 0; i < Enemies.size(); i++)
+	{
+		Enemies[i]->Update(deltatime);
+	}
+	for (int i = 0; i < EnemyProjectiles.size(); i++)
+	{
+		EnemyProjectiles[i]->Update(deltatime);
 	}
 }
 
@@ -173,6 +192,11 @@ void Room::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(*(doors[i]));
 	}
+	for (int i = 0; i < EnemyProjectiles.size(); i++)
+	{
+		target.draw(*(EnemyProjectiles[i]));
+	}
+
 }
 
 void Room::drawForeground(sf::RenderTarget& target, sf::RenderStates states) const

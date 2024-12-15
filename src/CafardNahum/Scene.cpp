@@ -7,7 +7,7 @@
 
 Scene::Scene()
 {
-	
+	currentRoom = nullptr;
 }
 
 std::vector <StaticObject*> Scene::GetStatics()
@@ -24,6 +24,16 @@ std::vector <StaticObject*> Scene::GetStatics()
 		total.insert(total.end(), tempV.begin(), tempV.end());
 	}
 	return total;
+}
+
+Room* Scene::GetCurrentRoom()
+{
+	return currentRoom;
+}
+
+void Scene::SetCurrentRoom(Room* room)
+{
+	currentRoom = room;
 }
 
 void Scene::AddPlayer(Player* player)
