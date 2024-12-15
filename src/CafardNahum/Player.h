@@ -31,7 +31,7 @@ public:
 	void Move(float deltatime) override;
 	bool CheckCollisionWall(std::vector <StaticObject*> stObjVect, ColliderSphere* sphere);
 	void WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon);
-	void GetShotAngle();
+	float GetShotAngle();
 	void Shoot(std::vector <Bullet*> PlayerProjectiles);
 	void draw(sf::RenderTarget& targer, sf::RenderStates states) const override;
 

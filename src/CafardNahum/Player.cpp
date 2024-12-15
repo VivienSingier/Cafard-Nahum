@@ -9,6 +9,8 @@
 #include "Room.h"
 #include "Wall.h"
 
+#include <iostream>
+
 Player::Player(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed) :
     Entity::Entity(path, textureRect, position, scale),
     Movable::Movable(cSpeed),
@@ -24,6 +26,7 @@ Player::Player(std::string path, sf::IntRect textureRect, sf::Vector2f position,
 void Player::Update(float deltatime)
 {
     Move(deltatime);
+    GetShotAngle();
 }
 
 
@@ -95,17 +98,27 @@ bool Player::CheckCollisionWall(std::vector <StaticObject*> stObjVect, ColliderS
     return false;
 }
 
-void Player::GetShotAngle()
+float Player::GetShotAngle()
 {
     sf::RenderWindow* window = &GameManager::getInstance()->window;
-    float mousePositionX = sf::Mouse::getPosition(*window).x;
+    /*float mousePositionX = sf::Mouse::getPosition(*window).x;
     float mousePositionY = sf::Mouse::getPosition(*window).y;
     float playerPositionX = sprite.getPosition().x + sprite.getGlobalBounds().width / 2;
     float playerPositionY = sprite.getPosition().y + sprite.getGlobalBounds().height / 2;
 
     sf::Vector2f vector = sf::Vector2f(mousePositionX - playerPositionX, mousePositionY - playerPositionY);
     float vectorNorm = sqrt(vector.x * vector.x + vector.y * vector.y);
-    UnitVector = sf::Vector2f(vector.x / vectorNorm, vector.y / vectorNorm);
+    UnitVector = sf::Vector2f(vector.x / vectorNorm, vector.y / vectorNorm);*/
+    sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
+    sf::Vector2u playerPos = window->getSize();
+    playerPos.x /= 2;
+    playerPos.y /= 2;
+
+    float angle = atan2(((float)mousePos.y - (float)playerPos.y), (float)mousePos.x - (float)playerPos.x);
+    angle *= (180.0 / 3.141592653589793238463);
+
+    sprite.setRotation(angle);
+    return angle;
 
 }
 
