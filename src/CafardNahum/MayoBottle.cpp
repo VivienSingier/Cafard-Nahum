@@ -4,12 +4,12 @@
 
 
 MayoBottle::MayoBottle(float x, float y) :
-	Weapon("../../../res/Weapon/mayo.png", sf::IntRect(0, 0, 16, 16), sf::Vector2f(x, y), sf::Vector2f(2, 2), sf::Vector2f(1, 1))
+	Weapon("../../../res/Weapon/mayo.png", sf::IntRect(0, 0, 16, 16), sf::Vector2f(x, y), sf::Vector2f(1, 1), sf::Vector2f(1, 1))
 {
-
+	this->setOrigin(8, 16);
 }
 
 void MayoBottle::Rotate(float angle)
 {
-	
+	this->setRotation(angle);
 }

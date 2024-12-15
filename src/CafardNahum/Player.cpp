@@ -8,6 +8,7 @@
 #include "GameManager.h"
 #include "Room.h"
 #include "Wall.h"
+#include "MayoBottle.h"
 
 #include <iostream>
 
@@ -21,12 +22,15 @@ Player::Player(std::string path, sf::IntRect textureRect, sf::Vector2f position,
     cE = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2 + 15.f, this->getPosition().y + sprite.getGlobalBounds().height / 2);
     cN = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2 , this->getPosition().y + sprite.getGlobalBounds().height / 2 - 7.f);
     cS = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2, this->getPosition().y + sprite.getGlobalBounds().height / 2 + 7.f);
+
+    holdWeapon = new MayoBottle(cE->sphere.getPosition().x - 10, cE->sphere.getPosition().y + 10);
 }
 
 void Player::Update(float deltatime)
 {
     Move(deltatime);
-    GetShotAngle();
+    float angle = GetShotAngle();
+    holdWeapon->Rotate(angle);
 }
 
 
@@ -117,7 +121,6 @@ float Player::GetShotAngle()
     float angle = atan2(((float)mousePos.y - (float)playerPos.y), (float)mousePos.x - (float)playerPos.x);
     angle *= (180.0 / 3.141592653589793238463);
 
-    sprite.setRotation(angle);
     return angle;
 
 }
@@ -144,4 +147,5 @@ void Player::WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon)
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     Entity::draw(target, states);
+    holdWeapon->draw(target, states);
 }
