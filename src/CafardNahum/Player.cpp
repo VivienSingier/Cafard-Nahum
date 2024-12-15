@@ -108,6 +108,8 @@ float Player::GetShotAngle()
     sf::Vector2u playerPos = window->getSize();
     playerPos.x /= 2;
     playerPos.y /= 2;
+    playerPos.x += sprite.getGlobalBounds().width / 2 + 15;
+    playerPos.y += sprite.getGlobalBounds().height / 2 + 15;
 
     float angle = atan2(((float)mousePos.y - (float)playerPos.y), (float)mousePos.x - (float)playerPos.x);
     angle *= (180.0 / 3.141592653589793238463);
