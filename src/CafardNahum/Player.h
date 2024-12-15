@@ -13,7 +13,6 @@ class Player : public Entity, public Movable, public Alive, public ColliderSpher
 	Weapon* holdWeapon;
 	Weapon* secondaryWeapon;
 	sf::Vector2f UnitVector;
-	sf::Clock clock;
 	bool changeWeapon;
 	bool isShooting;
 

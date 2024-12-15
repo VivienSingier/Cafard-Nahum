@@ -81,7 +81,7 @@ void Player::Shoot(std::vector <Bullet*> PlayerProjectiles)
     {
         static sf::Clock shootClock;
 
-        if (shootClock.getElapsedTime().asSeconds() >= 0.5f)
+        if (shootClock.getElapsedTime().asSeconds() >= 1.0f)
         {
             RedLaser* newBullet = new RedLaser("../../../res/Bullet/RedLaser.png", sf::IntRect(1, 1, 17, 10), sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y), sf::Vector2f(1, 1), sf::Vector2f(UnitVector));
 
@@ -94,9 +94,10 @@ void Player::Shoot(std::vector <Bullet*> PlayerProjectiles)
         {
             RedLaser* newBullet = new RedLaser("../../../res/Bullet/RedLaser.png", sf::IntRect(1, 1, 17, 10), sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y), sf::Vector2f(1, 1), sf::Vector2f(UnitVector));
             PlayerProjectiles.push_back(newBullet);
-            std::cout << "Damage : " << newBullet->damage << std::endl;
+            std::cout << "Damage1 : " << newBullet->damage << std::endl;
 
             isShooting = true;
+            shootClock.restart();
         }
     }
     else if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))

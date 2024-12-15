@@ -10,10 +10,4 @@ Bullet::Bullet(std::string path, sf::IntRect textureRect, sf::Vector2f position,
 
 }
 
-void Bullet::Update(float deltatime)
-{
-	for(int i = 0; i<bullets.size();i++)
-	{
-		bullets[i]->Update(deltatime);
-	}
-}
+
