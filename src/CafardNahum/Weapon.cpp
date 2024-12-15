@@ -8,3 +8,8 @@ Weapon::Weapon(std::string path, sf::IntRect textureRect, sf::Vector2f position,
 
 }
 
+void Weapon::Move(float x, float y)
+{
+	move(x, y);
+}
+

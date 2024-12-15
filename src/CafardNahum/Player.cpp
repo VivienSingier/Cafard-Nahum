@@ -28,61 +28,52 @@ Player::Player(std::string path, sf::IntRect textureRect, sf::Vector2f position,
 
 void Player::Update(float deltatime)
 {
-    Move(deltatime);
+    HandleInput(deltatime);
     float angle = GetShotAngle();
     holdWeapon->Rotate(angle);
 }
 
+void Player::Move(float x, float y)
+{
+    move(x, y);
+    c1->Move(x, y);
+    cO->Move(x, y);
+    cE->Move(x, y);
+    cN->Move(x, y);
+    cS->Move(x, y);
 
-void Player::Move(float deltatime)
+    holdWeapon->Move(x, y);
+}
+
+void Player::HandleInput(float deltatime)
 {
     std::vector <StaticObject*> StObj = SceneManager::GetInstance()->GetCurrentScene()->GetStatics();
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
     {
         if (!CheckCollisionWall(StObj, cN))
         {
-            move(-speed.x * deltatime, -speed.y);
-            c1->Move(-speed.x * deltatime, -speed.y);
-            cO->Move(-speed.x * deltatime, -speed.y);
-            cE->Move(-speed.x * deltatime, -speed.y);
-            cN->Move(-speed.x * deltatime, -speed.y);
-            cS->Move(-speed.x * deltatime, -speed.y); 
+            Move(0, -speed.y * deltatime);
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
     {
         if (!CheckCollisionWall(StObj, cO))
         {
-            move(-speed.x, speed.y * deltatime);
-            c1->Move(-speed.x, speed.y * deltatime);
-            cO->Move(-speed.x, speed.y * deltatime);
-            cE->Move(-speed.x, speed.y * deltatime);
-            cN->Move(-speed.x, speed.y * deltatime);
-            cS->Move(-speed.x, speed.y * deltatime);
+            Move(- speed.x * deltatime, 0);
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
         if (!CheckCollisionWall(StObj, cS))
         {
-            move(speed.x * deltatime, speed.y);
-            c1->Move(speed.x * deltatime, speed.y);
-            cO->Move(speed.x * deltatime, speed.y);
-            cE->Move(speed.x * deltatime, speed.y);
-            cN->Move(speed.x * deltatime, speed.y);
-            cS->Move(speed.x * deltatime, speed.y);
+            Move(0, speed.y * deltatime);
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {   
         if (!CheckCollisionWall(StObj, cE))
         {
-            move(speed.x, speed.y * deltatime);
-            c1->Move(speed.x, speed.y * deltatime);
-            cO->Move(speed.x, speed.y * deltatime);
-            cE->Move(speed.x, speed.y * deltatime);
-            cN->Move(speed.x, speed.y * deltatime);
-            cS->Move(speed.x, speed.y * deltatime);
+            Move(speed.x * deltatime, 0);
         }
     }
 }

@@ -28,7 +28,8 @@ public:
 	Player(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed);
 
 	void Update(float deltatime) override;
-	void Move(float deltatime) override;
+	void Move(float x, float y);
+	void HandleInput(float deltatime);
 	bool CheckCollisionWall(std::vector <StaticObject*> stObjVect, ColliderSphere* sphere);
 	void WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon);
 	float GetShotAngle();
