@@ -32,6 +32,21 @@ bool ColliderSphere::GetCollisionWithRect(ColliderRect* colliderRect)
 	
 }
 
+bool ColliderSphere::GetCollisionWithSphere(ColliderSphere* colliderSphere)
+{
+	float xDistance = abs(sphere.getPosition().x - colliderSphere->sphere.getPosition().x);
+	float yDistance = abs(sphere.getPosition().y - colliderSphere->sphere.getPosition().y);
+
+	if (xDistance < sphere.getRadius() + colliderSphere->sphere.getRadius())
+	{
+		if (yDistance < sphere.getRadius() + colliderSphere->sphere.getRadius())
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 void ColliderSphere::Move(float x, float y)
 {
 	sphere.move(x, y);
