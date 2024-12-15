@@ -9,7 +9,7 @@ GameManager* GameManager::instance = nullptr;
 GameManager::GameManager()
 {
 	player = new Player("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21), sf::Vector2f(50.f, 50.f), sf::Vector2f(2.f, 2.f), 10, sf::Vector2f(0.20f, 0.20f));
-	enemy = new PoisonRoach("../../../res/Enemy/BaseCockRoach.png", sf::IntRect(11, 6, 24, 34), sf::Vector2f(100.f, 250.f), sf::Vector2f(2.f, 2.f), 10, sf::Vector2f(0.20f, 0.20f));
+	enemy = new PoisonRoach("../../../res/Enemy/BaseCockRoach.png", sf::IntRect(119, 119, 34, 35), sf::Vector2f(0.f, 0.f), sf::Vector2f(1.5f, 1.5f), 10, sf::Vector2f(0.10f, 0.10f));
 	Init();
 }
 

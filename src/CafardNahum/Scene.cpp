@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Bullet.h"
 
 Scene::Scene()
 {
@@ -25,6 +26,14 @@ void Scene::Update(float deltatime)
 	{
 		entities[i]->Update(deltatime);
 	}
+	for (int i = 0; i < PlayerProjectiles.size(); i++)
+	{
+		PlayerProjectiles[i]->Update(deltatime);
+	}
+	for (int i = 0; i < EnemyProjectiles.size(); i++)
+	{
+		EnemyProjectiles[i]->Update(deltatime);
+	}
 }
 
 void Scene::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -33,4 +42,15 @@ void Scene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(*(entities[i]));
 	}
+	for (int i = 0; i < PlayerProjectiles.size(); i++)
+	{
+		target.draw(*(PlayerProjectiles[i]));
+	}
+	for (int i = 0; i < EnemyProjectiles.size(); i++)
+	{
+		target.draw(*(EnemyProjectiles[i]));
+	}
 }
+
+
+

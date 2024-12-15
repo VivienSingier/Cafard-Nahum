@@ -6,7 +6,6 @@
 
 
 class Player;
-class SceneManager;
 class PoisonRoach;
 
 class GameManager

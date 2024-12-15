@@ -3,6 +3,7 @@
 #include "Bullet.h"
 #include "BulletPoisonRoach.h"
 #include "GameManager.h"
+#include "iostream"
 
 PoisonRoach::PoisonRoach(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f speed) :
 	Enemy(path, textureRect, position, scale, cHealth, speed )
@@ -18,27 +19,33 @@ void PoisonRoach::Update(float deltatime)
 
 void PoisonRoach::EnemyMove(float deltatime)
 {
-	sf::Vector2f vector;
-	Enemy::GetAngle(vector);
-	float vectorNorm = sqrt(vector.x * vector.x + vector.y * vector.y);
-	if (vectorNorm >= 200.f)
-	{
-		sf::Vector2f VectorMove = sf::Vector2f(vector.x / vectorNorm, vector.y / vectorNorm);
-		sprite.move(VectorMove.x * deltatime, VectorMove.y * deltatime);
-	}
-	else
-	{
-		sprite.move(0, 0);
-	}
+	float enemyPositionX = sprite.getPosition().x;
+	float enemyPositionY = sprite.getPosition().y;
+	float playerPositionX = GameManager::getInstance()->GetPlayer()->getPosition().x;
+	float playerPositionY = GameManager::getInstance()->GetPlayer()->getPosition().y;
+
+	sf::Vector2f vector = sf::Vector2f(playerPositionX - enemyPositionX, playerPositionY - enemyPositionY);
+
+	sprite.move(vector.x * deltatime, vector.y * deltatime);
 }
 
 void PoisonRoach::Shoot(std::vector <Bullet*> EnemyBullets)
 {
-	sf::Vector2f vector;
-	GetAngle(vector);
-	float vectorNorm = sqrt(vector.x * vector.x + vector.y * vector.y);
-	sf::Vector2f ShootVector = sf::Vector2f(vector.x / vectorNorm, vector.y / vectorNorm);
-	BulletPoisonRoach* newBullet = new BulletPoisonRoach("../../../res/Bullet/BulletPoisonRoach.png", sf::IntRect(1, 1, 18, 7), sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y), sf::Vector2f(1, 1), sf::Vector2f(ShootVector));
-	EnemyBullets.push_back(newBullet);
-	
+	static sf::Clock shootClock;
+
+	if (shootClock.getElapsedTime().asSeconds() >1.0f)
+	{
+		float enemyPositionX = sprite.getPosition().x;
+		float enemyPositionY = sprite.getPosition().y;
+		float playerPositionX = GameManager::getInstance()->GetPlayer()->getPosition().x;
+		float playerPositionY = GameManager::getInstance()->GetPlayer()->getPosition().y;
+
+		sf::Vector2f ShootVector = sf::Vector2f(playerPositionX - enemyPositionX, playerPositionY - enemyPositionY);
+
+		BulletPoisonRoach* newBullet = new BulletPoisonRoach("../../../res/Bullet/BulletPoisonRoach.png", sf::IntRect(1, 1, 18, 7), sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y), sf::Vector2f(1, 1), sf::Vector2f(ShootVector));
+		EnemyBullets.push_back(newBullet);
+		std::cout << "Attack" << std::endl;
+
+		shootClock.restart();
+	} 
 }

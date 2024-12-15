@@ -5,6 +5,9 @@ class Bullet;
 
 class PoisonRoach : public Enemy
 {
+
+	sf::Clock clock;
+
 public:
 	PoisonRoach(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f speed);
 
