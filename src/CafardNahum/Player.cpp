@@ -9,11 +9,12 @@
 #include "Room.h"
 #include "Wall.h"
 #include "MayoBottle.h"
+#include "Ressources.h"
 
 #include <iostream>
 
-Player::Player(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed) :
-    Entity::Entity(path, textureRect, position, scale),
+Player::Player(sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed) :
+    Entity::Entity(StaticTextures::GetInstance()->playerIdleCycleR[0], position, scale),
     Movable::Movable(cSpeed),
     Alive::Alive(cHealth)
 {
@@ -24,6 +25,7 @@ Player::Player(std::string path, sf::IntRect textureRect, sf::Vector2f position,
     cS = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2, this->getPosition().y + sprite.getGlobalBounds().height / 2 + 7.f);
 
     holdWeapon = new MayoBottle(cE->sphere.getPosition().x - 10, cE->sphere.getPosition().y + 10);
+    secondaryWeapon = nullptr;
 }
 
 void Player::Update(float deltatime)

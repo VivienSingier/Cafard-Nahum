@@ -45,8 +45,8 @@ void Room::AddWall(float x, float y)
 
 void Room::AddFloor(float x, float y)
 {
-	Floor* newFloor = new Floor("../../../res/imgStatic/floorTiles.png",
-		sf::IntRect(0, 112, 16, 16), sf::Vector2f(pos.x + 32.f * x, pos.y + 32.f * y),
+	Floor* newFloor = new Floor(StaticTextures::GetInstance()->Floors["Purple1"],
+		sf::Vector2f(pos.x + 32.f * x, pos.y + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 	backgroundObjects.push_back(newFloor);
 }

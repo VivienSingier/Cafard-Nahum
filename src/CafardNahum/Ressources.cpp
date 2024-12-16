@@ -83,5 +83,5 @@ void StaticTextures::Init()
 
 	sf::Texture walkCycleR1;
 	walkCycleR1.loadFromFile("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21));
-	playerIdleCycleL.push_back(walkCycleR1);
+	playerIdleCycleR.push_back(walkCycleR1);
 }

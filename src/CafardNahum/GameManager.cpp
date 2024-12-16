@@ -29,10 +29,10 @@ void GameManager::Init()
 	view = sf::View(sf::FloatRect(540.f, 360.f, 1080.f, 720.f));
 
     sceneManager = SceneManager::GetInstance();
-	player = new Player("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21), 
-		sf::Vector2f(300.f, 400.f), sf::Vector2f(2.f, 2.f), 10, sf::Vector2f(200.f, 200.f));
-	sceneManager->GetCurrentScene()->AddPlayer(player);
-	view.setCenter(player->getPosition());
+	player = new Player( sf::Vector2f(300.f, 400.f), sf::Vector2f(2.f, 2.f), 10, 
+		sf::Vector2f(200.f, 200.f));
+		sceneManager->GetCurrentScene()->AddPlayer(player);
+		view.setCenter(player->getPosition());
 
 	srand(time(NULL));
 	/*MapPath::Init();*/

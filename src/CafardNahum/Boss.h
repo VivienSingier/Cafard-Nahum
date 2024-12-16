@@ -4,7 +4,7 @@
 class Boss : public Enemy
 {
 public:
-	Boss(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, sf::Vector2f speed, int cHealth);
+	Boss(sf::Texture texture, sf::Vector2f position, sf::Vector2f scale, sf::Vector2f speed, int cHealth);
 	
 };
 
