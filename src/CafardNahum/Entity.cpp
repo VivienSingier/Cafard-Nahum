@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "Entity.h"
 
-Entity::Entity(sf::Texture texture, sf::Vector2f position, sf::Vector2f scale)
+Entity::Entity(sf::Texture* texture, sf::Vector2f position, sf::Vector2f scale)
 {
     this->setPosition(position);
-    sprite.setTexture(texture);
+    sprite.setTexture(*texture);
     sprite.setScale(scale);
     needsToBeDestroyed = false;
 }

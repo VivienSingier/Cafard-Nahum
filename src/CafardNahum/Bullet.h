@@ -10,7 +10,7 @@ protected:
 	std::vector <ColliderSphere*> colliders;
 
 public:
-	Bullet(sf::Texture, sf::Vector2f position, sf::Vector2f scale, sf::Vector2f cSpeed);
+	Bullet(sf::Texture* texture, sf::Vector2f position, sf::Vector2f scale, sf::Vector2f cSpeed);
 	virtual void HandleCollisions();
 };
 

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Corridoor.h"
+#include "Ressources.h"
 
 Corridoor::Corridoor(float x, float y)
 {
@@ -22,12 +23,12 @@ std::vector <StaticObject*> Corridoor::GetStatics()
 
 void Corridoor::AddWall(float x, float y)
 {
-	Wall* newWall = new Wall("../../../res/imgStatic/floorTiles.png",
-		sf::IntRect(96, 32, 16, 16), sf::Vector2f(pos.x + 32.f * x, (pos.y - 16) + 32.f * y),
+	Wall* newWall = new Wall(&StaticTextures::GetInstance()->Walls["PurpleTop1"],
+		sf::Vector2f(pos.x + 32.f * x, (pos.y - 16) + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 
-	HalfWall* newHalfWall = new HalfWall("../../../res/imgStatic/floorTiles.png",
-		sf::IntRect(96, 48, 16, 16), sf::Vector2f(pos.x + 32.f * x, (pos.y + 16) + 32.f * y),
+	HalfWall* newHalfWall = new HalfWall(&StaticTextures::GetInstance()->Walls["PurpleBottom1"],
+		sf::Vector2f(pos.x + 32.f * x, (pos.y + 16) + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 
 	if (y == 6)
@@ -44,8 +45,8 @@ void Corridoor::AddWall(float x, float y)
 
 void Corridoor::AddFloor(float x, float y)
 {
-	Floor* newFloor = new Floor("../../../res/imgStatic/floorTiles.png",
-		sf::IntRect(0, 112, 16, 16), sf::Vector2f(pos.x + 32.f * x, pos.y + 32.f * y),
+	Floor* newFloor = new Floor(&StaticTextures::GetInstance()->Floors["Purple1"],
+		sf::Vector2f(pos.x + 32.f * x, pos.y + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 	backgroundObjects.push_back(newFloor);
 }

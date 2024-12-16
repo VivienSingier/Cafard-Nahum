@@ -8,7 +8,7 @@ protected:
 	bool isWalkable;
 public:
 	ColliderRect* collisionRect;
-	StaticObject(sf::Texture, sf::Vector2f position, sf::Vector2f scale, bool cIsWalkable);
+	StaticObject(sf::Texture* texture, sf::Vector2f position, sf::Vector2f scale, bool cIsWalkable);
 	bool GetIsWalkable();
 	void SetIsWalkable(bool IsWalkable);
 };

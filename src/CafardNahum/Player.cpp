@@ -14,7 +14,7 @@
 #include <iostream>
 
 Player::Player(sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed) :
-    Entity::Entity(StaticTextures::GetInstance()->playerIdleCycleR[0], position, scale),
+    Entity::Entity(&StaticTextures::GetInstance()->playerIdleCycleR[0], position, scale),
     Movable::Movable(cSpeed),
     Alive::Alive(cHealth)
 {

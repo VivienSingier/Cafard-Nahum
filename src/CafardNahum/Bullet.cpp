@@ -4,7 +4,7 @@
 #include "StaticObject.h"
 #include "SceneManager.h"
 
-Bullet::Bullet(sf::Texture texture, sf::Vector2f position, sf::Vector2f scale, sf::Vector2f cSpeed) : 
+Bullet::Bullet(sf::Texture* texture, sf::Vector2f position, sf::Vector2f scale, sf::Vector2f cSpeed) : 
 	Entity::Entity(texture, position, scale),
 	Movable::Movable(cSpeed)
 {

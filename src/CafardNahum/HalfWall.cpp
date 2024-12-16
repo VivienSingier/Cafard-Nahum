@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "HalfWall.h"
 
-HalfWall::HalfWall(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale) :
-	StaticObject(path, textureRect, position, scale, false)
+HalfWall::HalfWall(sf::Texture* texture, sf::Vector2f position, sf::Vector2f scale) :
+	StaticObject(texture, position, scale, false)
 {
 	collisionRect = new ColliderRect(position.x, position.y, sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
 

@@ -10,7 +10,7 @@ protected:
 	bool needsToBeDestroyed;
 
 public:
-	Entity(sf::Texture texture, sf::Vector2f position, sf::Vector2f scale);
+	Entity(sf::Texture* texture, sf::Vector2f position, sf::Vector2f scale);
 	bool GetNeedsToBeDestroyed();
 	virtual void Update(float deltatime);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

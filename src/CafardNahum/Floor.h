@@ -4,6 +4,6 @@
 class Floor : public StaticObject
 {
 public:
-	Floor(sf::Texture, sf::Vector2f position, sf::Vector2f scale);
+	Floor(sf::Texture* texture, sf::Vector2f position, sf::Vector2f scale);
 };
 

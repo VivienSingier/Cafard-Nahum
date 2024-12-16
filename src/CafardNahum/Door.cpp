@@ -3,7 +3,7 @@
 #include "Ressources.h"
 
 Door::Door(sf::Vector2f position) :
-	StaticObject(StaticTextures::GetInstance()->doorOpened, position, sf::Vector2f(2, 2), true)
+	StaticObject(&StaticTextures::GetInstance()->doorOpened, position, sf::Vector2f(2, 2), true)
 {
 	isOpen = true;
 	sprite.setOrigin(sf::Vector2f(0.f, sprite.getGlobalBounds().height));
