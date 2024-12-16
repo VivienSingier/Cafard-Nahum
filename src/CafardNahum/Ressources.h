@@ -28,13 +28,17 @@ public:
 	std::map < std::string, sf::Texture > Bullets;
 	std::map < std::string, sf::Texture > Weapons;
 
-	std::map < std::string, sf::Texture > Enemies;
 	std::map < std::string, sf::Texture > Boss;
 
 	std::vector <sf::Texture> playerIdleCycleR;
 	std::vector <sf::Texture> playerIdleCycleL;
 	std::vector <sf::Texture> playerWalkCycleR;
 	std::vector <sf::Texture> playerWalkCycleL;
+
+	std::vector <sf::Texture> poisonRoachWalkCycleR;
+	std::vector <sf::Texture> poisonRoachWalkCycleL;
+	std::vector <sf::Texture> poisonRoachAttackCycleR;
+	std::vector <sf::Texture> poisonRoachAttackCycleL;
 
 	StaticTextures();
 	static StaticTextures* GetInstance();

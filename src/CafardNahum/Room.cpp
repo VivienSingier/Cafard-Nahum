@@ -193,6 +193,10 @@ void Room::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(*(doors[i]));
 	}
+	for (int i = 0; i < Enemies.size(); i++)
+	{
+		target.draw(*(Enemies[i]));
+	}
 	for (int i = 0; i < EnemyProjectiles.size(); i++)
 	{
 		target.draw(*(EnemyProjectiles[i]));

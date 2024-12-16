@@ -3,11 +3,15 @@
 #include "Room.h"
 #include "VerticalCorridoor.h"
 #include "HorizontalCorridoor.h"
+#include "PoisonRoach.h"
 
 Level::Level() : Scene()
 {
 	Room* Room1 = new Room(150, 200, 1);
 	rooms.push_back(Room1);
+
+	PoisonRoach* pR = new PoisonRoach(sf::Vector2f(200, 250));
+	Room1->Enemies.push_back(pR);
 
 	HorizontalCorridoor* Corr1 = new HorizontalCorridoor(694, 360);
 	corridoors.push_back(Corr1);

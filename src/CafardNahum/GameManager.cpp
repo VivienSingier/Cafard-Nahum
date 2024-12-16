@@ -31,12 +31,12 @@ void GameManager::Init()
     sceneManager = SceneManager::GetInstance();
 	player = new Player( sf::Vector2f(300.f, 400.f), sf::Vector2f(2.f, 2.f), 10, 
 		sf::Vector2f(200.f, 200.f));
-		sceneManager->GetCurrentScene()->AddPlayer(player);
-		view.setCenter(player->getPosition());
+
+	sceneManager->GetCurrentScene()->AddPlayer(player);
+	view.setCenter(player->getPosition());
+	view.zoom(0.7);
 
 	srand(time(NULL));
-	/*MapPath::Init();*/
-	//StaticSpriteRect::Init();
 }
 
 void GameManager::Run()
