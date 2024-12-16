@@ -28,7 +28,7 @@ void GameManager::Init()
     window.create(sf::VideoMode(1080, 720), "Cafard Nahum");
 	view = sf::View(sf::FloatRect(540.f, 360.f, 1080.f, 720.f));
 
-    sceneManager = new SceneManager();
+    sceneManager = SceneManager::GetInstance();
 	player = new Player("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21), 
 		sf::Vector2f(300.f, 400.f), sf::Vector2f(2.f, 2.f), 10, sf::Vector2f(200.f, 200.f));
 	sceneManager->GetCurrentScene()->AddPlayer(player);

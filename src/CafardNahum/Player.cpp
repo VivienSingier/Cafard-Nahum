@@ -140,9 +140,7 @@ void Player::Shoot()
             holdWeapon->Shoot(angle);
 
             shootClock.restart();
-            
         }
-        std::cout << "Shot" << std::endl;
     }
 }
 

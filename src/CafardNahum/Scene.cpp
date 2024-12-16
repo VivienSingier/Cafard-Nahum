@@ -5,6 +5,8 @@
 #include "Room.h"
 #include "Corridoor.h"
 
+#include <iostream>
+
 Scene::Scene()
 {
 	currentRoom = nullptr;
