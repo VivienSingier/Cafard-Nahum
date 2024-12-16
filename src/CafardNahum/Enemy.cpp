@@ -11,11 +11,5 @@ Enemy::Enemy(std::string path, sf::IntRect textureRect, sf::Vector2f position, s
 
 }
 
-void Enemy::Update(float deltatime)
-{
-	for (int i = 0 ; i<enemy.size(); i++)
-	{
-		enemy[i]->Update(deltatime);
-	}
-}
+void Enemy::Update(float deltatime){}
 

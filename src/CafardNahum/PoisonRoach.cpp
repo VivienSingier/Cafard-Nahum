@@ -19,21 +19,37 @@ void PoisonRoach::Update(float deltatime)
 
 void PoisonRoach::EnemyMove(float deltatime)
 {
-	float enemyPositionX = sprite.getPosition().x;
-	float enemyPositionY = sprite.getPosition().y;
+	float enemyPositionX = this->getPosition().x;
+	float enemyPositionY = this->getPosition().y;
 	float playerPositionX = GameManager::getInstance()->GetPlayer()->getPosition().x;
 	float playerPositionY = GameManager::getInstance()->GetPlayer()->getPosition().y;
 
-	sf::Vector2f vector = sf::Vector2f(playerPositionX - enemyPositionX, playerPositionY - enemyPositionY);
+	float distanceX = playerPositionX - enemyPositionX;
+	float distanceY = playerPositionY - enemyPositionY;
 
-	sprite.move(vector.x * deltatime, vector.y * deltatime);
+	if (distanceX > 150.f)
+	{
+		move(speed.x * deltatime, 0);
+	}
+	if (distanceX < -224.5f)
+	{
+		move(-speed.x * deltatime, 0);
+	}
+	if (distanceY > 150.f)
+	{
+		move(0, speed.y * deltatime);
+	}
+	if (distanceY < -244.5f)
+	{
+		move(0, -speed.y * deltatime);
+	}
 }
 
 void PoisonRoach::Shoot(std::vector <Bullet*> EnemyBullets)
 {
 	static sf::Clock shootClock;
 
-	if (shootClock.getElapsedTime().asSeconds() >1.0f)
+	if (shootClock.getElapsedTime().asSeconds() >3.0f)
 	{
 		float enemyPositionX = sprite.getPosition().x;
 		float enemyPositionY = sprite.getPosition().y;

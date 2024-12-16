@@ -10,7 +10,6 @@ class Bullet;
 
 class Enemy : public Entity, public Alive, public Movable, public ColliderSphere
 {
-	std::vector <Enemy*> enemy;
 
 public:
 
