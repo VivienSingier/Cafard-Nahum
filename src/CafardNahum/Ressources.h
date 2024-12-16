@@ -26,6 +26,15 @@ public:
 	std::map < std::string, sf::Texture > Floors;
 	std::map < std::string, sf::Texture > Walls;
 	std::map < std::string, sf::Texture > Bullets;
+	std::map < std::string, sf::Texture > Weapons;
+
+	std::map < std::string, sf::Texture > Enemies;
+	std::map < std::string, sf::Texture > Boss;
+
+	std::vector <sf::Texture> playerIdleCycleR;
+	std::vector <sf::Texture> playerIdleCycleL;
+	std::vector <sf::Texture> playerWalkCycleR;
+	std::vector <sf::Texture> playerWalkCycleL;
 
 	StaticTextures();
 	static StaticTextures* GetInstance();

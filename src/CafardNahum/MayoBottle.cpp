@@ -1,12 +1,13 @@
 #include "pch.h"
 #include "MayoBullet1.h"
 #include "MayoBottle.h"
+#include "Ressources.h"
 #include "Room.h"
 #include "SceneManager.h"
 
 
 MayoBottle::MayoBottle(float x, float y) :
-	Weapon("../../../res/Weapon/mayo.png", sf::IntRect(0, 0, 16, 16), sf::Vector2f(x, y), sf::Vector2f(1, 1), sf::Vector2f(1, 1))
+	Weapon(StaticTextures::GetInstance()->Weapons["MayoBottle"], sf::Vector2f(x, y), sf::Vector2f(1, 1), sf::Vector2f(1, 1))
 {
 	this->setOrigin(0, 8);
 }

@@ -78,4 +78,10 @@ void StaticTextures::Init()
 	Walls["Purple2Bottom"].loadFromFile("../../../res/staticImg/floorTiles.png", sf::IntRect(96, 80, 16, 16));
 
 	Bullets["MayoBullet"].loadFromFile("../../../res/Bullet/mayo1.png", sf::IntRect(0, 0, 18, 11));
+
+	Weapons["MayoBottle"].loadFromFile("../../../res/Weapon/mayo.png", sf::IntRect(0, 0, 16, 16));
+
+	sf::Texture walkCycleR1;
+	walkCycleR1.loadFromFile("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21));
+	playerIdleCycleL.push_back(walkCycleR1);
 }

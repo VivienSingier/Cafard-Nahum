@@ -25,7 +25,7 @@ class Player : public Entity, public Movable, public Alive
 public:
 	ColliderSphere* c1;
 
-	Player(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed);
+	Player(sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed);
 
 	void Update(float deltatime) override;
 	void Move(float x, float y);
