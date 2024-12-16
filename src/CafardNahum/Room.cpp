@@ -8,6 +8,7 @@
 #include "Door.h"
 #include "SceneManager.h"
 #include "GameManager.h"
+#include "Ressources.h"
 #include <random>
 
 

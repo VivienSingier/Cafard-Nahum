@@ -4,17 +4,30 @@
 #include <string>
 #include <map>
 
-namespace MapPath
+class MapPath
 {
+	static MapPath* instance;
+
 	std::vector < std::string > Floor1;
-
+public:
+	MapPath();
+	static MapPath* GetInstance();
 	void Init();
-}
+};
 
-//namespace StaticSpriteRect
-//{
-//	std::map < std::string, sf::IntRect > Floors;
-//	std::map < std::string, sf::IntRect > Walls;
-//
-//	void Init();
-//}
+class StaticTextures
+{
+	static StaticTextures* instance;
+
+public:
+	sf::Texture doorOpened;
+	sf::Texture doorClosed;
+
+	std::map < std::string, sf::Texture > Floors;
+	std::map < std::string, sf::Texture > Walls;
+	std::map < std::string, sf::Texture > Bullets;
+
+	StaticTextures();
+	static StaticTextures* GetInstance();
+	void Init();
+};

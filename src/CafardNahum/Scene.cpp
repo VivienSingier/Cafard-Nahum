@@ -53,6 +53,15 @@ void Scene::Update(float deltatime)
 	{
 		rooms[i]->Update(deltatime);
 	}
+	entities.erase(std::remove_if(entities.begin(), entities.end(),
+		[](Entity* e) {
+			bool d = e->GetNeedsToBeDestroyed();
+			if (d) {
+				delete e;
+			}
+			return d;
+		}),
+		entities.end());
 }
 
 void Scene::draw(sf::RenderTarget& target, sf::RenderStates states) const

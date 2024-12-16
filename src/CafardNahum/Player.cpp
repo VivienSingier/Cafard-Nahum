@@ -97,14 +97,7 @@ bool Player::CheckCollisionWall(std::vector <StaticObject*> stObjVect, ColliderS
 float Player::GetShotAngle()
 {
     sf::RenderWindow* window = &GameManager::getInstance()->window;
-    /*float mousePositionX = sf::Mouse::getPosition(*window).x;
-    float mousePositionY = sf::Mouse::getPosition(*window).y;
-    float playerPositionX = sprite.getPosition().x + sprite.getGlobalBounds().width / 2;
-    float playerPositionY = sprite.getPosition().y + sprite.getGlobalBounds().height / 2;
 
-    sf::Vector2f vector = sf::Vector2f(mousePositionX - playerPositionX, mousePositionY - playerPositionY);
-    float vectorNorm = sqrt(vector.x * vector.x + vector.y * vector.y);
-    UnitVector = sf::Vector2f(vector.x / vectorNorm, vector.y / vectorNorm);*/
     sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
     sf::Vector2u playerPos = window->getSize();
     playerPos.x /= 2;
@@ -134,7 +127,7 @@ void Player::Shoot()
     {
         static sf::Clock shootClock;
 
-        if (shootClock.getElapsedTime().asSeconds() >= 1.0f)
+        if (shootClock.getElapsedTime().asSeconds() >= 0.5f)
         {
             float angle = GetShotAngle();
             holdWeapon->Shoot(angle);

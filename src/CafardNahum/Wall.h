@@ -7,6 +7,6 @@ class Wall : public StaticObject
 {
 
 public:
-	Wall(std::string path, sf::IntRect textureRect, sf::Vector2f position, sf::Vector2f scale);
+	Wall(sf::Texture texture, sf::Vector2f position, sf::Vector2f scale);
 };
 

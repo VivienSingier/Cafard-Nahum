@@ -1,13 +1,14 @@
 #include "pch.h"
 #include "Door.h"
+#include "Ressources.h"
 
 Door::Door(sf::Vector2f position) :
-	StaticObject("../../../res/imgStatic/floor1.png", sf::IntRect(32, 0, 16, 16), position, sf::Vector2f(2, 2), true)
+	StaticObject(StaticTextures::GetInstance()->doorOpened, position, sf::Vector2f(2, 2), true)
 {
 	isOpen = true;
 	sprite.setOrigin(sf::Vector2f(0.f, sprite.getGlobalBounds().height));
 
-	closedTexture.loadFromFile("../../../res/imgStatic/floor1.png", sf::IntRect(48, 0, 16, 32));
+	closedTexture = StaticTextures::GetInstance()->doorClosed;
 	closedSprite.setTexture(closedTexture);
 	closedSprite.setOrigin(sf::Vector2f(0.f, closedSprite.getGlobalBounds().height));
 	closedSprite.setScale(sf::Vector2f(2.f, 2.f));
