@@ -11,15 +11,16 @@ class PoisonRoach : public Enemy
 	sf::Vector2f targetPos;
 
 	ColliderSphere* c;
-	//ColliderSphere cN;
-	//ColliderSphere cS;
-	//ColliderSphere cE;
-	//ColliderSphere cO;
+	ColliderSphere* cN;
+	ColliderSphere* cS;
+	ColliderSphere* cE;
+	ColliderSphere* cO;
 
 public:
 	PoisonRoach(sf::Vector2f position);
 
 	void HandleMovement(float deltatime);
+	void HandleCollision(float deltatime);
 	void Update(float deltatime) override;
 	void Move(float x, float y, float deltatime);
 	void MultiShot();

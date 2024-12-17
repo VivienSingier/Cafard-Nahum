@@ -15,8 +15,11 @@ PoisonRoach::PoisonRoach(sf::Vector2f position) :
 	actionClock.restart();
 	shootingClock.restart();
 
-	c = new ColliderSphere(32, this->getPosition().x, this->getPosition().y);
-
+	c = new ColliderSphere(25, this->getPosition().x + sprite.getGlobalBounds().width / 2, this->getPosition().y + sprite.getGlobalBounds().height / 2);
+	cN = new ColliderSphere(1, getPosition().x + sprite.getGlobalBounds().width / 2, this->getPosition().y + 15);
+	cS = new ColliderSphere(1, getPosition().x + sprite.getGlobalBounds().width / 2, this->getPosition().y + 35);
+	cE = new ColliderSphere(1, getPosition().x + sprite.getGlobalBounds().width - 15, this->getPosition().y + sprite.getGlobalBounds().height / 2);
+	cO = new ColliderSphere(1, getPosition().x + 15, this->getPosition().y + sprite.getGlobalBounds().height / 2);
 }
 
 void PoisonRoach::HandleMovement(float deltatime)
@@ -59,35 +62,20 @@ void PoisonRoach::HandleMovement(float deltatime)
 
 }
 
+void PoisonRoach::HandleCollision(float deltatim)
+{
+
+}
+
 void PoisonRoach::Move(float x, float y, float deltatime)
 {
-	//float enemyPositionX = this->getPosition().x;
-	//float enemyPositionY = this->getPosition().y;
-	//float playerPositionX = GameManager::getInstance()->GetPlayer()->getPosition().x;
-	//float playerPositionY = GameManager::getInstance()->GetPlayer()->getPosition().y;
 
-	//float distanceX = playerPositionX - enemyPositionX;
-	//float distanceY = playerPositionY - enemyPositionY;
-
-	//if (distanceX > 150.f)
-	//{
-	//	move(speed.x * deltatime, 0);
-	//}
-	//if (distanceX < -224.5f)
-	//{
-	//	move(-speed.x * deltatime, 0);
-	//}
-	//if (distanceY > 150.f)
-	//{
-	//	move(0, speed.y * deltatime);
-	//}
-	//if (distanceY < -244.5f)
-	//{
-	//	move(0, -speed.y * deltatime);
-	//}
 	move(x * speed.x * deltatime, y * speed.x * deltatime);
 	c->Move(x * speed.x * deltatime, y * speed.x * deltatime);
-
+	cN->Move(x * speed.x * deltatime, y * speed.x * deltatime);
+	cS->Move(x * speed.x * deltatime, y * speed.x * deltatime);
+	cE->Move(x * speed.x * deltatime, y * speed.x * deltatime);
+	cO->Move(x * speed.x * deltatime, y * speed.x * deltatime);
 }
 
 void PoisonRoach::MultiShot()
@@ -112,5 +100,8 @@ void PoisonRoach::Update(float deltatime)
 void PoisonRoach::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	Enemy::draw(target, states);
-	target.draw(c->sphere);
+	target.draw(cN->sphere);
+	target.draw(cS->sphere);
+	target.draw(cE->sphere);
+	target.draw(cO->sphere);
 }
