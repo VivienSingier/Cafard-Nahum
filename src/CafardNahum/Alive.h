@@ -2,11 +2,12 @@
 
 class Alive
 {
+protected:
 	int maxHealth;
 	int health;
 
 public:
 	Alive(int cHealth);
-	void TakeDamage(int damage);
+	virtual void TakeDamage(int damage);
 };
 

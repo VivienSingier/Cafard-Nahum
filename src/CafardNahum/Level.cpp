@@ -19,6 +19,9 @@ Level::Level() : Scene()
 	Room* Room2 = new Room(1174, 200, 2);
 	rooms.push_back(Room2);
 
+	PoisonRoach* pR2 = new PoisonRoach(sf::Vector2f(1250, 250));
+	Room2->Enemies.push_back(pR2);
+
 	HorizontalCorridoor* Corr2 = new HorizontalCorridoor(1718, 360);
 	corridoors.push_back(Corr2);
 

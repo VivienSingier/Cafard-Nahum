@@ -2,6 +2,7 @@
 #include "Room.h"
 #include "Wall.h"
 #include "Floor.h"
+#include "Enemy.h"
 #include "HalfWall.h"
 #include "ColliderSphere.h"
 #include "ColliderRect.h"
@@ -66,7 +67,7 @@ std::vector <StaticObject*> Room::GetStatics()
 	return total;
 }
 
-std::vector <Entity*> Room::GetEnemies()
+std::vector <Enemy*> Room::GetEnemies()
 {
 	return Enemies;
 }
@@ -145,22 +146,6 @@ void Room::Init()
 
 void Room::Update(float deltatime)
 {
-	if (GetDoorStatus() && Enemies.size() > 0)
-	{
-		if (GameManager::getInstance()->GetPlayer()->c1->GetCollisionWithRect(roomCollider))
-		{
-			CloseDoors();
-
-		}
-	}
-	else if (Enemies.size() == 0)
-	{
-		if (!GameManager::getInstance()->GetPlayer()->c1->GetCollisionWithRect(roomCollider))
-		{
-			OpenDoors();
-		}
-	}
-
 	if (GameManager::getInstance()->GetPlayer()->c1->GetCollisionWithRect(roomCollider))
 	{
 		if (SceneManager::GetInstance()->GetCurrentScene()->GetCurrentRoom() != this)
@@ -169,13 +154,39 @@ void Room::Update(float deltatime)
 		}
 	}
 
-	for (int i = 0; i < Enemies.size(); i++)
+	if (SceneManager::GetInstance()->GetCurrentScene()->GetCurrentRoom() == this)
 	{
-		Enemies[i]->Update(deltatime);
-	}
-	for (int i = 0; i < EnemyProjectiles.size(); i++)
-	{
-		EnemyProjectiles[i]->Update(deltatime);
+		if (GetDoorStatus() && Enemies.size() > 0)
+		{
+			if (GameManager::getInstance()->GetPlayer()->c1->GetCollisionWithRect(roomCollider))
+			{
+				CloseDoors();
+
+			}
+		}
+		else if (Enemies.size() == 0)
+		{
+				OpenDoors();
+		}
+
+		for (int i = 0; i < Enemies.size(); i++)
+		{
+			Enemies[i]->Update(deltatime);
+		}
+		for (int i = 0; i < EnemyProjectiles.size(); i++)
+		{
+			EnemyProjectiles[i]->Update(deltatime);
+		}
+
+		Enemies.erase(std::remove_if(Enemies.begin(), Enemies.end(),
+			[](Enemy* e) {
+				bool d = e->GetNeedsToBeDestroyed();
+				if (d) {
+					delete e;
+				}
+				return d;
+			}),
+			Enemies.end());
 	}
 }
 

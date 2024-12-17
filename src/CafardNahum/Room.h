@@ -9,6 +9,7 @@ class ColliderRect;
 class StaticObject;
 class Door;
 class Entity;
+class Enemy;
 
 class Room : public sf::Drawable
 {
@@ -22,7 +23,7 @@ public:
 	std::vector <StaticObject*> forwardObjects;
 
 	std::vector <Door*> doors;
-	std::vector <Entity*> Enemies;
+	std::vector <Enemy*> Enemies;
 	std::vector <Entity*> EnemyProjectiles;
 
 	Room(float x, float y, int index);
@@ -30,7 +31,7 @@ public:
 	void AddFloor(float x, float y);
 	void AddDoor(float x, float y);
 	std::vector <StaticObject*> GetStatics();
-	std::vector <Entity*> GetEnemies();
+	std::vector <Enemy*> GetEnemies();
 	std::vector <Entity*> GetEnemyProjectiles();
 	bool GetDoorStatus();
 	void CloseDoors();
