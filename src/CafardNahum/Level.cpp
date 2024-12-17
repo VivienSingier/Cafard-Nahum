@@ -4,6 +4,7 @@
 #include "VerticalCorridoor.h"
 #include "HorizontalCorridoor.h"
 #include "PoisonRoach.h"
+#include "TwoFace.h"
 
 Level::Level() : Scene()
 {
@@ -39,6 +40,9 @@ Level::Level() : Scene()
 
 	Room* Room5 = new Room(3222 + 1024, 200, 3);
 	rooms.push_back(Room5);
+
+	TwoFace* newBoss = new TwoFace(sf::Vector2f(4246 + 100, 300));
+	Room5->Enemies.push_back(newBoss);
 
 }
 

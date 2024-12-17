@@ -46,7 +46,7 @@ void Corridoor::AddWall(int x, int y)
 void Corridoor::AddFloor(int x, int y)
 {
 
-	Floor* newFloor = new Floor(&StaticTextures::GetInstance()->Floors["Purple1"],
+	Floor* newFloor = new Floor(&StaticTextures::GetInstance()->Floors["WoodHor"],
 		sf::Vector2f(pos.x + 32.f * x, pos.y + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 	backgroundObjects.push_back(newFloor);

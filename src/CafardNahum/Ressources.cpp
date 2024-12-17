@@ -70,6 +70,8 @@ void StaticTextures::Init()
 	Floors["White2"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(32, 190, 16, 16));
 	Floors["Black2"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(48, 190, 16, 16));
 
+	Floors["WoodHor"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(0, 206, 16, 16));
+	Floors["WoodVert"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(16, 206, 16, 16));
 
 	//Floors["Black1"] = sf::IntRect(48, 0, 16, 16);
 	//Floors["Black2"] = sf::IntRect(48, 16, 16, 16);
@@ -91,6 +93,8 @@ void StaticTextures::Init()
 	Bullets["PoisonBullet2"].loadFromFile("../../../res/Bullet/PoisonBullet2.png", sf::IntRect(1, 1, 18, 18));
 
 	Weapons["MayoBottle"].loadFromFile("../../../res/Weapon/mayo.png", sf::IntRect(0, 0, 16, 16));
+
+	Boss["TwoFace"].loadFromFile("../../../res/Enemies/twoFace.png", sf::IntRect(0, 0, 64, 64));
 
 	sf::Texture walkCycleR1;
 	walkCycleR1.loadFromFile("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21));
