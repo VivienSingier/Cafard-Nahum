@@ -6,8 +6,8 @@ class Bullet;
 class PoisonRoach : public Enemy
 {
 	sf::Clock actionClock;
+	sf::Clock shootingClock;
 	bool isMoving;
-	bool hasAttacked;
 	sf::Vector2f targetPos;
 
 public:
@@ -15,7 +15,8 @@ public:
 
 	void HandleMovement(float deltatime);
 	void Update(float deltatime) override;
-	void Move(float x, float y);
+	void Move(float x, float y, float deltatime);
+	void MultiShot();
 	void Shoot();
 };
 
