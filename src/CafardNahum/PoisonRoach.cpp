@@ -170,7 +170,6 @@ void PoisonRoach::TakeDamage(int damage)
 	{
 		needsToBeDestroyed = true;
 	}
-	std::cout << health << std::endl;
 }
 
 void PoisonRoach::Update(float deltatime)
