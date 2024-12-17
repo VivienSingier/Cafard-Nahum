@@ -6,6 +6,7 @@
 #include "ColliderSphere.h"
 #include "StaticObject.h"
 #include "PoisonBullet1.h"
+#include "PoisonBullet2.h"
 #include <iostream>
 
 PoisonRoach::PoisonRoach(sf::Vector2f position) :
@@ -128,14 +129,31 @@ void PoisonRoach::Move(float x, float y)
 
 void PoisonRoach::MultiShot()
 {
-	std::cout << "Multishot" << std::endl;
+	for (int i = 0; i < 12; i++)
+	{
+		float angle = 0 + 30 * i;
+		float radians = 3.1415926536 / 180 * angle;
+		float x = 1.f * cos(radians);
+		float y = -1.f * -sin(radians);
+
+		PoisonBullet2* newB = new PoisonBullet2(getPosition().x, getPosition().y, sf::Vector2f(x, y));
+		newB->setRotation(angle);
+		SceneManager::GetInstance()->GetCurrentScene()->GetCurrentRoom()->EnemyProjectiles.push_back(newB);
+		shootingClock.restart();
+	}
 }
 
 void PoisonRoach::Shoot()
 {
 	if (shootingClock.getElapsedTime().asSeconds() > 0.8)
 	{
-		PoisonBullet1* newB = new PoisonBullet1(getPosition().x, getPosition().y, sf::Vector2f(1, 1));
+		float angle = GetShotAngle();
+		float radians = 3.1415926536 / 180 * angle;
+		float x = 1.f * cos(radians);
+		float y = -1.f * -sin(radians);
+
+		PoisonBullet1* newB = new PoisonBullet1(getPosition().x, getPosition().y, sf::Vector2f(x, y));
+		newB->setRotation(angle);
 		SceneManager::GetInstance()->GetCurrentScene()->GetCurrentRoom()->EnemyProjectiles.push_back(newB);
 		shootingClock.restart();
 	}

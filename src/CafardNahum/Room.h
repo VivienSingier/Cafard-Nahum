@@ -28,7 +28,7 @@ public:
 
 	Room(float x, float y, int index);
 	void AddWall(float x, float y);
-	void AddFloor(float x, float y);
+	void AddFloor(int x, int y);
 	void AddDoor(float x, float y);
 	std::vector <StaticObject*> GetStatics();
 	std::vector <Enemy*> GetEnemies();

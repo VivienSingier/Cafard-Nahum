@@ -15,7 +15,7 @@ public:
 
 	Enemy(sf::Texture* texture, sf::Vector2f position, sf::Vector2f scale, sf::Vector2f speed, int cHealth);
 
-	void GetShotAngle();
+	float GetShotAngle();
 	virtual void Shoot() {}
 
 };
