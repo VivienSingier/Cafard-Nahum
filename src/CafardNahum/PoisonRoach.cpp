@@ -2,6 +2,7 @@
 #include "PoisonRoach.h"
 #include "Ressources.h"
 #include "GameManager.h"
+#include "ColliderSphere.h"
 #include <iostream>
 
 PoisonRoach::PoisonRoach(sf::Vector2f position) :
@@ -13,6 +14,9 @@ PoisonRoach::PoisonRoach(sf::Vector2f position) :
 
 	actionClock.restart();
 	shootingClock.restart();
+
+	c = new ColliderSphere(32, this->getPosition().x, this->getPosition().y);
+
 }
 
 void PoisonRoach::HandleMovement(float deltatime)
@@ -82,6 +86,7 @@ void PoisonRoach::Move(float x, float y, float deltatime)
 	//	move(0, -speed.y * deltatime);
 	//}
 	move(x * speed.x * deltatime, y * speed.x * deltatime);
+	c->Move(x * speed.x * deltatime, y * speed.x * deltatime);
 
 }
 
@@ -102,4 +107,10 @@ void PoisonRoach::Shoot()
 void PoisonRoach::Update(float deltatime)
 {
 	HandleMovement(deltatime);
+}
+
+void PoisonRoach::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	Enemy::draw(target, states);
+	target.draw(c->sphere);
 }

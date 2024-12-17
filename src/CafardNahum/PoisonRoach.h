@@ -10,6 +10,12 @@ class PoisonRoach : public Enemy
 	bool isMoving;
 	sf::Vector2f targetPos;
 
+	ColliderSphere* c;
+	//ColliderSphere cN;
+	//ColliderSphere cS;
+	//ColliderSphere cE;
+	//ColliderSphere cO;
+
 public:
 	PoisonRoach(sf::Vector2f position);
 
@@ -18,6 +24,7 @@ public:
 	void Move(float x, float y, float deltatime);
 	void MultiShot();
 	void Shoot();
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 
 
