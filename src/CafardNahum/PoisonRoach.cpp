@@ -2,8 +2,10 @@
 #include "PoisonRoach.h"
 #include "Ressources.h"
 #include "GameManager.h"
+#include "Room.h"
 #include "ColliderSphere.h"
 #include "StaticObject.h"
+#include "PoisonBullet1.h"
 #include <iostream>
 
 PoisonRoach::PoisonRoach(sf::Vector2f position) :
@@ -133,7 +135,8 @@ void PoisonRoach::Shoot()
 {
 	if (shootingClock.getElapsedTime().asSeconds() > 0.8)
 	{
-		std::cout << "Poison Shot" << std::endl;
+		PoisonBullet1* newB = new PoisonBullet1(getPosition().x, getPosition().y, sf::Vector2f(1, 1));
+		SceneManager::GetInstance()->GetCurrentScene()->GetCurrentRoom()->EnemyProjectiles.push_back(newB);
 		shootingClock.restart();
 	}
 }

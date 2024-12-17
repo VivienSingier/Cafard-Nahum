@@ -2,6 +2,9 @@
 #include "MayoBullet1.h"
 #include "ColliderSphere.h"
 #include "Ressources.h"
+#include "Enemy.h"
+#include "SceneManager.h"
+#include "Room.h"
 
 MayoBullet1::MayoBullet1(float x, float y, sf::Vector2f direction) :
 	Bullet(&StaticTextures::GetInstance()->Bullets["MayoBullet"], 
@@ -25,4 +28,25 @@ void MayoBullet1::Update(float deltatime)
 {
 	Move(deltatime);
 	HandleCollisions();
+}
+
+void MayoBullet1::HandleCollisions()
+{
+	Bullet::HandleCollisions();
+	std::vector <Enemy*> enemies = SceneManager::GetInstance()->GetCurrentScene()->GetCurrentRoom()->Enemies;
+
+	for (int i = 0; i < enemies.size(); i++)
+	{
+		for (int j = 0; j < colliders.size(); j++)
+		{
+			for (int k = 0; k < enemies[i]->mainColliders.size(); k++)
+			{
+				if (colliders[j]->GetCollisionWithSphere(enemies[i]->mainColliders[k]))
+				{
+					needsToBeDestroyed = true;
+					enemies[i]->TakeDamage(damage);
+				}
+			}
+		}
+	}
 }
