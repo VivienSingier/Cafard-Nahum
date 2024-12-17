@@ -22,13 +22,13 @@ Room::Room(float x, float y, int cIndex)
 	Init();
 }
 
-void Room::AddWall(float x, float y)
+void Room::AddWall(int x, int y)
 {
-	Wall* newWall = new Wall(&StaticTextures::GetInstance()->Walls["PurpleTop1"], 
+	Wall* newWall = new Wall(&StaticTextures::GetInstance()->Walls["WallTop"], 
 		sf::Vector2f(pos.x + 32.f * x, (pos.y - 16) + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 
-	HalfWall* newHalfWall = new HalfWall(&StaticTextures::GetInstance()->Walls["PurpleBottom1"],
+	HalfWall* newHalfWall = new HalfWall(&StaticTextures::GetInstance()->Walls["WallBottom"],
 		sf::Vector2f(pos.x + 32.f * x, (pos.y + 16) + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 
@@ -61,7 +61,7 @@ void Room::AddFloor(int x, int y)
 	backgroundObjects.push_back(newFloor);
 }
 
-void Room::AddDoor(float x, float y)
+void Room::AddDoor(int x, int y)
 {
 	Door* newDoor = new Door(sf::Vector2f(pos.x + 32.f * x, pos.y + 32.f * y));
 	doors.push_back(newDoor);

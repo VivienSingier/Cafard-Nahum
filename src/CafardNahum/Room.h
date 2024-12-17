@@ -27,9 +27,9 @@ public:
 	std::vector <Entity*> EnemyProjectiles;
 
 	Room(float x, float y, int index);
-	void AddWall(float x, float y);
+	void AddWall(int x, int y);
 	void AddFloor(int x, int y);
-	void AddDoor(float x, float y);
+	void AddDoor(int x, int y);
 	std::vector <StaticObject*> GetStatics();
 	std::vector <Enemy*> GetEnemies();
 	std::vector <Entity*> GetEnemyProjectiles();

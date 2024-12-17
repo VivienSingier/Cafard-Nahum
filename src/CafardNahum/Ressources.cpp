@@ -66,8 +66,8 @@ void StaticTextures::Init()
 	Floors["Purple6"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(80, 32, 16, 16));
 
 	Floors["White1"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(0, 190, 16, 16));
-	Floors["White2"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(16, 190, 16, 16));
-	Floors["Black1"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(32, 190, 16, 16));
+	Floors["Black1"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(16, 190, 16, 16));
+	Floors["White2"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(32, 190, 16, 16));
 	Floors["Black2"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(48, 190, 16, 16));
 
 
@@ -80,10 +80,10 @@ void StaticTextures::Init()
 
 	Walls["PurpleTop1"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(96, 32, 16, 16));
 	Walls["PurpleBottom1"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(96, 48, 16, 16));
-	Walls["PurpleTop2"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(96, 32, 64, 16));
+	Walls["PurpleTop2"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(96, 32, 16, 16));
 	Walls["PurpleBottom2"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(96, 80, 16, 16));
 
-	Walls["WallTop"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(64, 190, 64, 16));
+	Walls["WallTop"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(64, 190, 16, 16));
 	Walls["WallBottom"].loadFromFile("../../../res/imgStatic/floorTiles.png", sf::IntRect(64, 206, 16, 16));
 
 	Bullets["MayoBullet"].loadFromFile("../../../res/Bullet/mayo1.png", sf::IntRect(0, 0, 18, 11));
