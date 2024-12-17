@@ -28,7 +28,7 @@ public:
 	void TakeDamage(int damage) override;
 	void Move(float x, float y);
 	void MultiShot();
-	void Shoot();
+	void Shoot() override;
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 

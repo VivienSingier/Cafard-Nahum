@@ -44,9 +44,18 @@ void Room::AddWall(float x, float y)
 	}
 }
 
-void Room::AddFloor(float x, float y)
+void Room::AddFloor(int x, int y)
 {
-	Floor* newFloor = new Floor(&StaticTextures::GetInstance()->Floors["Purple1"],
+	sf::Texture* texture;
+	if (((x + y) % 2) == 0)
+	{
+		texture = &StaticTextures::GetInstance()->Floors["White1"];
+	}
+	else
+	{
+		texture = &StaticTextures::GetInstance()->Floors["Black1"];
+	}
+	Floor* newFloor = new Floor(texture,
 		sf::Vector2f(pos.x + 32.f * x, pos.y + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 	backgroundObjects.push_back(newFloor);
@@ -133,7 +142,7 @@ void Room::Init()
 			}
 			else if (str[j] == 'F')
 			{
-				AddFloor((float)j, (float)i);
+				AddFloor(j, i);
 			}
 			else if (str[j] == 'D')
 			{
@@ -187,6 +196,16 @@ void Room::Update(float deltatime)
 				return d;
 			}),
 			Enemies.end());
+
+		EnemyProjectiles.erase(std::remove_if(EnemyProjectiles.begin(), EnemyProjectiles.end(),
+			[](Entity* e) {
+				bool d = e->GetNeedsToBeDestroyed();
+				if (d) {
+					delete e;
+				}
+				return d;
+			}),
+			EnemyProjectiles.end());
 	}
 }
 
