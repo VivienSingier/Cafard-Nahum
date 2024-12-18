@@ -8,6 +8,8 @@ class TwoFaceCross1 :
 {
     ColliderSphere* c1;
     ColliderSphere* c2;
+    sf::Clock spawnClock;
+
 public:
     TwoFaceCross1(float x, float y, sf::Vector2f direction);
     void Move(float deltatiime) override;

@@ -9,6 +9,8 @@ class TwoFaceCross2 :
     ColliderSphere* c1;
     sf::Vector2f target;
 
+    sf::Clock liveClock;
+
 public:
     TwoFaceCross2(float x, float y, sf::Vector2f direction);
     void Move(float deltatime) override;

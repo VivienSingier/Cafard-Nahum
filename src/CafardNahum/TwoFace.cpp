@@ -76,12 +76,12 @@ void TwoFace::HandleBehaviour()
 	{
 		SpiralShot();
 	}
-	if (elapsed > 4.0f && !hasCrossShot)
+	if (elapsed > 5.0f && !hasCrossShot)
 	{
 		CrossShots();
 		hasCrossShot = true;
 	}
-	if (elapsed > 6.0f)
+	if (elapsed > 8.0f)
 	{
 		if (health < maxHealth / 2)
 		{
