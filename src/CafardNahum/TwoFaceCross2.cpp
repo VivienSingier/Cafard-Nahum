@@ -16,3 +16,19 @@ void TwoFaceCross2::Move(float deltatime)
 {
 
 }
+
+void TwoFaceCross2::HandleCollisions()
+{
+
+}
+
+void TwoFaceCross2::Update(float deltatime)
+{
+
+}
+
+void TwoFaceCross2::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	Bullet::draw(target, states);
+	target.draw(c1->sphere);
+}
