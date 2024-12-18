@@ -9,6 +9,7 @@ class TwoFaceCross2 :
     ColliderSphere* c1;
     sf::Vector2f target;
 
+protected:
     sf::Clock liveClock;
 
 public:

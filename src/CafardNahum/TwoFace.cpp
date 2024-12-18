@@ -3,6 +3,7 @@
 #include "Ressources.h"
 #include "TwoFaceSpiral.h"
 #include "TwoFaceCross1.h"
+#include "TwoFaceSeeking.h"
 #include "SceneManager.h"
 #include "Room.h"
 #include <iostream>
@@ -12,16 +13,14 @@ TwoFace::TwoFace(sf::Vector2f position) :
 {
 	this->setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 
+	c1 = new ColliderSphere(64, position.x, position.y);
+	mainColliders.push_back(c1);
+
 	behaviourClock.restart();
 	spiralClock.restart();
 	hasCrossShot = true;
 
 	spiralAngle = 0;
-}
-
-void TwoFace::Shoot()
-{
-
 }
 
 void TwoFace::SpiralShot()
@@ -50,12 +49,27 @@ void TwoFace::SpiralShot()
 
 void TwoFace::SeekingShot()
 {
-	std::cout << "SeekingShot" << std::endl;
+	float angle = 0;
+	float radians = 3.1415926536 / 180 * angle;
+	float x = 1.f * cos(radians);
+	float y = -1.f * -sin(radians);
+
+	TwoFaceSeeking* newB = new TwoFaceSeeking(getPosition().x, getPosition().y, sf::Vector2f(x, y));
+	newB->setRotation(angle);
+	SceneManager::GetInstance()->GetCurrentScene()->GetCurrentRoom()->EnemyProjectiles.push_back(newB);
+
+	float angle2 = 180;
+	float radians2 = 3.1415926536 / 180 * angle2;
+	float x2 = 1.f * cos(radians2);
+	float y2 = -1.f * -sin(radians2);
+
+	TwoFaceSeeking* newB2 = new TwoFaceSeeking(getPosition().x, getPosition().y, sf::Vector2f(x2, y2));
+	newB2->setRotation(angle2);
+	SceneManager::GetInstance()->GetCurrentScene()->GetCurrentRoom()->EnemyProjectiles.push_back(newB2);
 }
 
 void TwoFace::CrossShots()
 {
-	std::cout << "CrossShots" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		float angle = 90 * i;
@@ -95,4 +109,14 @@ void TwoFace::HandleBehaviour()
 void TwoFace::Update(float deltatime)
 {
 	HandleBehaviour();
+	if (health == 0)
+	{
+		needsToBeDestroyed = true;
+	}
+}
+
+void TwoFace::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	Boss::draw(target, states);
+	target.draw(c1->sphere);
 }
