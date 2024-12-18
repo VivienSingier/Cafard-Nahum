@@ -91,6 +91,9 @@ void StaticTextures::Init()
 	Bullets["MayoBullet"].loadFromFile("../../../res/Bullet/mayo1.png", sf::IntRect(0, 0, 18, 11));
 	Bullets["PoisonBullet1"].loadFromFile("../../../res/Bullet/PoisonBullet1.png", sf::IntRect(1, 1, 17, 11));
 	Bullets["PoisonBullet2"].loadFromFile("../../../res/Bullet/PoisonBullet2.png", sf::IntRect(1, 1, 18, 18));
+	Bullets["TwoFaceSpiral"].loadFromFile("../../../res/Bullet/twoFaceSpiral.png", sf::IntRect(1, 1, 18, 18));
+	Bullets["TwoFaceCross1"].loadFromFile("../../../res/Bullet/twoFaceCross1.png", sf::IntRect(0, 0, 18, 11));
+	Bullets["TwoFaceCross2"].loadFromFile("../../../res/Bullet/twoFaceCross2.png", sf::IntRect(0, 0, 16, 16));
 
 	Weapons["MayoBottle"].loadFromFile("../../../res/Weapon/mayo.png", sf::IntRect(0, 0, 16, 16));
 

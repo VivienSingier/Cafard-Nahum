@@ -1,6 +1,8 @@
 #pragma once
 #include "Bullet.h"
 
+class ColliderSphere;
+
 class PoisonBullet2 : public Bullet
 {
 
