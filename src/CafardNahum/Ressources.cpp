@@ -99,6 +99,10 @@ void StaticTextures::Init()
 
 	Boss["TwoFace"].loadFromFile("../../../res/Enemies/twoFace.png", sf::IntRect(0, 0, 64, 64));
 
+	MenuTexture.loadFromFile("../../../res/imgStatic/StartMenu.jpg");
+	Text1.loadFromFile("../../../res/Text/Text1");
+	Text2.loadFromFile("../../../res/Text/Text2");
+
 	sf::Texture walkCycleR1;
 	walkCycleR1.loadFromFile("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21));
 	playerIdleCycleR.push_back(walkCycleR1);

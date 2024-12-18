@@ -40,6 +40,10 @@ public:
 	std::vector <sf::Texture> poisonRoachAttackCycleR;
 	std::vector <sf::Texture> poisonRoachAttackCycleL;
 
+	sf::Texture MenuTexture;
+	sf::Font Text1;
+	sf::Font Text2;
+
 	StaticTextures();
 	static StaticTextures* GetInstance();
 	void Init();
