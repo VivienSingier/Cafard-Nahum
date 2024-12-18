@@ -70,7 +70,7 @@ void StartMenu::HandleInput(sf::RenderWindow& window)
 		}
 		if(IsMouseInside(settingsButton, window))
 		{
-			/*afficher une scene avec les paramètre*/
+			ShowSettings();
 		}
 		if(IsMouseInside(quitButton, window))
 		{
