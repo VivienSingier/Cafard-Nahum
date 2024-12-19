@@ -12,47 +12,33 @@ StartMenu::StartMenu() :
 	
 	view = new sf::View(sf::FloatRect(0.f, 0.f, 1080.f, 720.f));
 
-	text = StaticTextures::GetInstance()->Text1;
+	PlayTexture = StaticTextures::GetInstance()->PlayButton;
+	SettingsTexture = StaticTextures::GetInstance()->SettingsButton;
+	QuitTexture = StaticTextures::GetInstance()->QuitButton;
 
-	playButton.setSize(sf::Vector2f( 200, 50));
+	playButton.setTexture(PlayTexture);
+	playButton.setScale(1,1);
 	playButton.setPosition(440, 300);
-	playButton.setFillColor(sf::Color::Blue);
 
-	playText.setFont(text);
-	playText.setString("Play");
-	playText.setCharacterSize(20);
-	playText.setFillColor(sf::Color::White);
-	playText.setPosition(500,310);
-
-	settingsButton.setSize(sf::Vector2f(200, 50));
+	settingsButton.setTexture(SettingsTexture);
 	settingsButton.setPosition(440, 450);
-	settingsButton.setFillColor(sf::Color::Blue);
+	settingsButton.setScale(1, 1);
 
-	settingsText.setFont(text);
-	settingsText.setString("Settings");
-	settingsText.setCharacterSize(20);
-	settingsText.setFillColor(sf::Color::White);
-	settingsText.setPosition(500, 460);
-
-	quitButton.setSize(sf::Vector2f(200, 50));
+	quitButton.setTexture(QuitTexture);
 	quitButton.setPosition(440 , 600);
-	quitButton.setFillColor(sf::Color::Blue);
-
-	quitText.setFont(text);
-	quitText.setString("Quit");
-	quitText.setCharacterSize(20);
-	quitText.setFillColor(sf::Color::White);
-	quitText.setPosition(500, 610);
+	quitButton.setScale(1,1);
 }
 
-bool StartMenu::IsMouseInside(sf::RectangleShape& button, sf::RenderWindow& window)
+bool StartMenu::IsMouseInside(sf::Sprite& button, sf::RenderWindow& window)
 {
 	sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 	sf::Vector2f buttonPos = button.getPosition();
-	sf::Vector2f buttonSize = button.getSize();
+	float buttonSizeX = button.getGlobalBounds().width;
+	float buttonSizeY = button.getGlobalBounds().height;
 
-	if (mousePos.x >= buttonPos.x && mousePos.x <= buttonPos.x + buttonSize.x &&
-		mousePos.y >= buttonPos.y && mousePos.y <= buttonPos.y + buttonSize.y)
+
+	if (mousePos.x >= buttonPos.x && mousePos.x <= buttonPos.x + buttonSizeX &&
+		mousePos.y >= buttonPos.y && mousePos.y <= buttonPos.y + buttonSizeY)
 	{
 		return true;
 	}
@@ -93,11 +79,8 @@ void StartMenu::Update(float deltatime)
 void StartMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(playButton);
-	target.draw(playText);
 
 	target.draw(settingsButton);
-	target.draw(settingsText);
 
 	target.draw(quitButton);
-	target.draw(quitText);
 }

@@ -5,14 +5,17 @@ class StartMenu;
 
 class SettingsScene : public Scene
 {
-	sf::RectangleShape backButton;
-	sf::Text settingsText;
-	sf::Text backText;
+	sf::Sprite backButton;
+	sf::Texture BackButton;
 	sf::Font text;
+	sf::Text settingsText;
 
 public:
 	SettingsScene();
-	bool IsMouseInside(sf::RectangleShape& button, sf::RenderWindow& window);
+	bool IsMouseInside(sf::Sprite& button, sf::RenderWindow& window);
 	void HandleInput(sf::RenderWindow& window);
+	void Update(float deltatime) override;
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+
 }; 
 

@@ -3,18 +3,21 @@
 
 class StartMenu : public Scene
 {
-	sf::RectangleShape playButton;
-	sf::RectangleShape settingsButton;
-	sf::RectangleShape quitButton;
-	sf::Text playText;
-	sf::Text settingsText;
-	sf::Text quitText;
-	sf::Font text;
+	sf::Sprite playButton;
+	sf::Sprite settingsButton;
+	sf::Sprite quitButton;
+	sf::Texture PlayTexture;
+	sf::Texture SettingsTexture;
+	sf::Texture QuitTexture;
+	sf::Texture PlayTexture2;
+	sf::Texture SettingsTexture2;
+	sf::Texture QuitTexture2;
+
 
 
 public :
 	StartMenu();
-	bool IsMouseInside(sf::RectangleShape& button, sf::RenderWindow& window);
+	bool IsMouseInside(sf::Sprite& button, sf::RenderWindow& window);
 	void ShowSettings();
 	void HandleInput(sf::RenderWindow& window);
 	void Update(float deltatime) override;

@@ -43,8 +43,15 @@ public:
 	std::vector <sf::Texture> poisonRoachAttackCycleL;
 
 	sf::Texture MenuTexture;
-	sf::Font Text1;
-	sf::Font Text2;
+	sf::Texture PlayButton;
+	sf::Texture PlayButton2;
+	sf::Texture SettingsButton;
+	sf::Texture SettingsButton2;
+	sf::Texture QuitButton;
+	sf::Texture QuitButton2;
+	sf::Texture BackButton;
+	sf::Texture BackButton2;
+	sf::Font text;
 
 	StaticTextures();
 	static StaticTextures* GetInstance();
