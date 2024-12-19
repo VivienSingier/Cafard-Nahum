@@ -14,34 +14,34 @@ Level::Level() : Scene()
 	PoisonRoach* pR = new PoisonRoach(sf::Vector2f(200, 250));
 	Room1->Enemies.push_back(pR);
 
-	HorizontalCorridoor* Corr1 = new HorizontalCorridoor(694, 360);
+	HorizontalCorridoor* Corr1 = new HorizontalCorridoor(Room1->pos.x + Room1->width, 360);
 	corridoors.push_back(Corr1);
 
-	Room* Room2 = new Room(1174, 200, 2);
+	Room* Room2 = new Room(Corr1->pos.x + Corr1->width, 200, 2);
 	rooms.push_back(Room2);
 
 	PoisonRoach* pR2 = new PoisonRoach(sf::Vector2f(1250, 250));
 	Room2->Enemies.push_back(pR2);
 
-	HorizontalCorridoor* Corr2 = new HorizontalCorridoor(1718, 360);
+	HorizontalCorridoor* Corr2 = new HorizontalCorridoor(Room2->pos.x + Room2->width, 360);
 	corridoors.push_back(Corr2);
 
-	Room* Room3 = new Room(2198, 200, 2);
+	Room* Room3 = new Room(Corr2->pos.x + Corr2->width, 200, 2);
 	rooms.push_back(Room3);
 
-	HorizontalCorridoor* Corr3 = new HorizontalCorridoor(2742, 360);
+	HorizontalCorridoor* Corr3 = new HorizontalCorridoor(Room3->pos.x + Room3->width, 360);
 	corridoors.push_back(Corr3);
 
-	Room* Room4 = new Room(3222, 200, 2);
+	Room* Room4 = new Room(Corr3->pos.x + Corr3->width, 200, 2);
 	rooms.push_back(Room4);
 
-	HorizontalCorridoor* Corr4 = new HorizontalCorridoor(2742 + 1024, 360);
+	HorizontalCorridoor* Corr4 = new HorizontalCorridoor(Room4->pos.x + Room4->width, 360);
 	corridoors.push_back(Corr4);
 
-	Room* Room5 = new Room(3222 + 1024, 104, 3);
+	Room* Room5 = new Room(Corr4->pos.x + Corr4->width, 104, 3);
 	rooms.push_back(Room5);
 
-	TwoFace* newBoss = new TwoFace(sf::Vector2f(4246 + 100, 300));
+	TwoFace* newBoss = new TwoFace(sf::Vector2f(Room5->pos.x + Room5->width / 2, Room5->pos.y + Room5->height/2 - 80));
 	Room5->Enemies.push_back(newBoss);
 
 }

@@ -14,10 +14,11 @@ class Enemy;
 class Room : public sf::Drawable
 {
 	ColliderRect* roomCollider;
-	sf::Vector2f pos;
 	int index;
 	int size;
+
 public:
+	sf::Vector2f pos;
 	int width;
 	int height;
 

@@ -10,7 +10,7 @@ TwoFaceCross2::TwoFaceCross2(float x, float y, sf::Vector2f direction) :
 {
 	damage = 1;
 	setOrigin(sf::Vector2f(8, 8));
-	target = sf::Vector2f(getPosition().x + 150 * direction.x, getPosition().y + 150 * direction.y);
+	target = sf::Vector2f(getPosition().x + 200 * direction.x, getPosition().y + 200 * direction.y);
 
 	c1 = new ColliderSphere(7, x , y );
 	colliders.push_back(c1);

@@ -12,8 +12,8 @@ class Corridoor : public sf::Drawable
 	std::vector <StaticObject*> objects;
 	std::vector <StaticObject*> forwardObjects;
 
-	sf::Vector2f pos;
 public:
+	sf::Vector2f pos;
 	int width;
 	int height;
 
