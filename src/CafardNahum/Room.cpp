@@ -130,6 +130,12 @@ void Room::Init()
 	case 3:
 		path = "../../../res/Maps/Floor1/3.txt";
 		break;
+	case 4:
+		path = "../../../res/Maps/Floor1/4.txt";
+		break;
+	case 5:
+		path = "../../../res/Maps/Floor1/5.txt";
+		break;
 	}
 	std::ifstream file(path);
 	std::string str;

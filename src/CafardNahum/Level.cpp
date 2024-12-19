@@ -27,19 +27,19 @@ Level::Level() : Scene()
 	HorizontalCorridoor* Corr2 = new HorizontalCorridoor(Room2->pos.x + Room2->width, 360);
 	corridoors.push_back(Corr2);
 
-	Room* Room3 = new Room(Corr2->pos.x + Corr2->width, 200, 2);
+	Room* Room3 = new Room(Corr2->pos.x + Corr2->width, 200, 3);
 	rooms.push_back(Room3);
 
 	HorizontalCorridoor* Corr3 = new HorizontalCorridoor(Room3->pos.x + Room3->width, 360);
 	corridoors.push_back(Corr3);
 
-	Room* Room4 = new Room(Corr3->pos.x + Corr3->width, 200, 2);
+	Room* Room4 = new Room(Corr3->pos.x + Corr3->width, 200, 4);
 	rooms.push_back(Room4);
 
 	HorizontalCorridoor* Corr4 = new HorizontalCorridoor(Room4->pos.x + Room4->width, 360);
 	corridoors.push_back(Corr4);
 
-	Room* Room5 = new Room(Corr4->pos.x + Corr4->width, 104, 3);
+	Room* Room5 = new Room(Corr4->pos.x + Corr4->width, 104, 5);
 	rooms.push_back(Room5);
 
 	TwoFace* newBoss = new TwoFace(sf::Vector2f(Room5->pos.x + Room5->width / 2, Room5->pos.y + Room5->height/2 - 80));
