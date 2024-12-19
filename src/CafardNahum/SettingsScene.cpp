@@ -53,7 +53,7 @@ void SettingsScene::HandleInput(sf::RenderWindow& window)
 		backButton.setTexture(BackButton2);
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			new StartMenu();
+			SceneManager::GetInstance()->SetCurrentScene("StartMenu");
 		}
 	}
 	else

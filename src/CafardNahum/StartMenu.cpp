@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "StartMenu.h"
+#include "SceneManager.h"
 #include "Ressources.h"
 #include "SettingsScene.h"
 #include "GameManager.h"
@@ -56,7 +57,7 @@ bool StartMenu::IsMouseInside(sf::Sprite& button, sf::RenderWindow& window)
 
 void StartMenu::ShowSettings()
 {
-	new SettingsScene();
+	SceneManager::GetInstance()->SetCurrentScene("SettingsScene");
 }
 
 void StartMenu::HandleInput(sf::RenderWindow& window)
@@ -67,7 +68,7 @@ void StartMenu::HandleInput(sf::RenderWindow& window)
 		playButton.setTexture(PlayTexture2);
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			/*lancer le jeu*/
+			SceneManager::GetInstance()->SetCurrentScene("Level");
 		}
 	}
 	else
