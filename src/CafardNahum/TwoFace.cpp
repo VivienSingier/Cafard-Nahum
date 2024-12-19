@@ -5,6 +5,7 @@
 #include "TwoFaceCross1.h"
 #include "TwoFaceSeeking.h"
 #include "SceneManager.h"
+#include "BossHealthBar.h"
 #include "Room.h"
 #include <iostream>
 
@@ -15,6 +16,8 @@ TwoFace::TwoFace(sf::Vector2f position) :
 
 	c1 = new ColliderSphere(64, position.x, position.y);
 	mainColliders.push_back(c1);
+
+	b = new BossHealthBar(maxHealth);
 
 	behaviourClock.restart();
 	spiralClock.restart();
@@ -113,10 +116,12 @@ void TwoFace::Update(float deltatime)
 	{
 		needsToBeDestroyed = true;
 	}
+	b->Update();
 }
 
 void TwoFace::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	Boss::draw(target, states);
 	target.draw(c1->sphere);
+	b->draw(target, states);
 }

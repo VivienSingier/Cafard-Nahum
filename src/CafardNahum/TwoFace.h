@@ -2,6 +2,7 @@
 #include "Boss.h"
 
 class ColliderSphere;
+class BossHealthBar;
 
 class TwoFace : public Boss
 {
@@ -9,6 +10,7 @@ class TwoFace : public Boss
 	sf::Clock spiralClock;
 
 	ColliderSphere* c1;
+	BossHealthBar* b;
 
 	int spiralAngle;
 	bool hasCrossShot;

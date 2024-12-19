@@ -30,6 +30,8 @@ public:
 
 	std::map < std::string, sf::Texture > Boss;
 
+	std::map < std::string, sf::Texture > UI;
+
 	std::vector <sf::Texture> playerIdleCycleR;
 	std::vector <sf::Texture> playerIdleCycleL;
 	std::vector <sf::Texture> playerWalkCycleR;
