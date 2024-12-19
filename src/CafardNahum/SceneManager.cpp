@@ -9,8 +9,8 @@ SceneManager::SceneManager()
 {
 	currentScene = new Level();
 	scenes.push_back(currentScene);
-	currentScene = new StartMenu();
-	scenes.push_back(currentScene);
+	//currentScene = new StartMenu();
+	//scenes.push_back(currentScene);
 }
 
 SceneManager* SceneManager::GetInstance()

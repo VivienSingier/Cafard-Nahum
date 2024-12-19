@@ -53,7 +53,6 @@ Level::Level() : Scene()
 void Level::Update(float deltatime)
 {
 	Scene::Update(deltatime);
-	view->setCenter(GameManager::getInstance()->GetPlayer()->getPosition());
 }
 
 void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const

@@ -10,6 +10,7 @@
 #include "Wall.h"
 #include "MayoBottle.h"
 #include "Ressources.h"
+#include "PlayerHealthBar.h"
 
 #include <iostream>
 
@@ -26,14 +27,18 @@ Player::Player(sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vecto
 
     holdWeapon = new MayoBottle(cE->sphere.getPosition().x - 10, cE->sphere.getPosition().y + 10);
     secondaryWeapon = nullptr;
+
+    b = new PlayerHealthBar();
 }
 
 void Player::Update(float deltatime)
 {
     HandleInput(deltatime);
+    SceneManager::GetInstance()->GetCurrentScene()->view->setCenter(getPosition());
     float angle = GetShotAngle();
     holdWeapon->Rotate(angle);
     Shoot();
+    b->Update(deltatime);
 }
 
 void Player::Move(float x, float y)
@@ -143,4 +148,5 @@ void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     Entity::draw(target, states);
     holdWeapon->draw(target, states);
+    b->draw(target, states);
 }

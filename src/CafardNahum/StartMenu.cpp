@@ -78,11 +78,9 @@ void StartMenu::HandleInput(sf::RenderWindow& window)
 		}
 		if(IsMouseInside(quitButton, window))
 		{
-			std::cout << "nik tes morts " << std::endl;
 			window.close();
 		}
 	}
-	std::cout << sf::Mouse::getPosition(window).x << " | " << sf::Mouse::getPosition(window).y << std::endl;
 }
 
 void StartMenu::Update(float deltatime)

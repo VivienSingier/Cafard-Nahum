@@ -10,6 +10,7 @@ class StaticObject;
 class Bullet;
 class ColliderRect;
 class ColliderSphere;
+class PlayerHealthBar;
 
 class Player : public Entity, public Movable, public Alive 
 {
@@ -21,6 +22,8 @@ class Player : public Entity, public Movable, public Alive
 	ColliderSphere* cE;
 	ColliderSphere* cN;
 	ColliderSphere* cS;
+
+	PlayerHealthBar* b;
 
 public:
 	ColliderSphere* c1;
