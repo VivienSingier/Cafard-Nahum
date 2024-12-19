@@ -4,6 +4,7 @@
 #include "VerticalCorridoor.h"
 #include "HorizontalCorridoor.h"
 #include "PoisonRoach.h"
+#include "GameManager.h"
 #include "TwoFace.h"
 
 Level::Level() : Scene()
@@ -44,6 +45,15 @@ Level::Level() : Scene()
 	TwoFace* newBoss = new TwoFace(sf::Vector2f(Room5->pos.x + Room5->width / 2, Room5->pos.y + Room5->height/2 - 80));
 	Room5->Enemies.push_back(newBoss);
 
+	view = new sf::View(sf::FloatRect(540.f, 360.f, 1080.f, 720.f));
+	view->zoom(0.7);
+
+}
+
+void Level::Update(float deltatime)
+{
+	Scene::Update(deltatime);
+	view->setCenter(GameManager::getInstance()->GetPlayer()->getPosition());
 }
 
 void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const

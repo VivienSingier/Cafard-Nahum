@@ -15,6 +15,8 @@ public:
 	std::vector <Room*> rooms;
 	std::vector <Corridoor*> corridoors;
 
+	sf::View* view;
+
 
 public:
 	Scene();
@@ -23,7 +25,7 @@ public:
 	Room* GetCurrentRoom();
 	void SetCurrentRoom(Room* room);
 	void AddPlayer(Player* player);
-	void Update(float deltatime);
+	virtual void Update(float deltatime);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 

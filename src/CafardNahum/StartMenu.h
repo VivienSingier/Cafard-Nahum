@@ -11,12 +11,13 @@ class StartMenu : public Scene
 	sf::Text quitText;
 	sf::Font text;
 
-	Scene* currentScene;
 
 public :
-	StartMenu(Scene* activeScene );
+	StartMenu();
 	bool IsMouseInside(sf::RectangleShape& button, sf::RenderWindow& window);
 	void ShowSettings();
 	void HandleInput(sf::RenderWindow& window);
+	void Update(float deltatime) override;
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 

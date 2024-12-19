@@ -1,11 +1,15 @@
 #include "pch.h"
 #include "SceneManager.h"
+#include "StartMenu.h"
+#include "SettingsScene.h"
 
 SceneManager* SceneManager::instance = nullptr;
 
 SceneManager::SceneManager()
 {
 	currentScene = new Level();
+	scenes.push_back(currentScene);
+	currentScene = new StartMenu();
 	scenes.push_back(currentScene);
 }
 

@@ -2,14 +2,19 @@
 #include "StartMenu.h"
 #include "Ressources.h"
 #include "SettingsScene.h"
+#include "GameManager.h"
+#include <iostream>
 #include <string>
 
-StartMenu::StartMenu(Scene* activeScene) :
+StartMenu::StartMenu() :
 	Scene::Scene()
 {
+	
+	view = new sf::View(sf::FloatRect(0.f, 0.f, 1080.f, 720.f));
+
 	text = StaticTextures::GetInstance()->Text1;
 
-	playButton.setSize(sf::Vector2f(200, 50));
+	playButton.setSize(sf::Vector2f( 200, 50));
 	playButton.setPosition(440, 300);
 	playButton.setFillColor(sf::Color::Blue);
 
@@ -30,7 +35,7 @@ StartMenu::StartMenu(Scene* activeScene) :
 	settingsText.setPosition(500, 460);
 
 	quitButton.setSize(sf::Vector2f(200, 50));
-	quitButton.setPosition(440, 600);
+	quitButton.setPosition(440 , 600);
 	quitButton.setFillColor(sf::Color::Blue);
 
 	quitText.setFont(text);
@@ -57,7 +62,6 @@ bool StartMenu::IsMouseInside(sf::RectangleShape& button, sf::RenderWindow& wind
 
 void StartMenu::ShowSettings()
 {
-	currentScene = new SettingsScene(currentScene);
 }
 
 void StartMenu::HandleInput(sf::RenderWindow& window)
@@ -74,7 +78,26 @@ void StartMenu::HandleInput(sf::RenderWindow& window)
 		}
 		if(IsMouseInside(quitButton, window))
 		{
+			std::cout << "nik tes morts " << std::endl;
 			window.close();
 		}
 	}
+	std::cout << sf::Mouse::getPosition(window).x << " | " << sf::Mouse::getPosition(window).y << std::endl;
+}
+
+void StartMenu::Update(float deltatime)
+{
+	HandleInput(GameManager::getInstance()->window);
+}
+
+void StartMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	target.draw(playButton);
+	target.draw(playText);
+
+	target.draw(settingsButton);
+	target.draw(settingsText);
+
+	target.draw(quitButton);
+	target.draw(quitText);
 }

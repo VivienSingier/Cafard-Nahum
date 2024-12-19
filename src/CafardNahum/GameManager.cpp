@@ -26,13 +26,9 @@ Player* GameManager::GetPlayer()
 void GameManager::Init()
 {
     window.create(sf::VideoMode(1080, 720), "Cafard Nahum");
-	view = sf::View(sf::FloatRect(540.f, 360.f, 1080.f, 720.f));
-	view.zoom(0.7);
-	window.setView(view);
 
 	player = new Player( sf::Vector2f(300.f, 400.f), sf::Vector2f(2.f, 2.f), 10, 
 		sf::Vector2f(200.f, 200.f));
-	view.setCenter(player->getPosition());
 
 	sceneManager = SceneManager::GetInstance();
 	sceneManager->GetCurrentScene()->AddPlayer(player);
@@ -55,9 +51,7 @@ void GameManager::Run()
 		Scene* currentScene = sceneManager->GetCurrentScene();
 		sceneManager->Update(elapsed.asSeconds());
 
-		view.setCenter(player->getPosition());
-
-		window.setView(view);
+		window.setView(*currentScene->view);
 		window.clear(sf::Color::Black);
 		window.draw(*currentScene);
 		window.display();

@@ -4,9 +4,8 @@
 #include "StartMenu.h"
 #include <string>
 
-SettingsScene::SettingsScene(Scene* currentScene) : Scene()
+SettingsScene::SettingsScene() : Scene()
 {
-	activeScene = currentScene;
 
 	text = StaticTextures::GetInstance()->Text1;
 
@@ -52,7 +51,7 @@ void SettingsScene::HandleInput(sf::RenderWindow& window)
 	{
 		if (IsMouseInside(backButton, window))
 		{
-			activeScene = new StartMenu(activeScene);
+
 		}
 
 	}

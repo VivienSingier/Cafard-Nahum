@@ -10,10 +10,8 @@ class SettingsScene : public Scene
 	sf::Text backText;
 	sf::Font text;
 
-	Scene* activeScene;
-
 public:
-	SettingsScene(Scene* currentScene);
+	SettingsScene();
 	bool IsMouseInside(sf::RectangleShape& button, sf::RenderWindow& window);
 	void HandleInput(sf::RenderWindow& window);
 }; 
