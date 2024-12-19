@@ -6,7 +6,7 @@
 class SceneManager
 {
 	static SceneManager* instance;
-	std::vector <Scene*> scenes;
+	std::vector <std Scene*> scenes;
 	Scene* currentScene;
 
 public :
