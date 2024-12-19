@@ -12,21 +12,29 @@ StartMenu::StartMenu() :
 	
 	view = new sf::View(sf::FloatRect(0.f, 0.f, 1080.f, 720.f));
 
+	menuTexture = StaticTextures::GetInstance()->MenuTexture;
 	PlayTexture = StaticTextures::GetInstance()->PlayButton;
 	SettingsTexture = StaticTextures::GetInstance()->SettingsButton;
 	QuitTexture = StaticTextures::GetInstance()->QuitButton;
+	PlayTexture2 = StaticTextures::GetInstance()->PlayButton2;
+	SettingsTexture2 = StaticTextures::GetInstance()->SettingsButton2;
+	QuitTexture2 = StaticTextures::GetInstance()->QuitButton2;
+
+	Menu.setTexture(menuTexture);
+	Menu.setPosition(0, 0);
+	Menu.setScale(1, 1);
 
 	playButton.setTexture(PlayTexture);
-	playButton.setScale(1,1);
-	playButton.setPosition(440, 300);
+	playButton.setScale(2,2);
+	playButton.setPosition(467, 300);
 
 	settingsButton.setTexture(SettingsTexture);
-	settingsButton.setPosition(440, 450);
-	settingsButton.setScale(1, 1);
+	settingsButton.setPosition(467, 450);
+	settingsButton.setScale(2, 2);
 
 	quitButton.setTexture(QuitTexture);
-	quitButton.setPosition(440 , 600);
-	quitButton.setScale(1,1);
+	quitButton.setPosition(467, 570);
+	quitButton.setScale(2,2);
 }
 
 bool StartMenu::IsMouseInside(sf::Sprite& button, sf::RenderWindow& window)
@@ -48,26 +56,48 @@ bool StartMenu::IsMouseInside(sf::Sprite& button, sf::RenderWindow& window)
 
 void StartMenu::ShowSettings()
 {
+	new SettingsScene();
 }
 
 void StartMenu::HandleInput(sf::RenderWindow& window)
 {
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
+
+	if (IsMouseInside(playButton, window))
 	{
-		if(IsMouseInside(playButton,window))
+		playButton.setTexture(PlayTexture2);
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			/*lancer le jeu*/
 		}
-		if(IsMouseInside(settingsButton, window))
+	}
+	else
+		playButton.setTexture(PlayTexture);
+
+
+	if (IsMouseInside(settingsButton, window))
+	{
+		settingsButton.setTexture(SettingsTexture2);
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			ShowSettings();
 		}
-		if(IsMouseInside(quitButton, window))
+	}
+	else
+		settingsButton.setTexture(SettingsTexture);
+
+	if (IsMouseInside(quitButton, window))
+	{
+		quitButton.setTexture(QuitTexture2);
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			std::cout << "nik tes morts " << std::endl;
 			window.close();
 		}
 	}
+	else
+		quitButton.setTexture(QuitTexture);
+
+
+
 	std::cout << sf::Mouse::getPosition(window).x << " | " << sf::Mouse::getPosition(window).y << std::endl;
 }
 
@@ -78,6 +108,8 @@ void StartMenu::Update(float deltatime)
 
 void StartMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	target.draw(Menu);
+
 	target.draw(playButton);
 
 	target.draw(settingsButton);

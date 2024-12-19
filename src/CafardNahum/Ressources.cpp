@@ -104,14 +104,14 @@ void StaticTextures::Init()
 	UI["BossHealthBar"].loadFromFile("../../../res/imgStatic/healthbarContent.png");
 
 	MenuTexture.loadFromFile("../../../res/imgStatic/StartMenu.jpg");
-	PlayButton.loadFromFile("../../../res/imgStatic/PlayButton");
-	PlayButton2.loadFromFile("../../../res/imgStatic/PlayButton2");
-	SettingsButton.loadFromFile("../../../res/imgStatic/SettingsButton");
-	SettingsButton2.loadFromFile("../../../res/imgStatic/SettingsButton2");
-	QuitButton.loadFromFile("../../../res/imgStatic/QuitButton");
-	QuitButton2.loadFromFile("../../../res/imgStatic/QuitButton2");
-	BackButton.loadFromFile("../../../res/imgStatic/BackButton");
-	BackButton2.loadFromFile("../../../res/imgStaic/BackButton2");
+	PlayButton.loadFromFile("../../../res/imgStatic/PlayButton.png", sf::IntRect(0, 24, 100, 43));
+	PlayButton2.loadFromFile("../../../res/imgStatic/PlayButton2.png", sf::IntRect(0, 24, 100, 43));
+	SettingsButton.loadFromFile("../../../res/imgStatic/SettingsButton.png", sf::IntRect(0, 24, 100, 43));
+	SettingsButton2.loadFromFile("../../../res/imgStatic/SettingsButton2.png", sf::IntRect(0, 24, 100, 43));
+	QuitButton.loadFromFile("../../../res/imgStatic/QuitButton.png", sf::IntRect(0, 24, 100, 43));
+	QuitButton2.loadFromFile("../../../res/imgStatic/QuitButton2.png", sf::IntRect(0, 24, 100, 43));
+	BackButton.loadFromFile("../../../res/imgStatic/BackButton.png", sf::IntRect(0, 24, 100, 43));
+	BackButton2.loadFromFile("../../../res/imgStatic/BackButton2.png", sf::IntRect(0, 24, 100, 43));
 
 	text.loadFromFile("../../../res/Text/Text1.ttf");
 

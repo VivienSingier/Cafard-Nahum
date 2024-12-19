@@ -7,6 +7,7 @@ class SettingsScene : public Scene
 {
 	sf::Sprite backButton;
 	sf::Texture BackButton;
+	sf::Texture BackButton2;
 	sf::Font text;
 	sf::Text settingsText;
 

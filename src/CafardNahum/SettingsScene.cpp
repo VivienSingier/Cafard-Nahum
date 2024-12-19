@@ -11,21 +11,22 @@ SettingsScene::SettingsScene() : Scene()
 
 
 	BackButton = StaticTextures::GetInstance()->BackButton;
+	BackButton2 = StaticTextures::GetInstance()->BackButton2;
 	text = StaticTextures::GetInstance()->text;
 
 	settingsText.setFont(text);
-	settingsText.setString("Settings :\n\n"
-		"- Movement : ZQSD\n"
-		"- Shoot : Left Click\n"
-		"- Swap Weapon : E\n"
-		"- Rules : Your objective is to kill TwoFace and his army of roaches.\n");
+	settingsText.setString("Settings :\n\n\n"
+		"- Movement : ZQSD\n\n"
+		"- Shoot : Left Click\n\n"
+		"- Swap Weapon : E\n\n"
+		"- Rules : Your objective is to kill TwoFace\n          and his army of roaches.\n\n");
 	settingsText.setCharacterSize(20);
 	settingsText.setFillColor(sf::Color::White);
-	settingsText.setPosition(520,200);
+	settingsText.setPosition(300,200);
 
 	backButton.setTexture(BackButton);
-	backButton.setPosition(10, 670);
-	backButton.setScale(1,1);
+	backButton.setPosition(20, 600);
+	backButton.setScale(2,2);
 }
 
 bool SettingsScene::IsMouseInside(sf::Sprite& button, sf::RenderWindow& window)
@@ -46,14 +47,19 @@ bool SettingsScene::IsMouseInside(sf::Sprite& button, sf::RenderWindow& window)
 
 void SettingsScene::HandleInput(sf::RenderWindow& window)
 {
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	
+	if (IsMouseInside(backButton, window))
 	{
-		if (IsMouseInside(backButton, window))
+		backButton.setTexture(BackButton2);
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-
+			new StartMenu();
 		}
-
 	}
+	else
+		backButton.setTexture(BackButton);
+
+	
 }
 void SettingsScene::Update(float deltatime)
 {
@@ -64,7 +70,5 @@ void SettingsScene::draw(sf::RenderTarget& target, sf::RenderStates states) cons
 {
 	target.draw(settingsText);
 
-	target.draw(backButton);
-
-	
+	target.draw(backButton);	
 }
