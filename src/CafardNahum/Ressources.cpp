@@ -101,7 +101,7 @@ void StaticTextures::Init()
 	Boss["TwoFace"].loadFromFile("../../../res/Enemies/twoFace.png", sf::IntRect(0, 0, 64, 64));
 
 	UI["BossHealthBarEmpty"].loadFromFile("../../../res/imgStatic/healthbarEmpty.png", sf::IntRect(0, 0, 200, 10));
-	UI["BossHealthBar"].loadFromFile("../../../res/imgStatic/healthbarContent.png", sf::IntRect(0, 0, 200, 10));
+	UI["BossHealthBar"].loadFromFile("../../../res/imgStatic/healthbarContent.png");
 
 	MenuTexture.loadFromFile("../../../res/imgStatic/StartMenu.jpg");
 

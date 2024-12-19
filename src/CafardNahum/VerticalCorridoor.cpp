@@ -4,6 +4,8 @@
 VerticalCorridoor::VerticalCorridoor(float x, float y) : Corridoor::Corridoor(x, y)
 {
 	Init();
+	width = 7 * 32;
+	height = 16 * 32;
 }
 
 void VerticalCorridoor::Init()

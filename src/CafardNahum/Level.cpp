@@ -38,7 +38,7 @@ Level::Level() : Scene()
 	HorizontalCorridoor* Corr4 = new HorizontalCorridoor(2742 + 1024, 360);
 	corridoors.push_back(Corr4);
 
-	Room* Room5 = new Room(3222 + 1024, 200, 3);
+	Room* Room5 = new Room(3222 + 1024, 104, 3);
 	rooms.push_back(Room5);
 
 	TwoFace* newBoss = new TwoFace(sf::Vector2f(4246 + 100, 300));

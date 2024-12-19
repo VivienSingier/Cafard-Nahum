@@ -1,10 +1,13 @@
 #pragma once
 #include "Entity.h"
+#include <string>
 
 class BossHealthBar : public Entity
 {
 	int health;
 	int maxHealth;
+
+	std::string path;
 
 	sf::Sprite healthSprite;
 	sf::Texture healthTexture;

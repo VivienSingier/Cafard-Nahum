@@ -13,7 +13,7 @@ TwoFaceCross1::TwoFaceCross1(float x, float y, sf::Vector2f direction) :
 		sf::Vector2f(x, y), sf::Vector2f(2, 2), direction)
 {
 	damage = 1;
-	this->setOrigin(9, 6);
+	this->setOrigin(18, 12);
 
 	spawnClock.restart();
 

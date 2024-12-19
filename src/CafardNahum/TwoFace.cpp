@@ -22,6 +22,7 @@ TwoFace::TwoFace(sf::Vector2f position) :
 	behaviourClock.restart();
 	spiralClock.restart();
 	hasCrossShot = true;
+	hasBeenUpdated = false;
 
 	spiralAngle = 0;
 }
@@ -109,6 +110,12 @@ void TwoFace::HandleBehaviour()
 	}
 }
 
+void TwoFace::TakeDamage(int damage)
+{
+	Boss::TakeDamage(damage);
+	b->TakeDamage(damage);
+}
+
 void TwoFace::Update(float deltatime)
 {
 	HandleBehaviour();
@@ -116,12 +123,16 @@ void TwoFace::Update(float deltatime)
 	{
 		needsToBeDestroyed = true;
 	}
+	hasBeenUpdated = true;
 	b->Update();
+
 }
 
 void TwoFace::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	Boss::draw(target, states);
-	target.draw(c1->sphere);
-	b->draw(target, states);
+	if (hasBeenUpdated)
+	{
+		b->draw(target, states);
+	}
 }

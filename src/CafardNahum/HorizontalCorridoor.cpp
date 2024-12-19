@@ -4,6 +4,8 @@
 HorizontalCorridoor::HorizontalCorridoor(float x, float y) : Corridoor::Corridoor(x, y)
 {
 	Init();
+	width = 8 * 32;
+	height = 15 * 32;
 }
 
 void HorizontalCorridoor::Init()

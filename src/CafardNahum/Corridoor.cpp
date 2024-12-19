@@ -10,7 +10,7 @@ Corridoor::Corridoor(float x, float y)
 
 void Corridoor::Init()
 {
-
+	 
 }
 
 std::vector <StaticObject*> Corridoor::GetStatics()

@@ -20,6 +20,8 @@ Room::Room(float x, float y, int cIndex)
 	roomCollider = new ColliderRect(pos.x + 64, pos.y + 64, 32 * 13, 32 * 13);
 
 	Init();
+	width = 32 * size;
+	height = 32 * size + 32;
 }
 
 void Room::AddWall(int x, int y)
@@ -32,7 +34,7 @@ void Room::AddWall(int x, int y)
 		sf::Vector2f(pos.x + 32.f * x, (pos.y + 16) + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 
-	if (y > 6)
+	if (y > (size / 2))
 	{
 		forwardObjects.push_back(newWall);
 		forwardObjects.push_back(newHalfWall);
@@ -134,7 +136,8 @@ void Room::Init()
 	int i = 0;
 	while (std::getline(file, str))
 	{
-		for (int j = 0; j < 17; j++)
+		size = str.size();
+		for (int j = 0; j < size; j++)
 		{
 			if (str[j] == 'W')
 			{

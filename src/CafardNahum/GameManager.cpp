@@ -6,7 +6,7 @@ GameManager* GameManager::instance = nullptr;
 
 GameManager::GameManager()
 {
-	//Init();
+
 }
 
 GameManager* GameManager::getInstance()

@@ -13,6 +13,9 @@ class Corridoor : public sf::Drawable
 	std::vector <StaticObject*> forwardObjects;
 
 	sf::Vector2f pos;
+public:
+	int width;
+	int height;
 
 public:
 	Corridoor(float x, float y);

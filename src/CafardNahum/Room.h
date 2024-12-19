@@ -16,6 +16,10 @@ class Room : public sf::Drawable
 	ColliderRect* roomCollider;
 	sf::Vector2f pos;
 	int index;
+	int size;
+public:
+	int width;
+	int height;
 
 public:
 	std::vector <StaticObject*> backgroundObjects;
