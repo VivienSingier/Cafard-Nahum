@@ -51,6 +51,12 @@ public:
 	sf::Texture QuitButton2;
 	sf::Texture BackButton;
 	sf::Texture BackButton2;
+	sf::Texture RestartButton;
+	sf::Texture RestartButton2;
+	sf::Texture MainMenuButton;
+	sf::Texture MainMenuButton2;
+	sf::Texture Victory;
+	sf::Texture GameOver;
 	sf::Font text;
 
 	StaticTextures();

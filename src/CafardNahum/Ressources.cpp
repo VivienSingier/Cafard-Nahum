@@ -112,6 +112,12 @@ void StaticTextures::Init()
 	QuitButton2.loadFromFile("../../../res/imgStatic/QuitButton2.png", sf::IntRect(0, 24, 100, 43));
 	BackButton.loadFromFile("../../../res/imgStatic/BackButton.png", sf::IntRect(0, 24, 100, 43));
 	BackButton2.loadFromFile("../../../res/imgStatic/BackButton2.png", sf::IntRect(0, 24, 100, 43));
+	RestartButton.loadFromFile("../../../res/imgStatic/RestartButton.png", sf::IntRect(0, 24, 100, 43));
+	RestartButton2.loadFromFile("../../../res/imgStatic/RestartButton2.png", sf::IntRect(0, 24, 100, 43));
+	MainMenuButton.loadFromFile("../../../res/imgStatic/MainMenuButton.png", sf::IntRect(0, 24, 100, 43));
+	MainMenuButton2.loadFromFile("../../../res/imgStatic/MainMenuButton2.png", sf::IntRect(0, 24, 100, 43));
+	Victory.loadFromFile("../../../res/imgStatic/Victory.png", sf::IntRect(0, 24, 100, 100));
+	GameOver.loadFromFile("../../../res/imgStatic/GameOver.png", sf::IntRect(0, 24, 100, 100));
 
 	text.loadFromFile("../../../res/Text/Text1.ttf");
 
