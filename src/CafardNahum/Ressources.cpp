@@ -104,8 +104,9 @@ void StaticTextures::Init()
 	UI["BossHealthBar"].loadFromFile("../../../res/imgStatic/healthbarContent.png", sf::IntRect(0, 0, 200, 10));
 
 	MenuTexture.loadFromFile("../../../res/imgStatic/StartMenu.jpg");
-	Text1.loadFromFile("../../../res/Text/Text1");
-	Text2.loadFromFile("../../../res/Text/Text2");
+
+	Text1.loadFromFile("../../../res/Text/Text1.ttf");
+	Text2.loadFromFile("../../../res/Text/Text2.ttf");
 
 	sf::Texture walkCycleR1;
 	walkCycleR1.loadFromFile("../../../res/Player/PlayerSpriteSheet.png", sf::IntRect(8, 7, 11, 21));
