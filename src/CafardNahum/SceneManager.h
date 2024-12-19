@@ -1,12 +1,14 @@
 #pragma once
 #include <vector>
+#include <map>
+#include <string>
 #include "Scene.h"
 #include "Level.h"
 
 class SceneManager
 {
 	static SceneManager* instance;
-	std::vector <Scene*> scenes;
+	std::map <std::string, Scene*> scenes;
 	Scene* currentScene;
 
 public :
@@ -14,7 +16,7 @@ public :
 	static SceneManager* GetInstance();
 	Scene* GetCurrentScene();
 	void Update(float deltatime);
-	void SetCurrentScene(Scene* scene);
+	void SetCurrentScene(std::string);
 
 };
 

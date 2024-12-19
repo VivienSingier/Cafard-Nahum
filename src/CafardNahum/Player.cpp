@@ -29,6 +29,8 @@ Player::Player(sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vecto
     secondaryWeapon = nullptr;
 
     b = new PlayerHealthBar();
+    hitClock.restart();
+    isColored = false;
 }
 
 void Player::Update(float deltatime)
@@ -39,12 +41,15 @@ void Player::Update(float deltatime)
     holdWeapon->Rotate(angle);
     Shoot();
     b->Update(deltatime);
+    Hit();
 }
 
 void Player::TakeDamage(int damage)
 {
     Alive::TakeDamage(damage);
     b->TakeDamage(damage);
+    isColored = true;
+    hitClock.restart();
 }
 
 void Player::Move(float x, float y)
@@ -146,6 +151,23 @@ void Player::Shoot()
             holdWeapon->Shoot(angle);
 
             shootClock.restart();
+        }
+    }
+}
+
+void Player::Hit()
+{
+
+    if (isColored)
+    {
+        if (hitClock.getElapsedTime().asSeconds() > 0.2f)
+        {
+            isColored = false;
+            sprite.setColor(sf::Color(255, 255, 255));
+        }
+        else
+        {
+            sprite.setColor(sf::Color(255, 0, 0));
         }
     }
 }

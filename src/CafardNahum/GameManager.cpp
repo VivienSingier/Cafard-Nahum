@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "GameManager.h"
-#include <random>
 
 GameManager* GameManager::instance = nullptr;
 
@@ -32,8 +31,6 @@ void GameManager::Init()
 
 	sceneManager = SceneManager::GetInstance();
 	sceneManager->GetCurrentScene()->AddPlayer(player);
-
-	srand(time(NULL));
 }
 
 void GameManager::Run()

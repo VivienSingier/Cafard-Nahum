@@ -17,6 +17,8 @@ class Player : public Entity, public Movable, public Alive
 	Weapon* holdWeapon;
 	Weapon* secondaryWeapon;
 	sf::Vector2f UnitVector;
+	sf::Clock hitClock;
+	bool isColored;
 
 	ColliderSphere* cO;
 	ColliderSphere* cE;
@@ -38,6 +40,7 @@ public:
 	float GetShotAngle();
 	void TakeDamage(int damage) override;
 	void Shoot();
+	void Hit();
 	void draw(sf::RenderTarget& targer, sf::RenderStates states) const override;
 
 };

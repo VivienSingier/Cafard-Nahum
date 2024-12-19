@@ -170,11 +170,14 @@ void PoisonRoach::TakeDamage(int damage)
 	{
 		needsToBeDestroyed = true;
 	}
+	isColored = true;
+	hitClock.restart();
 }
 
 void PoisonRoach::Update(float deltatime)
 {
 	HandleMovement(deltatime);
+	Hit();
 }
 
 void PoisonRoach::draw(sf::RenderTarget& target, sf::RenderStates states) const

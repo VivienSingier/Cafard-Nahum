@@ -7,7 +7,7 @@
 #include "SceneManager.h"
 #include "BossHealthBar.h"
 #include "Room.h"
-#include <iostream>
+#include <random>
 
 TwoFace::TwoFace(sf::Vector2f position) :
 	Boss::Boss(&StaticTextures::GetInstance()->Boss["TwoFace"], position, sf::Vector2f(2, 2), sf::Vector2f(1, 1), 200)
@@ -74,9 +74,10 @@ void TwoFace::SeekingShot()
 
 void TwoFace::CrossShots()
 {
+	int iAngle = rand() % 45;
 	for (int i = 0; i < 4; i++)
 	{
-		float angle = 90 * i;
+		float angle =  iAngle + 90 * i;
 		float radians = 3.1415926536 / 180 * angle;
 		float x = 1.f * cos(radians);
 		float y = -1.f * -sin(radians);
@@ -94,12 +95,12 @@ void TwoFace::HandleBehaviour()
 	{
 		SpiralShot();
 	}
-	if (elapsed > 5.0f && !hasCrossShot)
+	if (elapsed > 4.5f && !hasCrossShot)
 	{
 		CrossShots();
 		hasCrossShot = true;
 	}
-	if (elapsed > 8.0f)
+	if (elapsed > 7.5f)
 	{
 		if (health < maxHealth / 2)
 		{
@@ -114,6 +115,8 @@ void TwoFace::TakeDamage(int damage)
 {
 	Boss::TakeDamage(damage);
 	b->TakeDamage(damage);
+	isColored = true;
+	hitClock.restart();
 }
 
 void TwoFace::Update(float deltatime)
@@ -125,6 +128,7 @@ void TwoFace::Update(float deltatime)
 	}
 	hasBeenUpdated = true;
 	b->Update();
+	Hit();
 
 }
 

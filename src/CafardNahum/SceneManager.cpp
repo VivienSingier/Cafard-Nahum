@@ -7,10 +7,11 @@ SceneManager* SceneManager::instance = nullptr;
 
 SceneManager::SceneManager()
 {
-	currentScene = new Level();
-	scenes.push_back(currentScene);
-	//currentScene = new StartMenu();
-	//scenes.push_back(currentScene);
+	scenes["StartMenu"] = new StartMenu();
+	scenes["Level"] = new Level();
+	scenes["SettingsScene"] = new SettingsScene();
+
+	currentScene = scenes["Level"];
 }
 
 SceneManager* SceneManager::GetInstance()
@@ -27,21 +28,12 @@ Scene* SceneManager::GetCurrentScene()
 	return currentScene;
 }
 
-void SceneManager::SetCurrentScene(Scene* scene)
+void SceneManager::SetCurrentScene(std::string string)
 {
-	if (std::find(scenes.begin(), scenes.end(), scene) != scenes.end())
-	{
-		if (currentScene != scene)
-		{
-			currentScene = scene;
-		}
-	}
+	currentScene = scenes[string];
 }
 
 void SceneManager::Update(float deltatime)
 {
-	for (int i = 0; i < scenes.size(); i++)
-	{
-		scenes[i]->Update(deltatime);
-	}
+	currentScene->Update(deltatime);
 }
