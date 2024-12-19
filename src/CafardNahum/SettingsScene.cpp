@@ -15,7 +15,7 @@ SettingsScene::SettingsScene(Scene* currentScene) : Scene()
 		"- Movement : ZQSD\n"
 		"- Shoot : Left Click\n"
 		"- Swap Weapon : E\n"
-		"- Rules : Your objective is to kill TwoFace and his army of roach.\n");
+		"- Rules : Your objective is to kill TwoFace and his army of roaches.\n");
 	settingsText.setCharacterSize(20);
 	settingsText.setFillColor(sf::Color::White);
 	settingsText.setPosition(520,200);
