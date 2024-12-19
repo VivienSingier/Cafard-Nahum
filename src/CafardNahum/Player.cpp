@@ -9,7 +9,9 @@
 #include "Room.h"
 #include "Wall.h"
 #include "MayoBottle.h"
+#include "PepperGun.h"
 #include "Ressources.h"
+#include "PlayerHealthBar.h"
 
 #include <iostream>
 
@@ -24,16 +26,37 @@ Player::Player(sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vecto
     cN = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2 , this->getPosition().y + sprite.getGlobalBounds().height / 2 - 7.f);
     cS = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2, this->getPosition().y + sprite.getGlobalBounds().height / 2 + 7.f);
 
-    holdWeapon = new MayoBottle(cE->sphere.getPosition().x - 10, cE->sphere.getPosition().y + 10);
-    secondaryWeapon = nullptr;
+    holdWeapon = new PepperGun(cE->sphere.getPosition().x - 10, cE->sphere.getPosition().y + 10);
+    secondaryWeapon = new MayoBottle(cE->sphere.getPosition().x - 10, cE->sphere.getPosition().y + 10);
+
+    changeWeapon = false;
+
+    b = new PlayerHealthBar();
+    hitClock.restart();
+    isColored = false;
 }
 
 void Player::Update(float deltatime)
 {
     HandleInput(deltatime);
+    SceneManager::GetInstance()->GetCurrentScene()->view->setCenter(getPosition());
+    
+    WeaponChange();
+
     float angle = GetShotAngle();
     holdWeapon->Rotate(angle);
     Shoot();
+
+    b->Update(deltatime);
+    Hit();
+}
+
+void Player::TakeDamage(int damage)
+{
+    Alive::TakeDamage(damage);
+    b->TakeDamage(damage);
+    isColored = true;
+    hitClock.restart();
 }
 
 void Player::Move(float x, float y)
@@ -46,6 +69,7 @@ void Player::Move(float x, float y)
     cS->Move(x, y);
 
     holdWeapon->Move(x, y);
+    secondaryWeapon->Move(x, y);
 }
 
 void Player::HandleInput(float deltatime)
@@ -113,13 +137,19 @@ float Player::GetShotAngle()
     return angle;
 }
 
-void Player::WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon)
+void Player::WeaponChange()
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) && changeWeapon == false)
     {
         Weapon* weaponChange = holdWeapon;
         holdWeapon = secondaryWeapon;
         secondaryWeapon = weaponChange;
+        std::cout << "Arme Change\n";
+
+        changeWeapon = true;
+    }
+    else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
+        changeWeapon = false;
     }
 }
 
@@ -129,7 +159,7 @@ void Player::Shoot()
     {
         static sf::Clock shootClock;
 
-        if (shootClock.getElapsedTime().asSeconds() >= 0.5f)
+        if (shootClock.getElapsedTime().asSeconds() >= holdWeapon->getDelay())
         {
             float angle = GetShotAngle();
             holdWeapon->Shoot(angle);
@@ -139,8 +169,30 @@ void Player::Shoot()
     }
 }
 
+void Player::Hit()
+{
+
+    if (isColored)
+    {
+        if (hitClock.getElapsedTime().asSeconds() > 0.2f)
+        {
+            isColored = false;
+            sprite.setColor(sf::Color(255, 255, 255));
+        }
+        else
+        {
+            sprite.setColor(sf::Color(255, 0, 0));
+        }
+    }
+}
+
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     Entity::draw(target, states);
     holdWeapon->draw(target, states);
+}
+
+void Player::drawHealthBar(sf::RenderTarget& target, sf::RenderStates states) const
+{
+    b->draw(target, states);
 }

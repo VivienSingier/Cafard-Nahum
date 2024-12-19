@@ -8,7 +8,8 @@ Enemy::Enemy(sf::Texture* texture, sf::Vector2f position, sf::Vector2f scale, sf
 	Movable::Movable(speed),
 	Alive::Alive(cHealth)
 {
-
+    hitClock.restart();
+    isColored = false;
 }
 
 float Enemy::GetShotAngle()
@@ -20,4 +21,21 @@ float Enemy::GetShotAngle()
 	angle *= (180.0 / 3.141592653589793238463);
 
 	return angle;
+}
+
+void Enemy::Hit()
+{
+
+    if (isColored)
+    {
+        if (hitClock.getElapsedTime().asSeconds() > 0.2f)
+        {
+            isColored = false;
+            sprite.setColor(sf::Color(255, 255, 255));
+        }
+        else
+        {
+            sprite.setColor(sf::Color(255, 0, 0));
+        }
+    }
 }

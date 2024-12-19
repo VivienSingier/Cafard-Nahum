@@ -7,7 +7,7 @@
 #include "StaticObject.h"
 #include "PoisonBullet1.h"
 #include "PoisonBullet2.h"
-#include <iostream>
+#include <stdlib.h>
 
 PoisonRoach::PoisonRoach(sf::Vector2f position) :
 	Enemy(&StaticTextures::GetInstance()->poisonRoachWalkCycleR[0], position,
@@ -17,8 +17,14 @@ PoisonRoach::PoisonRoach(sf::Vector2f position) :
 	isMoving = false;
 	targetPos = sf::Vector2f(0, 0);
 
+	
 	actionClock.restart();
 	shootingClock.restart();
+
+	startClock.restart();
+	hasStarted = false;
+	int delay = rand() % 200;
+	startDelay = (float)delay;
 
 	c = new ColliderSphere(25, this->getPosition().x, this->getPosition().y);
 	mainColliders.push_back(c);
@@ -31,41 +37,48 @@ PoisonRoach::PoisonRoach(sf::Vector2f position) :
 
 void PoisonRoach::HandleMovement(float deltatime)
 { 
-	if (!isMoving)
+	if (!hasStarted)
 	{
-		// Début du cycle
-		targetPos = GameManager::getInstance()->GetPlayer()->getPosition();
-		actionClock.restart();
-		isMoving = true;
+		hasStarted = true;
+		startClock.restart();
 	}
-	else if (actionClock.getElapsedTime().asSeconds() < 3.0 && isMoving)
+	if (startClock.getElapsedTime().asSeconds() > ((float)startDelay / 200) && hasStarted)
 	{
-		// Déplacement et tirs simples
+		if (!isMoving)
+		{
+			// Début du cycle
+			targetPos = GameManager::getInstance()->GetPlayer()->getPosition();
+			actionClock.restart();
+			isMoving = true;
+		}
+		else if (actionClock.getElapsedTime().asSeconds() < 3.0 && isMoving)
+		{
+			// Déplacement et tirs simples
 
-		float enemyPositionX = this->getPosition().x;
-		float enemyPositionY = this->getPosition().y;
-		float playerPositionX = targetPos.x;
-		float playerPositionY = targetPos.y;
+			float enemyPositionX = this->getPosition().x;
+			float enemyPositionY = this->getPosition().y;
+			float playerPositionX = targetPos.x;
+			float playerPositionY = targetPos.y;
 
-		float distanceX = enemyPositionX  - playerPositionX;
-		float distanceY = enemyPositionY  - playerPositionY;
+			float distanceX = enemyPositionX - playerPositionX;
+			float distanceY = enemyPositionY - playerPositionY;
 
-		float x = (distanceX < 0) - (distanceX > 0);
-		float y = (distanceY < 0) - (distanceY > 0);
+			float x = (distanceX < 0) - (distanceX > 0);
+			float y = (distanceY < 0) - (distanceY > 0);
 
-		if (abs(distanceX) <= 0.1) x = 0;
-		if (abs(distanceY) <= 0.1) y = 0;
-		HandleCollision(x, y, deltatime);
-		Shoot();
+			if (abs(distanceX) <= 0.1) x = 0;
+			if (abs(distanceY) <= 0.1) y = 0;
+			HandleCollision(x, y, deltatime);
+			Shoot();
+		}
+		else if (actionClock.getElapsedTime().asSeconds() >= 4.0 && isMoving)
+		{
+			//Tir chargé
+			MultiShot();
+			actionClock.restart();
+			isMoving = false;
+		}
 	}
-	else if (actionClock.getElapsedTime().asSeconds() >= 5.0 && isMoving)
-	{
-		//Tir chargé
-		MultiShot();
-		actionClock.restart();
-		isMoving = false;
-	}
-
 }
 
 void PoisonRoach::HandleCollision(float x, float y, float deltatime)
@@ -170,11 +183,14 @@ void PoisonRoach::TakeDamage(int damage)
 	{
 		needsToBeDestroyed = true;
 	}
+	isColored = true;
+	hitClock.restart();
 }
 
 void PoisonRoach::Update(float deltatime)
 {
 	HandleMovement(deltatime);
+	Hit();
 }
 
 void PoisonRoach::draw(sf::RenderTarget& target, sf::RenderStates states) const

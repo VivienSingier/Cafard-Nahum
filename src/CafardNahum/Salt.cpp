@@ -1,36 +1,35 @@
 #include "pch.h"
-#include "MayoBullet1.h"
+#include "Salt.h"
 #include "ColliderSphere.h"
 #include "Ressources.h"
 #include "Enemy.h"
 #include "SceneManager.h"
 #include "Room.h"
 
-MayoBullet1::MayoBullet1(float x, float y, sf::Vector2f direction) :
-	Bullet(&StaticTextures::GetInstance()->Bullets["MayoBullet"], 
-			 sf::Vector2f(x, y), sf::Vector2f(1, 1), direction)
+Salt::Salt(float x, float y, sf::Vector2f direction) :
+	Bullet(&StaticTextures::GetInstance()->Bullets["Salt"],
+		sf::Vector2f(x, y), sf::Vector2f(0.5, 0.5), direction)
 {
-	damage = 2;
-	this->setOrigin(sf::Vector2f(0, 6));
+	damage = 1;
+	this->setOrigin(sf::Vector2f(8, 8));
 
-	c1 = new ColliderSphere(5, x, y);
-	c1->Move(direction.x * 13.f, direction.y*13.f);
+	c1 = new ColliderSphere(4, x, y);
 	colliders.push_back(c1);
 }
 
-void MayoBullet1::Move(float deltatime)
+void Salt::Move(float deltatime)
 {
-	move(sf::Vector2f(500 * deltatime * speed.x, 500 * deltatime * speed.y));
-	c1->Move(500 * deltatime * speed.x, 500 * deltatime * speed.y);
+	move(sf::Vector2f(600 * deltatime * speed.x, 600 * deltatime * speed.y));
+	c1->Move(600 * deltatime * speed.x, 600 * deltatime * speed.y);
 }
 
-void MayoBullet1::Update(float deltatime)
+void Salt::Update(float deltatime)
 {
 	Move(deltatime);
 	HandleCollisions();
 }
 
-void MayoBullet1::HandleCollisions()
+void Salt::HandleCollisions()
 {
 	Bullet::HandleCollisions();
 	std::vector <Enemy*> enemies = SceneManager::GetInstance()->GetCurrentScene()->GetCurrentRoom()->Enemies;

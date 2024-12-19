@@ -7,6 +7,7 @@
 #include "ColliderSphere.h"
 #include "ColliderRect.h"
 #include "Door.h"
+#include "PoisonRoach.h"
 #include "SceneManager.h"
 #include "GameManager.h"
 #include "Ressources.h"
@@ -34,16 +35,22 @@ void Room::AddWall(int x, int y)
 		sf::Vector2f(pos.x + 32.f * x, (pos.y + 16) + 32.f * y),
 		sf::Vector2f(2.f, 2.f));
 
-	if (y > (size / 2))
+	if (x == 0 || x == size - 1)
 	{
-		forwardObjects.push_back(newWall);
-		forwardObjects.push_back(newHalfWall);
+		if (y == (size / 2) - 3)
+		{
+			objects.push_back(newWall);
+		}
+		else
+		{
+			forwardObjects.push_back(newWall);
+		}
 	}
 	else
 	{
-		objects.push_back(newWall);
-		objects.push_back(newHalfWall);
+		forwardObjects.push_back(newWall);
 	}
+	objects.push_back(newHalfWall);
 }
 
 void Room::AddFloor(int x, int y)
@@ -67,6 +74,12 @@ void Room::AddDoor(int x, int y)
 {
 	Door* newDoor = new Door(sf::Vector2f(pos.x + 32.f * x, pos.y + 32.f * y));
 	doors.push_back(newDoor);
+}
+
+void Room::AddPoisonRoach(int x, int y)
+{
+	PoisonRoach* newP = new PoisonRoach(sf::Vector2f(pos.x + x * 32.f - 16.f, pos.y + y * 32.f - 16.f));
+	Enemies.push_back(newP);
 }
 
 std::vector <StaticObject*> Room::GetStatics()
@@ -130,6 +143,12 @@ void Room::Init()
 	case 3:
 		path = "../../../res/Maps/Floor1/3.txt";
 		break;
+	case 4:
+		path = "../../../res/Maps/Floor1/4.txt";
+		break;
+	case 5:
+		path = "../../../res/Maps/Floor1/5.txt";
+		break;
 	}
 	std::ifstream file(path);
 	std::string str;
@@ -146,6 +165,11 @@ void Room::Init()
 			else if (str[j] == 'F')
 			{
 				AddFloor(j, i);
+			}
+			else if (str[j] == 'P')
+			{
+				AddFloor(j, i);
+				AddPoisonRoach(j, i);
 			}
 			else if (str[j] == 'D')
 			{

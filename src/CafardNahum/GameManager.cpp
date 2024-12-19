@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "GameManager.h"
-#include <random>
 
 GameManager* GameManager::instance = nullptr;
 
@@ -25,15 +24,13 @@ Player* GameManager::GetPlayer()
 
 void GameManager::Init()
 {
-    window.create(sf::VideoMode(1080, 720), "Cafard Nahum");
+    window.create(sf::VideoMode(1080, 720), "Cafard Nahum", sf::Style::Titlebar | sf::Style::Close);
 
 	player = new Player( sf::Vector2f(300.f, 400.f), sf::Vector2f(2.f, 2.f), 10, 
 		sf::Vector2f(200.f, 200.f));
 
 	sceneManager = SceneManager::GetInstance();
 	sceneManager->GetCurrentScene()->AddPlayer(player);
-
-	srand(time(NULL));
 }
 
 void GameManager::Run()

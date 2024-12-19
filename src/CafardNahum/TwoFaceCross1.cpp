@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "SceneManager.h"
 #include "Room.h"
+#include "iostream"
 
 TwoFaceCross1::TwoFaceCross1(float x, float y, sf::Vector2f direction) :
 	Bullet(&StaticTextures::GetInstance()->Bullets["TwoFaceCross1"],
@@ -48,24 +49,13 @@ void TwoFaceCross1::SpawnChildBullets()
 {
 	if (spawnClock.getElapsedTime().asSeconds() > 0.25f)
 	{
-		float angle = 0;
-		if (speed.y == 1.f)
-		{
-			angle = 90;
-		}
-		else if (speed.y == -1.f)
-		{
-			angle = 270;
-		}
-		else if (speed.x == -1.f)
-		{
-			angle = 180;
-		}
+		float angle = atan2(speed.y * 100.f, speed.x * 100.f);
+		angle *= (180.0 / 3.141592653589793238463);
 
 		float angle1 = angle + 30.f;
-		float radians = 3.1415926536 / 180.f * angle1;
-		float x = 1.f * cos(radians);
-		float y = -1.f * -sin(radians);
+		float radians1 = 3.1415926536 / 180.f * angle1;
+		float x = 1.f * cos(radians1);
+		float y = -1.f * -sin(radians1);
 
 		TwoFaceCross2* newB = new TwoFaceCross2(getPosition().x, getPosition().y, sf::Vector2f(x, y));
 		SceneManager::GetInstance()->GetCurrentScene()->GetCurrentRoom()->EnemyProjectiles.push_back(newB);

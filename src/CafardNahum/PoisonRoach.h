@@ -7,6 +7,11 @@ class ColliderSphere;
 
 class PoisonRoach : public Enemy
 {
+
+	sf::Clock startClock;
+	float startDelay;
+	bool hasStarted;
+
 	sf::Clock actionClock;
 	sf::Clock shootingClock;
 	bool isMoving;

@@ -95,13 +95,19 @@ void StaticTextures::Init()
 	Bullets["TwoFaceCross1"].loadFromFile("../../../res/Bullet/twoFaceCross1.png", sf::IntRect(0, 0, 18, 11));
 	Bullets["TwoFaceCross2"].loadFromFile("../../../res/Bullet/twoFaceCross2.png", sf::IntRect(0, 0, 16, 16));
 	Bullets["TwoFaceSeeking"].loadFromFile("../../../res/Bullet/twoFaceSeeking.png", sf::IntRect(1, 1, 17, 11));
+	Bullets["Pepper"].loadFromFile("../../../res/Bullet/pepper.png", sf::IntRect(0, 0, 16, 16));
+	Bullets["Salt"].loadFromFile("../../../res/Bullet/salt.png", sf::IntRect(0, 0, 16, 16));
 
 	Weapons["MayoBottle"].loadFromFile("../../../res/Weapon/mayo.png", sf::IntRect(0, 0, 16, 16));
+	Weapons["PepperGun"].loadFromFile("../../../res/Weapon/pepperGun.png", sf::IntRect(0, 0, 16, 16));
 
 	Boss["TwoFace"].loadFromFile("../../../res/Enemies/twoFace.png", sf::IntRect(0, 0, 64, 64));
 
 	UI["BossHealthBarEmpty"].loadFromFile("../../../res/imgStatic/healthbarEmpty.png", sf::IntRect(0, 0, 200, 10));
 	UI["BossHealthBar"].loadFromFile("../../../res/imgStatic/healthbarContent.png");
+	UI["PlayerHealthBarStart"].loadFromFile("../../../res/imgStatic/healthBarStart.png");
+	UI["PlayerHealthBarMid"].loadFromFile("../../../res/imgStatic/healthBarMid.png");
+	UI["PlayerHealthBarEnd"].loadFromFile("../../../res/imgStatic/healthBarEnd.png");
 
 	MenuTexture.loadFromFile("../../../res/imgStatic/StartMenu.jpg");
 	PlayButton.loadFromFile("../../../res/imgStatic/PlayButton.png", sf::IntRect(0, 24, 100, 43));

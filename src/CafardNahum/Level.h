@@ -4,9 +4,12 @@
 
 class Room;
 class Corridoor;
+class TwoFace;
 
 class Level : public Scene
 {
+	TwoFace* tFace;
+	bool isTfaceAlive;
 
 public:
 	Level();
