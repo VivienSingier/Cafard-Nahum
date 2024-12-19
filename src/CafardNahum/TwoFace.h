@@ -26,5 +26,6 @@ public:
 	void TakeDamage(int damage) override;
 	void Update(float deltatime) override;
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+	void drawHealthBar(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 

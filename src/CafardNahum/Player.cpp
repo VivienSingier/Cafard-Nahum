@@ -176,5 +176,9 @@ void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     Entity::draw(target, states);
     holdWeapon->draw(target, states);
+}
+
+void Player::drawHealthBar(sf::RenderTarget& target, sf::RenderStates states) const
+{
     b->draw(target, states);
 }

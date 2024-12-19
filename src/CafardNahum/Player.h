@@ -42,6 +42,7 @@ public:
 	void Shoot();
 	void Hit();
 	void draw(sf::RenderTarget& targer, sf::RenderStates states) const override;
+	void drawHealthBar(sf::RenderTarget& targer, sf::RenderStates states) const;
 
 };
 

@@ -12,17 +12,11 @@ Level::Level() : Scene()
 	Room* Room1 = new Room(150, 200, 1);
 	rooms.push_back(Room1);
 
-	PoisonRoach* pR = new PoisonRoach(sf::Vector2f(200, 250));
-	Room1->Enemies.push_back(pR);
-
 	HorizontalCorridoor* Corr1 = new HorizontalCorridoor(Room1->pos.x + Room1->width, 360);
 	corridoors.push_back(Corr1);
 
 	Room* Room2 = new Room(Corr1->pos.x + Corr1->width, 200, 2);
 	rooms.push_back(Room2);
-
-	PoisonRoach* pR2 = new PoisonRoach(sf::Vector2f(1250, 250));
-	Room2->Enemies.push_back(pR2);
 
 	HorizontalCorridoor* Corr2 = new HorizontalCorridoor(Room2->pos.x + Room2->width, 360);
 	corridoors.push_back(Corr2);
@@ -42,8 +36,9 @@ Level::Level() : Scene()
 	Room* Room5 = new Room(Corr4->pos.x + Corr4->width, 104, 5);
 	rooms.push_back(Room5);
 
-	TwoFace* newBoss = new TwoFace(sf::Vector2f(Room5->pos.x + Room5->width / 2, Room5->pos.y + Room5->height/2 - 80));
-	Room5->Enemies.push_back(newBoss);
+	tFace = new TwoFace(sf::Vector2f(Room5->pos.x + Room5->width / 2, Room5->pos.y + Room5->height/2 - 80));
+	Room5->Enemies.push_back(tFace);
+	isTfaceAlive = true;
 
 	view = new sf::View(sf::FloatRect(540.f, 360.f, 1080.f, 720.f));
 	view->zoom(0.7);
@@ -73,5 +68,11 @@ void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	for (int i = 0; i < corridoors.size(); i++)
 	{
 		corridoors[i]->drawForeground(target, states);
+	}
+
+	GameManager::getInstance()->GetPlayer()->drawHealthBar(target, states);
+	if (rooms[4]->Enemies.size() > 0)
+	{
+		tFace->drawHealthBar(target, states);
 	}
 }

@@ -135,6 +135,10 @@ void TwoFace::Update(float deltatime)
 void TwoFace::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	Boss::draw(target, states);
+}
+
+void TwoFace::drawHealthBar(sf::RenderTarget& target, sf::RenderStates states) const
+{
 	if (hasBeenUpdated)
 	{
 		b->draw(target, states);

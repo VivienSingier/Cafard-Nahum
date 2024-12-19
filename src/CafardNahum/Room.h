@@ -35,6 +35,7 @@ public:
 	void AddWall(int x, int y);
 	void AddFloor(int x, int y);
 	void AddDoor(int x, int y);
+	void AddPoisonRoach(int x, int y);
 	std::vector <StaticObject*> GetStatics();
 	std::vector <Enemy*> GetEnemies();
 	std::vector <Entity*> GetEnemyProjectiles();
@@ -45,5 +46,6 @@ public:
 	void Update(float deltatime);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void drawForeground(sf::RenderTarget& target, sf::RenderStates states) const;
+	
 };
 
