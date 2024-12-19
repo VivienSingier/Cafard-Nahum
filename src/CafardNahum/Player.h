@@ -36,6 +36,7 @@ public:
 	bool CheckCollisionWall(std::vector <StaticObject*> stObjVect, ColliderSphere* sphere);
 	void WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon);
 	float GetShotAngle();
+	void TakeDamage(int damage) override;
 	void Shoot();
 	void draw(sf::RenderTarget& targer, sf::RenderStates states) const override;
 

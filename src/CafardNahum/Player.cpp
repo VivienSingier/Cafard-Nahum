@@ -41,6 +41,12 @@ void Player::Update(float deltatime)
     b->Update(deltatime);
 }
 
+void Player::TakeDamage(int damage)
+{
+    Alive::TakeDamage(damage);
+    b->TakeDamage(damage);
+}
+
 void Player::Move(float x, float y)
 {
     move(x, y);

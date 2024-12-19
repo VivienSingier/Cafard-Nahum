@@ -17,14 +17,14 @@ PlayerHealthBar::PlayerHealthBar()
 		GameManager::getInstance()->window.getView().getCenter().y - GameManager::getInstance()->window.getView().getSize().y / 2.0f + 20);
 
 	sf::Sprite* s1 = new sf::Sprite();
-	s1->setTexture(txtStrt);
+	s1->setTexture(txtEnd);
 	s1->setPosition(viewPos);
 	firstLine.push_back(s1);
 
 	for (int i = 1; i < 4; i++)
 	{
 		sf::Sprite* s = new sf::Sprite();
-		s->setTexture(txtStrt);
+		s->setTexture(txtMid);
 		s->setPosition(viewPos.x + 18 * i, viewPos.y);
 		firstLine.push_back(s);
 	}
@@ -35,14 +35,14 @@ PlayerHealthBar::PlayerHealthBar()
 	firstLine.push_back(s5);
 
 	sf::Sprite* s6 = new sf::Sprite();
-	s6->setTexture(txtStrt);
+	s6->setTexture(txtEnd);
 	s6->setPosition(viewPos.x , viewPos.y + 22);
 	secondLine.push_back(s6);
 
 	for (int i = 1; i < 4; i++)
 	{
 		sf::Sprite* s = new sf::Sprite();
-		s->setTexture(txtStrt);
+		s->setTexture(txtMid);
 		s->setPosition(viewPos.x + 18 * i, viewPos.y + 22);
 		secondLine.push_back(s);
 	}
