@@ -7,7 +7,7 @@
 
 
 MayoBottle::MayoBottle(float x, float y) :
-	Weapon(&StaticTextures::GetInstance()->Weapons["MayoBottle"], sf::Vector2f(x, y), sf::Vector2f(1, 1), sf::Vector2f(1, 1))
+	Weapon(&StaticTextures::GetInstance()->Weapons["MayoBottle"], sf::Vector2f(x, y), sf::Vector2f(1, 1), sf::Vector2f(1, 1), 0.5f)
 {
 	this->setOrigin(0, 8);
 }

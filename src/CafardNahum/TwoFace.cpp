@@ -8,6 +8,8 @@
 #include "BossHealthBar.h"
 #include "Room.h"
 #include <random>
+#include <stdlib.h>
+
 
 TwoFace::TwoFace(sf::Vector2f position) :
 	Boss::Boss(&StaticTextures::GetInstance()->Boss["TwoFace"], position, sf::Vector2f(2, 2), sf::Vector2f(1, 1), 200)

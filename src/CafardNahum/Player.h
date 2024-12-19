@@ -19,6 +19,7 @@ class Player : public Entity, public Movable, public Alive
 	sf::Vector2f UnitVector;
 	sf::Clock hitClock;
 	bool isColored;
+	bool changeWeapon;
 
 	ColliderSphere* cO;
 	ColliderSphere* cE;
@@ -36,7 +37,7 @@ public:
 	void Move(float x, float y);
 	void HandleInput(float deltatime);
 	bool CheckCollisionWall(std::vector <StaticObject*> stObjVect, ColliderSphere* sphere);
-	void WeaponChange(Weapon* holdWeapon, Weapon* secondaryWeapon);
+	void WeaponChange();
 	float GetShotAngle();
 	void TakeDamage(int damage) override;
 	void Shoot();

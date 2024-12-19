@@ -3,10 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include "GameManager.h"
 #include <random>
+#include <stdlib.h>
 
 int main()
 {
-    srand(time(NULL));
+    srand(static_cast<unsigned>(time(nullptr)));
 
     GameManager* game = GameManager::getInstance();
     game->Init();
