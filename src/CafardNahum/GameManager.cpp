@@ -45,8 +45,8 @@ void GameManager::Run()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-		Scene* currentScene = sceneManager->GetCurrentScene();
 		sceneManager->Update(elapsed.asSeconds());
+		Scene* currentScene = sceneManager->GetCurrentScene();
 
 		window.setView(*currentScene->view);
 		window.clear(sf::Color::Black);

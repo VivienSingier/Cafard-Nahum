@@ -43,10 +43,19 @@ Level::Level() : Scene()
 	view = new sf::View(sf::FloatRect(540.f, 360.f, 1080.f, 720.f));
 	view->zoom(0.7);
 
+	SetCurrentRoom(Room1);
 }
 
 void Level::Update(float deltatime)
 {
+	for (int i = 0; i < entities.size(); i++)
+	{
+		entities[i]->Update(deltatime);
+	}
+	for (int i = 0; i < rooms.size(); i++)
+	{
+		rooms[i]->Update(deltatime);
+	}
 	Scene::Update(deltatime);
 }
 
@@ -75,4 +84,16 @@ void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		tFace->drawHealthBar(target, states);
 	}
+}
+
+bool Level::GetStatus() 
+{
+	for (int i = 0; i < rooms.size(); i++)
+	{
+		if (rooms[i]->Enemies.size() > 0)
+		{
+			return true;
+		}
+	}
+	return false;
 }

@@ -27,5 +27,6 @@ public:
 	void AddPlayer(Player* player);
 	virtual void Update(float deltatime);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	virtual bool GetStatus();
 };
 

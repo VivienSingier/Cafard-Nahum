@@ -4,8 +4,6 @@
 
 class PlayerHealthBar : public sf::Drawable, sf::Transformable
 {
-	int maxHealth;
-	int health;
 	sf::Texture txtEnd;
 	sf::Texture txtMid;
 	sf::Texture txtStrt;
@@ -14,6 +12,9 @@ class PlayerHealthBar : public sf::Drawable, sf::Transformable
 	std::vector <sf::Sprite*> secondLine;
 
 public:
+	int maxHealth;
+	int health;
+
 	PlayerHealthBar();
 	void TakeDamage(int damage);
 	void Update(float deltatime);

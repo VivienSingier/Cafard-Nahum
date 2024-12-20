@@ -28,16 +28,22 @@ class Player : public Entity, public Movable, public Alive
 
 	PlayerHealthBar* b;
 
+	sf::Clock startClock;
+
 public:
 	ColliderSphere* c1;
 
 	Player(sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vector2f cSpeed);
 
 	void Update(float deltatime) override;
+	void Heal();
+	void StartDelay();
+	int GetHealth();
 	void Move(float x, float y);
 	void HandleInput(float deltatime);
 	bool CheckCollisionWall(std::vector <StaticObject*> stObjVect, ColliderSphere* sphere);
 	void WeaponChange();
+	void SetPosition(sf::Vector2f pos);
 	float GetShotAngle();
 	void TakeDamage(int damage) override;
 	void Shoot();

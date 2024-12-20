@@ -4,6 +4,7 @@
 #include "StaticObject.h"
 #include "Room.h"
 #include "Corridoor.h"
+#include "SceneManager.h"
 
 #include <iostream>
 
@@ -45,14 +46,6 @@ void Scene::AddPlayer(Player* player)
 
 void Scene::Update(float deltatime)
 {
-	for (int i = 0; i < entities.size(); i++)
-	{
-		entities[i]->Update(deltatime);
-	}
-	for (int i = 0; i < rooms.size(); i++)
-	{
-		rooms[i]->Update(deltatime);
-	}
 	entities.erase(std::remove_if(entities.begin(), entities.end(),
 		[](Entity* e) {
 			bool d = e->GetNeedsToBeDestroyed();
@@ -70,4 +63,9 @@ void Scene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(*(entities[i]));
 	}
+}
+
+bool Scene::GetStatus()
+{
+	return true;
 }

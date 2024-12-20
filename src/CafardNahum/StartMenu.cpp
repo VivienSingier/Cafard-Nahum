@@ -96,10 +96,6 @@ void StartMenu::HandleInput(sf::RenderWindow& window)
 	}
 	else
 		quitButton.setTexture(QuitTexture);
-
-
-
-	std::cout << sf::Mouse::getPosition(window).x << " | " << sf::Mouse::getPosition(window).y << std::endl;
 }
 
 void StartMenu::Update(float deltatime)

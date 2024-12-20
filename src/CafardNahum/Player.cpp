@@ -20,11 +20,13 @@ Player::Player(sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vecto
     Movable::Movable(cSpeed),
     Alive::Alive(cHealth)
 {
-    c1 = new ColliderSphere(15, this->getPosition().x + sprite.getGlobalBounds().width / 2, this->getPosition().y + sprite.getGlobalBounds().height / 2);
-    cO = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2 - 15.f, this->getPosition().y + sprite.getGlobalBounds().height / 2);
-    cE = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2 + 15.f, this->getPosition().y + sprite.getGlobalBounds().height / 2);
-    cN = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2 , this->getPosition().y + sprite.getGlobalBounds().height / 2 - 7.f);
-    cS = new ColliderSphere(1, this->getPosition().x + sprite.getGlobalBounds().width / 2, this->getPosition().y + sprite.getGlobalBounds().height / 2 + 7.f);
+    setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
+
+    c1 = new ColliderSphere(15, getPosition().x, getPosition().y);
+    cO = new ColliderSphere(1, getPosition().x - 15.f, getPosition().y);
+    cE = new ColliderSphere(1, getPosition().x + 15.f, getPosition().y);
+    cN = new ColliderSphere(1, getPosition().x , getPosition().y - 7.f);
+    cS = new ColliderSphere(1, getPosition().x, getPosition().y + 7.f);
 
     holdWeapon = new PepperGun(cE->sphere.getPosition().x - 10, cE->sphere.getPosition().y + 10);
     secondaryWeapon = new MayoBottle(cE->sphere.getPosition().x - 10, cE->sphere.getPosition().y + 10);
@@ -34,6 +36,13 @@ Player::Player(sf::Vector2f position, sf::Vector2f scale, int cHealth, sf::Vecto
     b = new PlayerHealthBar();
     hitClock.restart();
     isColored = false;
+    startClock.restart();
+}
+
+void Player::SetPosition(sf::Vector2f pos)
+{
+    
+    Move(pos.x - getPosition().x, pos.y - getPosition().y);
 }
 
 void Player::Update(float deltatime)
@@ -45,10 +54,17 @@ void Player::Update(float deltatime)
 
     float angle = GetShotAngle();
     holdWeapon->Rotate(angle);
-    Shoot();
-
+    if (startClock.getElapsedTime().asSeconds() > 0.5f)
+    {
+        Shoot();
+    }
     b->Update(deltatime);
     Hit();
+}
+
+void Player::StartDelay()
+{
+    startClock.restart();
 }
 
 void Player::TakeDamage(int damage)
@@ -120,6 +136,17 @@ bool Player::CheckCollisionWall(std::vector <StaticObject*> stObjVect, ColliderS
     return false;
 }
 
+void Player::Heal()
+{
+    health = maxHealth;
+    b->health = maxHealth;
+}
+
+int Player::GetHealth()
+{
+    return health;
+}
+
 float Player::GetShotAngle()
 {
     sf::RenderWindow* window = &GameManager::getInstance()->window;
@@ -144,7 +171,6 @@ void Player::WeaponChange()
         Weapon* weaponChange = holdWeapon;
         holdWeapon = secondaryWeapon;
         secondaryWeapon = weaponChange;
-        std::cout << "Arme Change\n";
 
         changeWeapon = true;
     }

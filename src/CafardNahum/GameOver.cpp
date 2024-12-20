@@ -60,7 +60,7 @@ void GameOver::HandleInput(sf::RenderWindow& window)
         RestartButton.setTexture(RestartTexture2);
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-            window.close();
+            SceneManager::GetInstance()->SetCurrentScene("Level");
         }
     }
     else
@@ -71,7 +71,7 @@ void GameOver::HandleInput(sf::RenderWindow& window)
         MainMenuButton.setTexture(MainMenuTexture2);
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-            window.close();
+            SceneManager::GetInstance()->SetCurrentScene("StartMenu");
         }
     }
     else

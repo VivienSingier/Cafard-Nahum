@@ -10,7 +10,7 @@ Pepper::Pepper(float x, float y, sf::Vector2f direction) :
 	Bullet(&StaticTextures::GetInstance()->Bullets["Pepper"],
 		sf::Vector2f(x, y), sf::Vector2f(0.5, 0.5), direction)
 {
-	damage = 1;
+	damage = 2;
 	this->setOrigin(sf::Vector2f(8, 8));
 
 	c1 = new ColliderSphere(4, x, y);

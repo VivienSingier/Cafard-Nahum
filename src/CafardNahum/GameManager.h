@@ -9,7 +9,6 @@
 class GameManager
 {
 	SceneManager* sceneManager;
-	std::string gameState;
 	static GameManager* instance;
 
 public:

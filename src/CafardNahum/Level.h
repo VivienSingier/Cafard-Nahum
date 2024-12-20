@@ -15,5 +15,6 @@ public:
 	Level();
 	void Update(float deltatime) override;
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	bool GetStatus() override;
 };
 

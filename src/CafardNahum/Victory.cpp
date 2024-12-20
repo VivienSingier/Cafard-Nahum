@@ -3,6 +3,7 @@
 
 #include "Ressources.h"
 #include "GameManager.h"
+#include "SettingsScene.h"
 
 
 Victory::Victory() :
@@ -61,7 +62,7 @@ void Victory::HandleInput(sf::RenderWindow& window)
         RestartButton.setTexture(RestartTexture2);
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-            window.close();
+            SceneManager::GetInstance()->SetCurrentScene("Level");
         }
     }
     else
@@ -72,7 +73,7 @@ void Victory::HandleInput(sf::RenderWindow& window)
         MainMenuButton.setTexture(MainMenuTexture2);
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-            window.close();
+            SceneManager::GetInstance()->SetCurrentScene("StartMenu");
         }
     }
     else

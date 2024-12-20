@@ -10,7 +10,7 @@ MayoBullet1::MayoBullet1(float x, float y, sf::Vector2f direction) :
 	Bullet(&StaticTextures::GetInstance()->Bullets["MayoBullet"], 
 			 sf::Vector2f(x, y), sf::Vector2f(1, 1), direction)
 {
-	damage = 2;
+	damage = 3;
 	this->setOrigin(sf::Vector2f(0, 6));
 
 	c1 = new ColliderSphere(5, x, y);

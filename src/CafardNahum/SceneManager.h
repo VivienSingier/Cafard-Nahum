@@ -15,6 +15,7 @@ public :
 	SceneManager();
 	static SceneManager* GetInstance();
 	Scene* GetCurrentScene();
+	void ResetLevel();
 	void Update(float deltatime);
 	void SetCurrentScene(std::string string);
 
