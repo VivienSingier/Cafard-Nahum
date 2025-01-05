@@ -9,6 +9,12 @@
 4. Generate the solution
 5. You can run the game by executing without debuging (CTRL + F5)
 
+### How to play :
+- Movement : ZQSD
+- Shoot : Left Click
+- Swap Weapon : E
+- Aim : Mouse Cursor
+
 ### Credits :
 #### Loïc Garrel :     
 -  Github : lgarrel
